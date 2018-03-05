@@ -16,7 +16,7 @@
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <title>SC 관리자 페이지</title>
+    <title>SC 관리자 페이지11</title>
   </head>
   
  <body class="app sidebar-mini">
