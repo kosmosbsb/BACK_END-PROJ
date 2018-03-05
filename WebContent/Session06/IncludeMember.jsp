@@ -20,7 +20,6 @@
 	</style>
 </head>
 <body>
-   <jsp:include page="/Template/Top.jsp"></jsp:include>
     <div class="container">
 		<div class="page-header">
   			<h2>회원가입</h2>
