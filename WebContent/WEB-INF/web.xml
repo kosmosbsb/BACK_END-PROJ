@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>BackEnd_SC</display-name>
+  <display-name>JSPProj</display-name>
+    <!-- 서블릿 등록 -->
+  <servlet>
+  	<servlet-name>UseManagement</servlet-name>
+  	<servlet-class>controller.UseServlet</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 -->
+  <servlet-mapping>
+  	<servlet-name>UseManagement</servlet-name>
+  	<url-pattern>/UseManagement.do</url-pattern>  
+  </servlet-mapping>
+  
+  <!-- 컨텍스트 초기화 파라미터 등록 -->
+  <context-param>
+  	<param-name>ORACLE_DRIVER</param-name>
+  	<param-value>oracle.jdbc.OracleDriver</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>ORACLE_URL</param-name>
+  	<param-value>jdbc:oracle:thin://localhost:1521:orcl</param-value>
+  </context-param>
+  
+  <context-param>
+  <param-name>TOMCAT_JNDI_ROOT</param-name>
+  <param-value>java:comp/env</param-value>	
+  </context-param>
+  
+
   <welcome-file-list>
+  	<welcome-file>HelloWorld.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
