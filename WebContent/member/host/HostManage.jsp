@@ -5,18 +5,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  
-  	<style>
-	  	.chart {
-		  width: 100%; 
-		}
-		.random {
-		  margin:0 !important;
-		}
-  	</style>
+  	
+  	<!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vali Admin">
+    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
+    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+    <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   	
    	<meta charset="utf-8">
-	
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
    
@@ -32,144 +33,7 @@
 		   text-align: center;   
 		}
     </style>
-    <!--Load the AJAX API-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">//일반회원 vs 호스트회원 비율
-
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'HoeOrCunt');
-        data.addColumn('number', 'Percentage');
-        data.addRows([
-          ['일반 회원', 118],
-          ['호스트 회원', 43],
-        ]);
-
-        // Set chart options
-        var options = {'title':'일반회원 대 호스트 회원 비율',
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('hovcun'));
-        chart.draw(data, options);
-      }
-    </script>
-    <script type="text/javascript">//일반회원 성별 비율
-
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'cunsexpercentage');
-        data.addColumn('number', 'Percentage');
-        data.addRows([
-          ['남성', 43],
-          ['여성', 75],
-        ]);
-
-        // Set chart options
-        var options = {'title':'일반 회원 성별 비율',
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('cunsexperc'));
-        chart.draw(data, options);
-      }
-    </script>
-    <script type="text/javascript">//호스트 회원 성별 비율
-
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'hosexpercentage');
-        data.addColumn('number', 'Percentage');
-        data.addRows([
-          ['남성', 23],
-          ['여성', 20],
-        ]);
-
-        // Set chart options
-        var options = {'title':'일반 회원 성별 비율',
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('hosexperc'));
-        chart.draw(data, options);
-      }
-    </script>
-    <script>
-    google.charts.load('current', {packages: ['corechart', 'bar']});
-    google.charts.setOnLoadCallback(drawMultSeries);
-
-    function drawMultSeries() {
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', 'ageGroup');
-          data.addColumn('number', '일반 회원 수');
-          data.addColumn('number', '호스트 회원 수');
-
-          data.addRows([
-            ['10대', 33, 1],
-            ['20대', 26, 3],
-            ['30대', 12, 8],
-            ['40대', 4, 12],
-            ['50대', 12, 9],
-            ['60대', 11, 4],
-            ['70대', 12, 3],
-            ['80대', 6, 2],
-            ['90대', 2, 1],
-          ]);
-
-          var options = {
-            title: '일반/호스트 회원 나이대별 분포율',
-            hAxis: {
-              viewWindow: {
-                min: [0],
-                max: [9]
-              }
-            }
-          };
-
-          var chart = new google.visualization.ColumnChart(
-            document.getElementById('chart_agegroup'));
-
-          chart.draw(data, options);
-        }
-    </script>
-	
-
+    
   </head>
   
  <body class="app sidebar-mini">
@@ -318,100 +182,126 @@
 			</div>
 
 			
-			<div style="background-color:white;">
-				<table class="table table-hover table-bordered">
-				
-					<tr>
-						<th><div id="hovcun" class="chart"></div></th>
-						<th><div id="cunsexperc" class="chart"></div></th>
-						<th><div id="hosexperc" class="chart"></div></th>
-					</tr>
-					
-				</table>
+			<div class="row">
+
+		        <div class="col-md-4">
+		          <div class="tile">
+		            <h3 class="tile-title">일반회원 대 호스트 회원 비율</h3>
+		            <div class="embed-responsive embed-responsive-16by9">
+		              <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
+		            </div>
+		          </div>
+		        </div>
+		        
+		        <div class="col-md-4">
+		          <div class="tile">
+		            <h3 class="tile-title">일반 회원 성별 비율</h3>
+		            <div class="embed-responsive embed-responsive-16by9">
+		              <canvas class="embed-responsive-item" id="pieChartDemo2"></canvas>
+		            </div>
+		          </div>
+		        </div>
+		        
+		        <div class="col-md-4">
+		          <div class="tile">
+		            <h3 class="tile-title">호스트 회원 성별 비율</h3>
+		            <div class="embed-responsive embed-responsive-16by9">
+		              <canvas class="embed-responsive-item" id="pieChartDemo3"></canvas>
+		            </div>
+		          </div>
+		        </div>
+
 			</div>
 			
-			<div style="background-color:white;">
-				<table class="table table-hover table-bordered">
-					<tr>
-						<th>
-						<div id="chart_agegroup" class="chart"></div>
-						</th>
-					</tr>
-				</table>
+			<div class="row">
+				<div class="col-md-12">
+		          	<div class="tile">
+			            <h3 class="tile-title">연령별 일반/호스트 회원 그래프</h3>
+			            <div class="embed-responsive embed-responsive-16by9">
+			              <canvas class="embed-responsive-item" id="barChartDemo"></canvas>
+			            </div>
+					</div>
+	        	</div>
 			</div>
 			
-			<div style="background-color:white;">
-			<table class="table table-hover table-bordered">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="tile">
+					<h3 class="tile-title">호스트 회원 목록</h3>
+						<table class="table table-hover table-bordered">
+						
+							<tr>
+								<th style="width: 20%;">아이디</th>
+								<th style="width: 20%;">이름</th>
+								<th style="width: 40%;">호스트명</th>
+								<th style="width: 10%;">성별</th>
+								<th style="width: 10%;">나이</th>
+							</tr>
+							
+							<c:if test="${!empty requestScope.list}" var="flag">
+								<tr>
+									<td colspan="5">등록된 자료가 없습니다</td>
+								</tr>
+							</c:if>
+							
+							<c:if test="${not flag}">
+							
+								<tr>
+									<th><a href="<c:url value='view.go?no=${no}'/>">kim</a></th>
+									<th>김호</th>
+									<th>킴치맨</th>
+									<th>남</th>
+									<th>13</th>
+								</tr>
+								<tr>
+									<th><a href="<c:url value='view.go?no=${no}'/>">park</a></th>
+									<th>박수영</th>
+									<th>황제</th>
+									<th>남</th>
+									<th>26</th>
+								</tr>
+								<tr>
+									<th><a href="<c:url value='view.go?no=${no}'/>">gwak</a></th>
+									<th>곽우유</th>
+									<th>Duckwoman</th>
+									<th>여</th>
+									<th>40</th>
+								</tr>
+								<tr>
+									<th><a href="<c:url value='view.go?no=${no}'/>">something69</a></th>
+									<th>이소룡</th>
+									<th>츄리닝</th>
+									<th>남</th>
+									<th>80</th>
+								</tr>
+								<tr>
+									<th><a href="<c:url value='view.go?no=${no}'/>">xxx_Chun69_xxx</a></th>
+									<th>츈리</th>
+									<th>허벅지살인마</th>
+									<th>여</th>
+									<th>50</th>
+								</tr>
+								
+								<c:forEach var="host" items="${list}" varStatus="loop">
+									<tr>
+										<td>${host.id}</td>
+										<td>${host.name}</td>
+										<td>${host.hostname}</td>
+										<td>${host.gender}</td>
+										<td>${host.age}</td>
+									</tr>
+								</c:forEach>
+							
+							</c:if>
+							
 			
-				<tr>
-					<th style="width: 20%;">아이디</th>
-					<th style="width: 20%;">이름</th>
-					<th style="width: 40%;">호스트명</th>
-					<th style="width: 10%;">성별</th>
-					<th style="width: 10%;">나이</th>
-				</tr>
-				
-				<c:if test="${!empty requestScope.hosts}" var="flag">
-					<tr>
-						<td colspan="5">등록된 자료가 없습니다</td>
-					</tr>
-				</c:if>
-				
-				<c:if test="${not flag}">
-				
-					<tr>
-						<th><a href="<c:url value='view.go?no=${no}'/>">kim</a></th>
-						<th>김호</th>
-						<th>킴치맨</th>
-						<th>남</th>
-						<th>13</th>
-					</tr>
-					<tr>
-						<th><a href="<c:url value='view.go?no=${no}'/>">park</a></th>
-						<th>박수영</th>
-						<th>황제</th>
-						<th>남</th>
-						<th>26</th>
-					</tr>
-					<tr>
-						<th><a href="<c:url value='view.go?no=${no}'/>">gwak</a></th>
-						<th>곽우유</th>
-						<th>Duckwoman</th>
-						<th>여</th>
-						<th>40</th>
-					</tr>
-					<tr>
-						<th><a href="<c:url value='view.go?no=${no}'/>">something69</a></th>
-						<th>이소룡</th>
-						<th>츄리닝</th>
-						<th>남</th>
-						<th>80</th>
-					</tr>
-					<tr>
-						<th><a href="<c:url value='view.go?no=${no}'/>">xxx_Chun69_xxx</a></th>
-						<th>츈리</th>
-						<th>허벅지살인마</th>
-						<th>여</th>
-						<th>50</th>
-					</tr>
-					
-					<c:forEach var="host" items="${hosts}" varStatus="loop">
-						<tr>
-							<td>${host.id}</td>
-							<td>${host.name}</td>
-							<td>${host.hostname}</td>
-							<td>${host.gender}</td>
-							<td>${host.age}</td>
-						</tr>
-					</c:forEach>
-				
-				</c:if>
-				
-
-
-			</table>
-		</div>
+			
+						</table>
+					</div>
+				</div>	
+			</div>
 		<!-- 페이징 추가해야함 기억! -->
+		<div class="">
 		<div class="row">${pagingString}</div>
 		<nav aria-label="Page navigation example">
 		  <ul class="pagination justify-content-center">
@@ -432,6 +322,7 @@
 		    </li>
 		  </ul>
 		</nav>
+		</div>
 
 	</main>
 	<!-- Essential javascripts for application to work-->
@@ -441,5 +332,102 @@
 	<script src="<c:url value="/js/main.js"/>"></script>
 	<!-- The javascript plugin to display page loading on top-->
 	<script src="<c:url value="/js/plugins/pace.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/js/plugins/chart.js"/>"></script>
+    <script type="text/javascript">
+      var data = {
+      	labels: ["10대","20대","30대","40대","50대","60대","70대","80대","90대"],
+      	datasets: [
+      		{
+      			label: "My First dataset",
+      			fillColor: "#FFC700",
+      			strokeColor: "#fff",
+      			pointColor: "#fff",
+      			pointStrokeColor: "#fff",
+      			pointHighlightFill: "#fff",
+      			pointHighlightStroke: "rgba(220,220,220,1)",
+      			data: [33, 26, 12, 4, 12, 11, 12, 6, 2]
+      		},
+      		{
+      			label: "My Second dataset",
+      			fillColor: "#6D3BFF",
+      			strokeColor: "#fff",
+      			pointColor: "#fff",
+      			pointStrokeColor: "#fff",
+      			pointHighlightFill: "#fff",
+      			pointHighlightStroke: "rgba(151,187,205,1)",
+      			data: [1, 3, 8, 12, 9, 4, 3, 2, 1]
+      		}
+      	]
+      };
+      var pdata = [
+      	{
+      		value: 118,
+      		color:"#FFC700",
+      		highlight: "#FFD642",
+      		label: "일반 회원"
+      	},
+      	{
+      		value: 43,
+      		color: "#6D3BFF",
+      		highlight: "#9C7AFF",
+      		label: "호스트 회원"
+      	}
+      ]
+      
+      var pdata2 = [
+        	{
+          		value: 43,
+          		color:"#E4B200",
+          		highlight: "#E5C864",
+          		label: "남성"
+          	},
+          	{
+          		value: 75,
+          		color: "#FFD43D",
+          		highlight: "#FFE485",
+          		label: "여성"
+          	}
+        ]
+      
+      var pdata3 = [
+       	{
+         	value: 20,
+         	color: "#6D3BFF",
+         	highlight: "#9C7AFF",
+         	label: "남성"
+         },
+      	{
+      		value: 23,
+      		color:"#8B64FF",
+      		highlight: "#BDA6FF",
+      		label: "여성"
+      	}
+         
+        ]
+      
+      var ctxp = $("#pieChartDemo").get(0).getContext("2d");
+      var pieChart = new Chart(ctxp).Pie(pdata);
+      
+      var ctxp2 = $("#pieChartDemo2").get(0).getContext("2d");
+      var pieChart = new Chart(ctxp2).Pie(pdata2);
+      
+      var ctxp3 = $("#pieChartDemo3").get(0).getContext("2d");
+      var pieChart = new Chart(ctxp3).Pie(pdata3);
+      
+      var ctxb = $("#barChartDemo").get(0).getContext("2d");
+      var barChart = new Chart(ctxb).Bar(data);
+      
+    </script>
+    <!-- Google analytics script-->
+    <script type="text/javascript">
+      if(document.location.hostname == 'pratikborsadiya.in') {
+      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      	ga('create', 'UA-72504830-1', 'auto');
+      	ga('send', 'pageview');
+      }
+    </script>
 </body>
 </html>
