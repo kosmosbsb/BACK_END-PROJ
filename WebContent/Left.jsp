@@ -4,7 +4,7 @@
       <div class="app-sidebar__user" style="margin-left: 5px;">
       	<i class="fa fa-address-card fa-lg"></i>
         <div style="margin-left: 20px;">
-          <p class="app-sidebar__user-name">찰리8</p>
+          <p class="app-sidebar__user-name"><%=session.getAttribute("USER_ID")%></p>
           <p class="app-sidebar__user-designation">마스터 관리자</p>
         </div>
       </div>
