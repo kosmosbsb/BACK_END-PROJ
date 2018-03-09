@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	
+
   	<!-- Open Graph Meta-->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Vali Admin">
@@ -81,19 +81,21 @@
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            <li><a class="dropdown-item" href="<c:url value="/page-login.html" />"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
           </ul>
         </li>
       </ul>
     </header>
-    <!-- Sidebar menu-->
+    <!-- Sidebar menu Left-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
       <div class="app-sidebar__user" style="margin-left: 5px;">
       	<i class="fa fa-address-card fa-lg"></i>
         <div style="margin-left: 20px;">
-          <p class="app-sidebar__user-name">찰리8</p>
-          <p class="app-sidebar__user-designation">마스터 관리자</p>
+          <p class="app-sidebar__user-name">
+          <%= session.getAttribute("USER_ID")==null? "로그인 안되있다.": session.getAttribute("USER_ID")%></p>
+          <p class="app-sidebar__user-designation">
+          <%= session.getAttribute("USER_ID")==null? "로긴해라":"마스터 관리자"%></p>
         </div>
       </div>
       <hr style="background-color: gray;"/>
@@ -187,9 +189,9 @@
 		        <div class="col-md-4">
 		          <div class="tile">
 		            <h3 class="tile-title">일반회원 대 호스트 회원 비율</h3>
-		            <div class="embed-responsive embed-responsive-16by9">
-		              <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
-		            </div>
+	            		<div class="embed-responsive embed-responsive-16by9">
+			            	<canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
+			            </div>
 		          </div>
 		        </div>
 		        
@@ -238,42 +240,14 @@
 								<th style="width: 10%;">나이</th>
 							</tr>
 							
-							<c:if test="${!empty requestScope.list}" var="flag">
+							<c:if test="${requestScope.list==null}" var="flag">
 								<tr>
-									<td colspan="5">등록된 자료가 없습니다</td>
+									<td colspan="5"><a href="<c:url value='/MEMBER/HostMng.do'/>">등록된 자료가 없습니다</a></td>
 								</tr>
 							</c:if>
 							
 							<c:if test="${not flag}">
-							
-								<tr>
-									<th><a href="<c:url value='view.go?no=${no}'/>">kim</a></th>
-									<th>김호</th>
-									<th>킴치맨</th>
-									<th>남</th>
-									<th>13</th>
-								</tr>
-								<tr>
-									<th><a href="<c:url value='view.go?no=${no}'/>">park</a></th>
-									<th>박수영</th>
-									<th>황제</th>
-									<th>남</th>
-									<th>26</th>
-								</tr>
-								<tr>
-									<th><a href="<c:url value='view.go?no=${no}'/>">gwak</a></th>
-									<th>곽우유</th>
-									<th>Duckwoman</th>
-									<th>여</th>
-									<th>40</th>
-								</tr>
-								<tr>
-									<th><a href="<c:url value='view.go?no=${no}'/>">something69</a></th>
-									<th>이소룡</th>
-									<th>츄리닝</th>
-									<th>남</th>
-									<th>80</th>
-								</tr>
+								<!-- 
 								<tr>
 									<th><a href="<c:url value='view.go?no=${no}'/>">xxx_Chun69_xxx</a></th>
 									<th>츈리</th>
@@ -281,10 +255,10 @@
 									<th>여</th>
 									<th>50</th>
 								</tr>
-								
+								 -->
 								<c:forEach var="host" items="${list}" varStatus="loop">
 									<tr>
-										<td>${host.id}</td>
+										<td><a href="<c:url value='view.go?no=${no}'/>">${host.id}</a></td>
 										<td>${host.name}</td>
 										<td>${host.hostname}</td>
 										<td>${host.gender}</td>
@@ -302,7 +276,7 @@
 			</div>
 		<!-- 페이징 추가해야함 기억! -->
 		<div class="">
-		<div class="row">${pagingString}</div>
+		<div class="row justify-content-center">${pagingString}</div>
 		<nav aria-label="Page navigation example">
 		  <ul class="pagination justify-content-center">
 		    <li class="page-item">
@@ -333,6 +307,10 @@
 	<!-- The javascript plugin to display page loading on top-->
 	<script src="<c:url value="/js/plugins/pace.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/js/plugins/chart.js"/>"></script>
+	<script type="text/javascript">
+    var url = window.location.href;
+    console.log(url);
+	</script>
     <script type="text/javascript">
       var data = {
       	labels: ["10대","20대","30대","40대","50대","60대","70대","80대","90대"],

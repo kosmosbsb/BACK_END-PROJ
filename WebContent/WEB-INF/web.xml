@@ -12,6 +12,17 @@
   	<url-pattern>/UseManagement.do</url-pattern>  
   </servlet-mapping>
   
+  <!-- 서블릿 등록 박수영 -->
+  <servlet>
+  	<servlet-name>HostMngDisplay</servlet-name>
+  	<servlet-class>controller.PsyController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 박수영 -->
+  <servlet-mapping>
+  	<servlet-name>HostMngDisplay</servlet-name>
+  	<url-pattern>/MEMBER/HostMng.do</url-pattern>  
+  </servlet-mapping>
+  
   <!-- 컨텍스트 초기화 파라미터 등록 -->
   <context-param>
   	<param-name>ORACLE_DRIVER</param-name>
