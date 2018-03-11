@@ -88,7 +88,8 @@
     </header>
     <!-- Sidebar menu Left-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-    <aside class="app-sidebar">
+    <jsp:include page="../../Left.jsp"/>
+  <%--   <aside class="app-sidebar">
       <div class="app-sidebar__user" style="margin-left: 5px;">
       	<i class="fa fa-address-card fa-lg"></i>
         <div style="margin-left: 20px;">
@@ -145,7 +146,7 @@
           </ul>
         </li>
       </ul>
-    </aside>
+    </aside> --%>
 
 
 

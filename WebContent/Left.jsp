@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <aside class="app-sidebar">
       <div class="app-sidebar__user" style="margin-left: 5px;">
       	<i class="fa fa-address-card fa-lg"></i>
         <div style="margin-left: 20px;">
-          <p class="app-sidebar__user-name"><%=session.getAttribute("USER_ID")%></p>
-          <p class="app-sidebar__user-designation">마스터 관리자</p>
+           <p class="app-sidebar__user-name">
+          <%= session.getAttribute("USER_ID")==null? "로그인 안되있다.": session.getAttribute("USER_ID")%></p>
+          <p class="app-sidebar__user-designation">
+          <%= session.getAttribute("USER_ID")==null? "로긴해라":"마스터 관리자"%></p>
         </div>
       </div>
       <hr style="background-color: gray;"/>
@@ -15,8 +18,8 @@
       -->
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">회원 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>일반 회원</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!" target="_blank"><i class="icon fa fa-circle-o"></i>호스트 회원</a></li>
+            <li><a class="treeview-item" href="<c:url value='/member/normal/NormalManage.jsp'/>"><i class="icon fa fa-circle-o"></i>일반 회원</a></li>
+            <li><a class="treeview-item" href="<c:url value='/member/host/HostManage.jsp'/>"><i class="icon fa fa-circle-o"></i>호스트 회원</a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">통계 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
