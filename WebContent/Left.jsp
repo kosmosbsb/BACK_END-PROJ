@@ -8,7 +8,8 @@
            <p class="app-sidebar__user-name">
           <%= session.getAttribute("USER_ID")==null? "로그인 안되있다.": session.getAttribute("USER_ID")%></p>
           <p class="app-sidebar__user-designation">
-          <%= session.getAttribute("USER_ID")==null? "로긴해라":"마스터 관리자"%></p>
+          <!-- 타 페이지 에러방지용 임시값 추가 -->
+          <%= session.getAttribute("USER_LEVEL")==null? "임시" : session.getAttribute("USER_LEVEL").equals("M") ? "마스터 관리자" : session.getAttribute("USER_LEVEL").equals("A") ? "통계관리자" : "CS관리자"%></p>
         </div>
       </div>
       <hr style="background-color: gray;"/>

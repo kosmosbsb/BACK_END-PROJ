@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.AdminDAO;
+import model.admin.AdminDAO;
 
 public class DeleteController extends HttpServlet{
 	@Override

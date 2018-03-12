@@ -1,4 +1,4 @@
-package model;
+package model.admin;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;

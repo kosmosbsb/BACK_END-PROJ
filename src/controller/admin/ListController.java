@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.AdminDAO;
-import model.AdminDTO;
-import model.PagingUtil;
+import model.admin.AdminDAO;
+import model.admin.AdminDTO;
+import model.admin.PagingUtil;
 
 public class ListController extends HttpServlet {
 	

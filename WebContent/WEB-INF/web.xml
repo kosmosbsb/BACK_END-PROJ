@@ -34,6 +34,17 @@
 	<url-pattern>/ADMIN/List.do</url-pattern>
   </servlet-mapping>
   
+    <!-- 서블릿 등록 권혁우 -->
+  <servlet>
+ 	<servlet-name>AdminDelete</servlet-name>
+	<servlet-class>controller.admin.DeleteController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 권혁우 -->
+  <servlet-mapping>
+	<servlet-name>AdminDelete</servlet-name>
+	<url-pattern>/ADMIN/Delete.do</url-pattern>
+  </servlet-mapping>
+  
   
   <servlet>
   	<!-- 서블릿 명:임의로 지정 최지훈-->

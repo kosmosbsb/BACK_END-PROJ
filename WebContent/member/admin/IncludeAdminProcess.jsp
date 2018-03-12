@@ -1,4 +1,4 @@
-<%@page import="model.AdminDAO"%>
+<%@page import="model.admin.AdminDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     

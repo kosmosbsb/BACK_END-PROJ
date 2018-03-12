@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,16 +11,14 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Vali Admin</title>
+    <title>SC 관리자 페이지</title>
   </head>
   <body>
     <section class="material-half-bg">
-      <div class="cover"></div>
+      <div class="cover" style="background-color: #292929"></div>
     </section>
-    <section class="login-content">
-      <div class="logo">
-        <h1>Vali</h1>
-      </div>
+    <section class="login-content"">
+    <img src="<c:url value='/Images/backend_logo.png'/>" style="width: 550px; height: auto; margin-top: -70px; margin-bottom: 50px;"/>
       <div class="login-box">
         <form class="login-form" method="post" action="LoginProcess.jsp">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
