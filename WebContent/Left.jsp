@@ -18,7 +18,7 @@
    
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">회원 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="<c:url value='/member/normal/NormalManage.jsp'/>"><i class="icon fa fa-circle-o"></i>일반 회원</a></li>
+            <li><a class="treeview-item" href="<c:url value='/member/normal/NormalManage.do'/>"><i class="icon fa fa-circle-o"></i>일반 회원</a></li>
             <li><a class="treeview-item" href="<c:url value='/MEMBER/HostMng.do'/>"><i class="icon fa fa-circle-o"></i>호스트 회원</a></li>
           </ul>
         </li>

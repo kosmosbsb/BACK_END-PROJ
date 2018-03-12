@@ -34,6 +34,23 @@
 	<url-pattern>/ADMIN/List.do</url-pattern>
   </servlet-mapping>
   
+  
+  <servlet>
+  	<!-- 서블릿 명:임의로 지정 최지훈-->
+  	<servlet-name>DataList</servlet-name>
+  	<!-- 서블릿 클래스의 패키지를 포함한 경로 -->
+  	<servlet-class>controller.cjh.ListController</servlet-class>
+  </servlet>
+  
+  <!-- URL패턴(요청URL)을 서블릿에 매핑 -->
+  <servlet-mapping>
+  	<!-- servlet태그의  servlet-name태그와 일치시키자-->
+  	<servlet-name>DataList</servlet-name>
+  	<!-- 사용자 요청 URL패턴:반드시 / 로 시작하는 패턴 -->
+  	<url-pattern>/member/normal/NormalManage.do</url-pattern>  	
+  </servlet-mapping>
+  
+  
   <!-- 컨텍스트 초기화 파라미터 등록 -->
   <context-param>
   	<param-name>ORACLE_DRIVER</param-name>

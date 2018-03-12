@@ -46,7 +46,7 @@
   
  <body class="app sidebar-mini">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="index.jsp" ><img src="<c:url value='/Images/backend_logo.png'/>" style="width: 220px; height: auto; margin-left: -10px; margin-top: -10px;"/></a>
+    <header class="app-header"><a class="app-header__logo" href="<c:url value='../../index.jsp'/>" ><img src="<c:url value='/Images/backend_logo.png'/>" style="width: 220px; height: auto; margin-left: -10px; margin-top: -10px;"/></a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -199,22 +199,15 @@
 							</c:if>
 							
 							<c:if test="${not flag}">
-								<!-- 
-								<tr>
-									<th><a href="<c:url value='view.go?no=${no}'/>">xxx_Chun69_xxx</a></th>
-									<th>츈리</th>
-									<th>허벅지살인마</th>
-									<th>여</th>
-									<th>50</th>
-								</tr>
-								 -->
 								<c:forEach var="host" items="${list}" varStatus="loop">
 									<tr>
-										<td><a href="<c:url value='view.go?no=${no}'/>">${host.id}</a></td>
+										<td>${host.id}</td>
 										<td>${host.name}</td>
-										<td>${host.hostname}</td>
 										<td>${host.gender}</td>
 										<td>${host.age}</td>
+										<td>${host.grade}</td>
+										<td>${host.mileage}</td>
+										<td>${host.reservation}</td>
 									</tr>
 								</c:forEach>
 							
