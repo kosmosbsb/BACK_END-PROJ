@@ -15,7 +15,7 @@
   <!-- 서블릿 등록 박수영 -->
   <servlet>
   	<servlet-name>HostMngDisplay</servlet-name>
-  	<servlet-class>controller.psy.PsyController</servlet-class>
+  	<servlet-class>controller.PsyController</servlet-class>
   </servlet>
   <!--요청 URL매핑 박수영 -->
   <servlet-mapping>
