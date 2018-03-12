@@ -17,7 +17,7 @@
     <section class="material-half-bg">
       <div class="cover" style="background-color: #292929"></div>
     </section>
-    <section class="login-content"">
+    <section class="login-content">
     <img src="<c:url value='/Images/backend_logo.png'/>" style="width: 550px; height: auto; margin-top: -70px; margin-bottom: 50px;"/>
       <div class="login-box">
         <form class="login-form" method="post" action="LoginProcess.jsp">
