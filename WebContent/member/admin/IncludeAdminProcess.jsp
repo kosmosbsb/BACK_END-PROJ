@@ -24,7 +24,12 @@
 	else{
 		int createResult = dao.createAdmin(id, pwd, admin_name, admin_level);
 		if(createResult==2){//회원가입 성공
-			response.sendRedirect("AdminInfo.jsp");
+			%>
+			<script>
+				alert("정상적으로 등록했습니다.");
+			</script>
+			<%
+			request.getRequestDispatcher("/ADMIN/List.do").forward(request, response);
 		}
 		else if(createResult==1){//아이디 중복
 		%>

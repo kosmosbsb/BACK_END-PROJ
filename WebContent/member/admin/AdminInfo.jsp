@@ -98,9 +98,14 @@
           <li class="breadcrumb-item active"><a href="#">관리자 관리</a></li>
         </ul>
       </div>
+
       <div class="row">
         <div class="col-md-12">
+        
           <div class="tile">
+          <c:if test="${USER_LEVEL=='M'}">
+          <button class="btn btn-success pull-right" type="button" onclick='location.href="<c:url value='/member/admin/IncludeAdmin.jsp'/>"'><i class="fa fa-user fa-lg"></i>새 관리자 등록</button>
+          </c:if>
             <div class="tile-body">
               <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
@@ -115,15 +120,18 @@
                 <tbody>
                 <c:forEach var="item" items="${list}" varStatus="loop">
 	   				<tr>
-	   					<td>${item.admin_level}</td>
+	   					<td>${item.admin_level == 'M' ? '마스터관리자' : item.admin_level == 'A' ? '통계관리자' : 'CS관리자'}</td>
 	   					<td>${item.id}</td>
 	   					<td>${item.admin_name}</td>
 	   					<td>${item.regidate}</td>
-	   					<td>수정/삭제</td>
+	   					<td><button class="btn btn-success" type="button" onclick='location.href="<c:url value='/member/admin/IncludeAdmin.jsp'/>"'>수정</button> | 
+	   						<!--<button class="btn btn-success" type="button" onclick='location.href="<c:url value='/ADMIN/Delete.do?id=${item.id}'/>"'>삭제</button>-->
+	   						<button class="btn btn-success" type="button" onclick="deleteOK('${item.id}')">삭제</button>
+	   					</td>
 	   				</tr>
 		   		</c:forEach>
                 </tbody>
-              </table>
+              </table>	
             </div>
           </div>
         </div>
@@ -151,6 +159,12 @@
       	ga('create', 'UA-72504830-1', 'auto');
       	ga('send', 'pageview');
       }
+
+      function deleteOK(id){
+		if(confirm("정말로 삭제하시겠습니까?")){
+			location.href="/ADMIN/Delete.do?id="+id;
+		}
+      };
     </script>
   </body>
 </html>

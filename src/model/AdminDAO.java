@@ -128,4 +128,47 @@ public class AdminDAO {
 		return list;
 	}////////////////////////////
 	
+	public String getAdminLevel(String id) {
+		String sql = "SELECT ADMIN_LEVEL FROM SC_ADMIN WHERE ID=?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				return rs.getString(1);
+			}
+			else{
+				return "잘못된처리!";
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return "잘못된처리!";
+		}
+	}
+	
+	public int deleteAdmin(String id) {
+		
+		int affected=0;
+		String sql = "DELETE FROM SC_ADMIN WHERE ID=?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			
+			affected = psmt.executeUpdate();
+			if(affected==1)
+				return 1;//1개 삭제 성공
+			else
+				return 2;//0개 또는 2개 이상 삭제됨
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return 3; //에러
+		}
+	}
+	
 }
