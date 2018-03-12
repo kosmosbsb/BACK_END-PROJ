@@ -13,9 +13,9 @@
       </div>
       <hr style="background-color: gray;"/>
       <ul class="app-menu">
-      <!--
-        <li><a class="app-menu__item active" href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">DashBoard</span></a></li>
-      -->
+      
+        <li><a class="app-menu__item active" href="<c:url value='/ADMIN/List.do'/>"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">관리자 관리</span></a></li>
+   
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">회원 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="<c:url value='/member/normal/NormalManage.jsp'/>"><i class="icon fa fa-circle-o"></i>일반 회원</a></li>

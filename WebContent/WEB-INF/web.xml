@@ -23,6 +23,17 @@
   	<url-pattern>/MEMBER/HostMng.do</url-pattern>  
   </servlet-mapping>
   
+  <!-- 서블릿 등록 권혁우 -->
+  <servlet>
+ 	<servlet-name>AdminList</servlet-name>
+	<servlet-class>controller.admin.ListController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 권혁우 -->
+  <servlet-mapping>
+	<servlet-name>AdminList</servlet-name>
+	<url-pattern>/ADMIN/List.do</url-pattern>
+  </servlet-mapping>
+  
   <!-- 컨텍스트 초기화 파라미터 등록 -->
   <context-param>
   	<param-name>ORACLE_DRIVER</param-name>

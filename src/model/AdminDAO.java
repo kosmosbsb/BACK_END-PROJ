@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -105,6 +107,25 @@ public class AdminDAO {
 		}
 	}
 	
-	
+	public List<AdminDTO> selectList() {
+		List list = new Vector();
+		
+		String sql="SELECT ADMIN_LEVEL, ID, ADMIN_NAME, REGIDATE FROM SC_ADMIN ORDER BY ADMIN_LEVEL DESC";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				AdminDTO dto = new AdminDTO();
+				dto.setAdmin_level(rs.getString(1));
+				dto.setId(rs.getString(2));
+				dto.setAdmin_name(rs.getString(3));
+				dto.setRegidate(rs.getDate(4));
+				
+				list.add(dto);				
+			}			
+		} catch (Exception e) {e.printStackTrace();}
+		return list;
+	}////////////////////////////
 	
 }

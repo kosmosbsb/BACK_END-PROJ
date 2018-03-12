@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/css/main.css'/>">
     
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -76,7 +76,7 @@
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="../../page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/Session06/Login.jsp'/>"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -113,13 +113,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>마스터 관리자</td>
-                    <td>KIM</td>
-                    <td>찰리8</td>
-                    <td>2018/03/03</td>
-                    <td>수정/삭제</td>
-                  </tr>
+                <c:forEach var="item" items="${list}" varStatus="loop">
+	   				<tr>
+	   					<td>${item.admin_level}</td>
+	   					<td>${item.id}</td>
+	   					<td>${item.admin_name}</td>
+	   					<td>${item.regidate}</td>
+	   					<td>수정/삭제</td>
+	   				</tr>
+		   		</c:forEach>
                 </tbody>
               </table>
             </div>
@@ -128,16 +130,16 @@
       </div>
     </main>
     <!-- Essential javascripts for application to work-->
-    <script src="../../js/jquery-3.2.1.min.js"></script>
-    <script src="../../js/popper.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/main.js"></script>
+    <script src="<c:url value='/js/jquery-3.2.1.min.js'/>"></script>
+    <script src="<c:url value='/js/popper.min.js'/>"></script>
+    <script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+    <script src="<c:url value='/js/main.js'/>"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="../js/plugins/pace.min.js"></script>
+    <script src="<c:url value='/js/plugins/pace.min.js'/>"></script>
     <!-- Page specific javascripts-->
     <!-- Data table plugin-->
-    <script type="text/javascript" src="../../js/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="../../js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="<c:url value='/js/plugins/jquery.dataTables.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/js/plugins/dataTables.bootstrap.min.js'/>"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
     <script type="text/javascript">
