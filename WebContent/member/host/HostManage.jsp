@@ -89,68 +89,6 @@
     <!-- Sidebar menu Left-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <jsp:include page="../../Left.jsp"/>
-  <%--   <aside class="app-sidebar">
-      <div class="app-sidebar__user" style="margin-left: 5px;">
-      	<i class="fa fa-address-card fa-lg"></i>
-        <div style="margin-left: 20px;">
-          <p class="app-sidebar__user-name">
-          <%= session.getAttribute("USER_ID")==null? "로그인 안되있다.": session.getAttribute("USER_ID")%></p>
-          <p class="app-sidebar__user-designation">
-          <%= session.getAttribute("USER_ID")==null? "로긴해라":"마스터 관리자"%></p>
-        </div>
-      </div>
-      <hr style="background-color: gray;"/>
-      <ul class="app-menu">
-      <!--
-        <li><a class="app-menu__item active" href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">DashBoard</span></a></li>
-      -->
-        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">회원 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>일반 회원</a></li>
-            <li><a class="treeview-item" href="#" target="_blank"><i class="icon fa fa-circle-o"></i>호스트 회원</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">통계 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-      	  <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>이용 통계</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!" target="_blank"><i class="icon fa fa-circle-o"></i>공간 통계</a></li>
-          	 <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>회원 통계</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">문의 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>처리 현황</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>문의 통계</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">서비스 정보 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>공지사항 관리</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>도움말 관리</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>FAQ 관리</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>일반 이용정보</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>호스트 이용정보</a></li>
-          </ul>
-        </li>
-         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">이벤트 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>컨시어지 서비스</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>베스트 공간 리스트</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>기획전(공간톡톡)</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">수수료 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>정산 정책 관리</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>서비스 이용 현황</a></li>
-          </ul>
-        </li>
-      </ul>
-    </aside> --%>
-
-
-
-
 
 	<main class="app-content">
 	<div class="app-title">
@@ -170,7 +108,7 @@
 					<div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
 						<div class="info">
 				            <h4>일반 회원</h4>
-				            <p><b>118명</b></p>
+				            <p><b>${chartdataset[0]}명</b></p>
 			            </div>
 		            </div>
 		        </div>
@@ -178,7 +116,7 @@
 		          <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
 		            <div class="info">
 		              <h4>호스트 회원</h4>
-		              <p><b>43명</b></p>
+		              <p><b>${chartdataset[1]}명</b></p>
 		            </div>
 		          </div>
 		        </div>
@@ -189,7 +127,7 @@
 
 		        <div class="col-md-4">
 		          <div class="tile">
-		            <h3 class="tile-title">일반회원 대 호스트 회원 비율</h3>
+		            <h3 class="tile-title">일반회원 중 호스트 회원 비율</h3>
 	            		<div class="embed-responsive embed-responsive-16by9">
 			            	<canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
 			            </div>
@@ -241,9 +179,9 @@
 								<th style="width: 10%;">나이</th>
 							</tr>
 							
-							<c:if test="${requestScope.list==null}" var="flag">
+							<c:if test="${empty requestScope.list}" var="flag">
 								<tr>
-									<td colspan="5"><a href="<c:url value='/MEMBER/HostMng.do'/>">등록된 자료가 없습니다</a></td>
+									<td colspan="5">등록된 자료가 없습니다</td>
 								</tr>
 							</c:if>
 							
@@ -261,7 +199,7 @@
 									<tr>
 										<td><a href="<c:url value='view.go?no=${no}'/>">${host.id}</a></td>
 										<td>${host.name}</td>
-										<td>${host.hostname}</td>
+										<td>${host.h_nickname}</td>
 										<td>${host.gender}</td>
 										<td>${host.age}</td>
 									</tr>
@@ -340,13 +278,13 @@
       };
       var pdata = [
       	{
-      		value: 118,
+      		value: ${chartdataset[0]},
       		color:"#FFC700",
       		highlight: "#FFD642",
       		label: "일반 회원"
       	},
       	{
-      		value: 43,
+      		value: ${chartdataset[1]},
       		color: "#6D3BFF",
       		highlight: "#9C7AFF",
       		label: "호스트 회원"
@@ -355,13 +293,13 @@
       
       var pdata2 = [
         	{
-          		value: 43,
+          		value: ${chartdataset[2]},
           		color:"#E4B200",
           		highlight: "#E5C864",
           		label: "남성"
           	},
           	{
-          		value: 75,
+          		value: ${chartdataset[3]},
           		color: "#FFD43D",
           		highlight: "#FFE485",
           		label: "여성"
@@ -370,13 +308,13 @@
       
       var pdata3 = [
        	{
-         	value: 20,
+         	value: ${chartdataset[4]},
          	color: "#6D3BFF",
          	highlight: "#9C7AFF",
          	label: "남성"
          },
       	{
-      		value: 23,
+      		value: ${chartdataset[5]},
       		color:"#8B64FF",
       		highlight: "#BDA6FF",
       		label: "여성"

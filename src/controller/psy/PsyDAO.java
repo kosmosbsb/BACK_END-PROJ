@@ -47,25 +47,20 @@ public class PsyDAO {
 		public List<PsyDTO> selectList(/*Map<String,Object> map*/){
 			List<PsyDTO> list = new Vector<PsyDTO>();
 			// 페이징 적용 - 구간 쿼리로 변경
-			String sql = "select N.id, name, h_nickname, gender, age\r\n" + 
-					"from USER_NORMAL N INNER JOIN USER_HOST H\r\n" + 
-					"ON N.id = H.id\r\n" + 
-					"WHERE rownum between ? and ?;";
-			
+			String sql = "SELECT N.id, NAME, H_NICKNAME, GENDER, AGE FROM USER_NORMAL N INNER JOIN USER_HOST H ON N.ID = H.ID WHERE ROWNUM BETWEEN ? and ? ";
 			try {
 				psmt = conn.prepareStatement(sql);
-				// 1. 전체목록 쿼리를 구간 쿼리로 변경
-				psmt.setString(1, "1");//원래 map.get("start").toString()
-				psmt.setString(2, "10");//원래 map.get("end").toString()
-				
+				psmt.setString(1, "1");
+				psmt.setString(2, "10");
 				rs = psmt.executeQuery();
 				
 				while(rs.next()) {
 					PsyDTO dto = new PsyDTO();
-					dto.setId(rs.getString(2));
-					dto.setName(rs.getString(1));
-					dto.setH_nickname(rs.getString(6));
-					dto.setGender(rs.getString(3));
+					//System.out.println(rs.getString(1)+rs.getString(2)+rs.getString(3)+rs.getString(4)+rs.getString(5));
+					dto.setId(rs.getString(1));
+					dto.setName(rs.getString(2));
+					dto.setH_nickname(rs.getString(3));
+					dto.setGender(rs.getString(4));
 					dto.setAge(rs.getString(5));
 					list.add(dto);
 				}/////////////while
@@ -74,4 +69,90 @@ public class PsyDAO {
 			}
 			return list;
 		}///////////////selectList()
+		
+		//차트에 카운트 세팅
+		public int[] chartDataArray(){
+			int[] chardatar = {0,0,0,0,0,0};
+			
+			//일반유저중 호스트유저 비율(
+			String sql = "select count(id) from user_normal";
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+				//System.out.println(Integer.parseInt(rs.getString(1)));
+				chardatar[0]=Integer.parseInt(rs.getString(1));
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			sql = "select count(id) from user_host";
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+				chardatar[1]=Integer.parseInt(rs.getString(1));
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			//일반유저중 호스트유저 비율)//
+			
+			//일반 회원 성별 비율(
+			sql = "select count(id) from user_normal where gender='m'";
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+				chardatar[2]=Integer.parseInt(rs.getString(1));
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			sql = "select count(id) from user_normal where gender='f'";
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+				chardatar[3]=Integer.parseInt(rs.getString(1));
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			//일반 회원 성별 비율)//
+			
+			//호스트 회원 성별 비율
+			sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where gender='m'";
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+				chardatar[4]=Integer.parseInt(rs.getString(1));
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where gender='f'";
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+				chardatar[5]=Integer.parseInt(rs.getString(1));
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			//호스트 회원 성별 비율//
+			
+			
+			
+			return chardatar;
+		}
 }

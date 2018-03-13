@@ -16,8 +16,11 @@ public class PsyController extends HttpServlet{
 		//System.out.println("doget으로 들어오는데 성공함");
 		PsyDAO dao = new PsyDAO(req.getServletContext());
 		List<PsyDTO> list=dao.selectList();
+		int[] chartDatAr =dao.chartDataArray();
+		//int[] chartDatAr = {120,50,80,40,33,30};
 		dao.close();
-		
+		req.setAttribute("chartdataset", chartDatAr);
+		//req.setAttribute("data", 120);
 		req.setAttribute("list", list);
 		
 		//뷰선택]
