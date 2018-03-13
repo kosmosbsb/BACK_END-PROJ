@@ -17,6 +17,14 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <title>SC 관리자 페이지</title>
+<!-- --------------------------------------------------------------- -->
+    <style>
+    
+	.invisible{
+		display: none;
+	}	
+    </style>
+<!-- --------------------------------------------------------------- -->    
   </head>
   
  <body class="app sidebar-mini">
@@ -82,111 +90,68 @@
     </header>
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-    <aside class="app-sidebar">
-      <div class="app-sidebar__user" style="margin-left: 5px;">
-      	<i class="fa fa-address-card fa-lg"></i>
-        <div style="margin-left: 20px;">
-          <p class="app-sidebar__user-name">찰리8</p>
-          <p class="app-sidebar__user-designation">마스터 관리자</p>
-        </div>
-      </div>
-      <hr style="background-color: gray;"/>
-      <ul class="app-menu">
-      <!--
-        <li><a class="app-menu__item active" href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">DashBoard</span></a></li>
-      -->
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">회원 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>일반 회원</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!" target="_blank"><i class="icon fa fa-circle-o"></i>호스트 회원</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">통계 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-      	  <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>이용 통계</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!" target="_blank"><i class="icon fa fa-circle-o"></i>공간 통계</a></li>
-          	 <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>회원 통계</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">문의 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>처리 현황</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>문의 통계</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">서비스 정보 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>공지사항 관리</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>도움말 관리</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>FAQ 관리</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>일반 이용정보</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>호스트 이용정보</a></li>
-          </ul>
-        </li>
-         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">이벤트 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>컨시어지 서비스</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>베스트 공간 리스트</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>기획전(공간톡톡)</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">수수료 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>정산 정책 관리</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>서비스 이용 현황</a></li>
-          </ul>
-        </li>
-      </ul>
-    </aside>
+    <!-- 사이드바 Left.jsp-------------------------------- -->
+    <jsp:include page="/Left.jsp"/>
     
     
     
-    
+ <!-- --------------------------------------------------------------- -->   
    <main class="app-content">
       <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i>문의 통계</h1>
           <p style="font-style: normal;">기간별,유형별</p>
         </div>
+        
         <!-- 차트 버튼 -->
-     		<div class="bs-component">
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                  <input id="periodbutton" type="radio" name="options" autocomplete="off" checked="">기간별
-                </label>
-                <label class="btn btn-primary">
-                  <input id="typebutton" type="radio" name="options" autocomplete="off"> 유형별
-                </label>
-
-              </div>
-            </div>
-        <!--  --> 
+     		<div class="btn-group btn-group-toggle" data-toggle="buttons">
+								<button type="radio" class="btn btn-primary btn-filter" data-target="pagado">기간별</button>
+								<button type="radio" class="btn btn-primary btn-filter" data-target="pendiente">유형별</button>
+							</div>
       </div>
+      <!-- --------------------------------------------------------------- -->
       
-      <!-- 기간별 차트 -->  
-    <div class="row" id="periodchart">
-		<div class="col-md-10" style="padding-left: 200px">
-			<div class="tile">
-				<h3 class="tile-title">기간별 문의 통계</h3>
-				<div class="embed-responsive embed-responsive-16by9">
-					<canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
-				</div>
-			</div>
-		</div>
-	</div>
-      <!-- 유형별 차트 -->  
-		<div class="row" style="display: none;" id="typechart">
-			<div class="col-md-10" style="padding-left: 200px">
-				<div class="tile">
-					<h3 class="tile-title">유형별 문의 통계</h3>
-					<div class="embed-responsive embed-responsive-16by9">
-						<canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
-					</div>
-				</div>
-			</div>
-		 </div>
+      <!-- 기간별 차트 -->
+    <div class="table-container">
+							<table class="table table-filter">
+								<tbody>
+									<tr data-status="pagado">
+										<td>
+										<!-- --------------------------------------------------------------- --> 
+											<div class="row" id="periodchart">
+												<div class="col-md-10" style="padding-left: 200px">
+													<div class="tile">
+														<h3 class="tile-title">기간별 문의 통계</h3>
+														<div class="embed-responsive embed-responsive-16by9">
+															<canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- --------------------------------------------------------------- --> 
+										</td>
+										</tr>
+									<tr data-status="pendiente">
+										<td>
+										<!-- --------------------------------------------------------------- --> 
+											<div class="row" id="typechart">
+												<div class="col-md-10" style="padding-left: 200px">
+													<div class="tile">
+														<h3 class="tile-title">유형별 문의 통계</h3>
+														<div class="embed-responsive embed-responsive-16by9">
+															<canvas class="embed-responsive-item" id="pieChartDemo"/>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- --------------------------------------------------------------- --> 
+											</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
 		</main>
-    
+ <!-- --------------------------------------------------------------- -->   
 
     <!-- Essential javascripts for application to work-->
     <script src="<c:url value='/js/jquery-3.2.1.min.js'/>"></script>
@@ -251,64 +216,20 @@
       var pieChart = new Chart(ctxp).Pie(pdata);
       
       /* 버튼클릭시 활성/비활성*/
-/*       $(function(){
-    	  $('#typechart').on('click', function(event) {
-    	  	
-    	  })
-      }); */
-      /*  ---------------------------------------------------------*/
-      $(function () {
-    if (window.location == window.parent.location) {
-        $('#fullscreen').text('Go back to Blog Layout Snippet on Bootsnipp (Click Here)');
-        $('#fullscreen').attr('href', 'http://bootsnipp.com/mouse0270/snippets/846vX');
-        $('#fullscreen').css('margin-left','-391.5px')
-    }    
-    $('#fullscreen').on('click', function(event) {
-        event.preventDefault();
-        window.parent.location =  $('#fullscreen').attr('href');
-    });
-    
-    
-    
-    $('#toggle_posts').on('click', function(event) {
-      event.preventDefault();
-      $('#posts').toggleClass('open');
-   });
-
-   $('a[href^="#post-"]').on('click', function(event) {
-      event.preventDefault();
-      $('article.active').removeClass('active');
-      $('#comments').removeClass('active');
-
-      var percentage = parseInt($(window).width()) - parseInt($(this).css('width'));
-      percentage = percentage / parseInt($(window).width());
-      percentage = percentage * 100;
-
-      if (percentage <= 20) {
-         $('#posts').removeClass('open');
+			$(document).ready(function () {
+				$('.table tr[data-status="pendiente"]').css('display', 'none');
+    $('.btn-filter').on('click', function () {
+      var $target = $(this).data('target');
+      if ($target != 'all') {
+        $('.table tr').css('display', 'none');
+        $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+      } else {
+        $('.table tr').css('display', 'none').fadeIn('slow');
       }
+    });
 
-      // THIS IS WHERE AJAX CODE WOULD GO TO LOAD ARTICLES DYNAMICALLY
-      $($(this).attr('href')).addClass('active');
-   });
-
-   $('a[href^="#comments-"]').on('click', function(event) {
-      event.preventDefault();
-
-      // THIS IS WHERE AJAX CODE WOULD GO TO LOAD ARTICLES DYNAMICALLY
-      $('#comments').toggleClass('active');
-   });
-
-   $('#typebutton').on('click', function(event) {
-      event.preventDefault();
-      $('#periodchart').removeClass('active');
-      $(this).closest('article').removeClass('active');
-   });
-   $('#comments > .title > .close').on('click', function(event) {
-      event.preventDefault();
-      $(this).closest('#comments').removeClass('active');
-   });   
-});
+ });
+      
     </script>
     <!-- Google analytics script-->
     <script type="text/javascript">
