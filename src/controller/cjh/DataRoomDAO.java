@@ -48,13 +48,12 @@ public class DataRoomDAO {
 	public List<DataRoomDTO> selectList() {
 		List list = new Vector();
 		
-		String sql="SELECT * FROM NORMALMEMBER";
+		String sql="SELECT * FROM NOMAL";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				DataRoomDTO dto = new DataRoomDTO();
-				dto.setReservation(rs.getString(7));
 				dto.setMileage(rs.getString(6));
 				dto.setGrade(rs.getString(5));
 				dto.setAge(rs.getString(4));
@@ -73,7 +72,7 @@ public class DataRoomDAO {
 	// 전체 레코드수 얻기용]
 	public int getTotalRecordCount() {
 		int total = 0;
-		String sql = "SELECT COUNT(*) FROM NORMALMEMBER";
+		String sql = "SELECT COUNT(*) FROM NOMAL";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -87,6 +86,299 @@ public class DataRoomDAO {
 	}////////////
 	
 	
+	public int[] ageDataArray() {
+		int[] agedata = {0,0,0,0,0,0,0,0,0};
+		
+		String sql = "select count(*) from nomal where age between 10 and 19";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				agedata[0]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		sql = "select count(*) from nomal where age between 20 and 29";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				agedata[1]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		sql = "select count(*) from nomal where age between 30 and 39";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				agedata[2]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		sql = "select count(*) from nomal where age between 40 and 49";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				agedata[3]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		sql = "select count(*) from nomal where age between 50 and 59";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				agedata[4]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		sql = "select count(*) from nomal where age between 60 and 69";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				agedata[5]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		sql = "select count(*) from nomal where age between 70 and 79";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				agedata[6]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		sql = "select count(*) from nomal where age between 80 and 89";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				agedata[7]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		sql = "select count(*) from nomal where age between 90 and 99";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				agedata[8]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return agedata;
+	}
+	
+	public String[] genderDataArray() {
+		String[] genderArray = {null,null};
+		
+		String sql = "select count(*) from nomal where gender = '남'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				genderArray[0]=rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		 sql = "select count(*) from nomal where gender = '여'";
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+					genderArray[1]=rs.getString(1);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+		return genderArray;
+	}
+	
+	
+	public String[] gradeDataArray() {
+		String[] gradeArray = {null,null,null,null,null};
+		String sql = "select count(*) from nomal where grade = '브론즈'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				gradeArray[0]=rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		sql = "select count(*) from nomal where grade = '실버'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				gradeArray[1]=rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		sql = "select count(*) from nomal where grade = '골드'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				gradeArray[2]=rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		sql = "select count(*) from nomal where grade = '플레티넘'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				gradeArray[3]=rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		sql = "select count(*) from nomal where grade = 'VIP'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				gradeArray[4]=rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return gradeArray;
+	}
+	
+	
+	//차트에 카운트 세팅
+	public int[] chartDataArray(){
+		int[] chardatar = {0,0,0,0,0,0};
+		
+		//일반유저중 호스트유저 비율(
+		String sql = "select count(id) from user_normal";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+			//System.out.println(Integer.parseInt(rs.getString(1)));
+			chardatar[0]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		sql = "select count(id) from user_host";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+			chardatar[1]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//일반유저중 호스트유저 비율)//
+		
+		//일반 회원 성별 비율(
+		sql = "select count(id) from user_normal where gender='m'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+			chardatar[2]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		sql = "select count(id) from user_normal where gender='f'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+			chardatar[3]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//일반 회원 성별 비율)//
+		
+		//호스트 회원 성별 비율
+		sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where gender='m'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+			chardatar[4]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where gender='f'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+			chardatar[5]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//호스트 회원 성별 비율//
+		
+		
+		return chardatar;
+	}
+
 	
 		
 }

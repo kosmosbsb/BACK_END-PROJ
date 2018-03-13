@@ -121,7 +121,7 @@
 				<div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
 					<div class="info">
 			            <h4>일반 회원</h4>
-			            <p><b>100명</b></p>
+			            <p><b>${totalRecordCount}명</b></p>
 		            </div>
 	            </div>
 	        </div>
@@ -183,18 +183,17 @@
 	                  	</div>
 						<table class="table table-hover table-bordered" style="text-align: center">
 							<tr>
-								<th style="width: 23%;">아이디</th>
-								<th style="width: 18%;">이름</th>
-								<th style="width: 7%;">성별</th>
-								<th style="width: 7%;">나이</th>
-								<th style="width: 15%;">등급</th>
-								<th style="width: 20%;">적립금</th>
-								<th style="width: 15%;">예약현황</th>
+								<th style="width: 25%;">아이디</th>
+								<th style="width: 20%;">이름</th>
+								<th style="width: 10%;">성별</th>
+								<th style="width: 10%;">나이</th>
+								<th style="width: 18%;">등급</th>
+								<th>적립금</th>
 							</tr>
 							
 							<c:if test="${requestScope.list==null}" var="flag">
 								<tr>
-									<td colspan="7"><a href="<c:url value='/MEMBER/HostMng.do'/>">등록된 자료가 없습니다</a></td>
+									<td colspan="6"><a href="<c:url value='/MEMBER/HostMng.do'/>">등록된 자료가 없습니다</a></td>
 								</tr>
 							</c:if>
 							
@@ -207,7 +206,6 @@
 										<td>${host.age}</td>
 										<td>${host.grade}</td>
 										<td>${host.mileage}</td>
-										<td>${host.reservation}</td>
 									</tr>
 								</c:forEach>
 							
@@ -266,47 +264,77 @@
       			pointStrokeColor: "#fff",
       			pointHighlightFill: "#fff",
       			pointHighlightStroke: "rgba(220,220,220,1)",
-      			data: [18, 25, 30, 12, 10, 2, 1, 1, 1]
+      			data: [${agedatearray[0]}, ${agedatearray[1]}, ${agedatearray[2]}, ${agedatearray[3]}, ${agedatearray[4]}, ${agedatearray[5]}, ${agedatearray[6]}, ${agedatearray[0]}, ${agedatearray[7]}]
       		}
       	]
       };
       var pdata = [
+   	  {
+       		value: ${agedatearray[0]},
+       		color:"#58FAD0",
+       		highlight: "#FFD642",
+       		label: "10대"
+       	},
       	{
-      		value: 45,
+      		value: ${agedatearray[1]},
       		color:"#58FAD0",
       		highlight: "#FFD642",
       		label: "20대"
       	},
       	{
-      		value: 35,
+      		value: ${agedatearray[2]},
       		color: "#ACFA58",
       		highlight: "#E1F5A9",
       		label: "30대"
       	},
       	{
-      		value: 7,
+      		value: ${agedatearray[3]},
       		color: "#F781BE",
       		highlight: "#F6CEE3",
       		label: "40대"
       	},
       	{
-      		value: 3,
+      		value: ${agedatearray[4]},
       		color: "#F79F81",
       		highlight: "#D0A9F5",
       		label: "50대"
+      	},
+      	{
+      		value: ${agedatearray[5]},
+      		color: "#F79F81",
+      		highlight: "#D0A9F5",
+      		label: "60대"
+      	},
+      	{
+      		value: ${agedatearray[6]},
+      		color: "#F79F81",
+      		highlight: "#D0A9F5",
+      		label: "70대"
+      	},
+      	{
+      		value: ${agedatearray[7]},
+      		color: "#F79F81",
+      		highlight: "#D0A9F5",
+      		label: "80대"
+      	},
+      	{
+      		value: ${agedatearray[8]},
+      		color: "#F79F81",
+      		highlight: "#D0A9F5",
+      		label: "90대"
       	}
       	
       ]
       
       var pdata2 = [
         	{
-          		value: 55,
+          		value: ${genderdataarray[0]},
           		color:"#58D3F7",
           		highlight: "#BCF5A9",
           		label: "남성"
           	},
           	{
-          		value: 45,
+          		value: ${genderdataarray[1]},
           		color: "#F6CEF5",
           		highlight: "#E1F5A9",
           		label: "여성"
@@ -315,28 +343,33 @@
       
       var pdata3 = [
        	{
-         	value: 35,
+         	value: ${gradedataarray[0]},
          	color: "#FAAC58",
+         	highlight: "#F5D0A9",
          	label: "브론즈"
          },
       	{
-      		value: 27,
+      		value: ${gradedataarray[1]},
       		color:"#D8D8D8",
+      		highlight: "#E6E6E6",
       		label: "실버"
       	},
       	{
-      		value: 23,
+      		value: ${gradedataarray[2]},
       		color:"#FACC2E",
+      		highlight: "#F5D0A9",
       		label: "골드"
       	},
       	{
-      		value: 10,
+      		value: ${gradedataarray[3]},
       		color:"#2EFEF7",
+      		highlight: "#81F7F3",
       		label: "플레티넘"
       	},
       	{
-      		value: 5,
+      		value: ${gradedataarray[4]},
       		color:"#F5A9F2",
+      		highlight: "#F6CEE3",
       		label: "VIP"
       	}
          

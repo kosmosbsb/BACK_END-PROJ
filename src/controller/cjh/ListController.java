@@ -22,14 +22,24 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	DataRoomDAO dao = new DataRoomDAO(req.getServletContext());
+	int totalRecordCount = dao.getTotalRecordCount();
 	//페이징을 위한 로직 끝]	
 	List<DataRoomDTO> list = dao.selectList();
+	int[] ageDataArray = dao.ageDataArray();
+	String[] genderDataArray = dao.genderDataArray();
+	String[] gradeDataArray = dao.gradeDataArray();
+	// int[] chartDatAr =dao.chartDataArray();
 	dao.close();
 	
 	
 	//라]결과값이 있으면 리퀘스트 영역에 저장
+	req.setAttribute("totalRecordCount", totalRecordCount);
 	// 페이지용 문자열 생성]
 	req.setAttribute("list", list);//글목록들
+	//req.setAttribute("chartdataset", chartDatAr);
+	req.setAttribute("agedatearray", ageDataArray);
+	req.setAttribute("genderdataarray", genderDataArray);
+	req.setAttribute("gradedataarray", gradeDataArray);
 	//마]결과값을 뿌려주거나 이동할 뷰(JSP페이지) 선택후 포워딩
 	//뷰선택]
 	RequestDispatcher dispatcher=req.getRequestDispatcher("/member/normal/NormalManage.jsp");

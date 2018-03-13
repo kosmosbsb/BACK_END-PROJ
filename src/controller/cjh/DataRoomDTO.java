@@ -7,7 +7,6 @@ public class DataRoomDTO {
 	private String age;
 	private String grade;
 	private String mileage;
-	private String reservation;
 	
 	public String getId() {
 		return id;
@@ -44,12 +43,6 @@ public class DataRoomDTO {
 	}
 	public void setMileage(String mileage) {
 		this.mileage = mileage;
-	}
-	public String getReservation() {
-		return reservation;
-	}
-	public void setReservation(String reservation) {
-		this.reservation = reservation;
 	}
 	
 
