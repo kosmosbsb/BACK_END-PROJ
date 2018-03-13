@@ -262,7 +262,9 @@
       			pointStrokeColor: "#fff",
       			pointHighlightFill: "#fff",
       			pointHighlightStroke: "rgba(220,220,220,1)",
-      			data: [33, 26, 12, 4, 12, 11, 12, 6, 2]
+      			data: [${chartdataset3[0]}, ${chartdataset3[1]}, ${chartdataset3[2]}, 
+      				${chartdataset3[3]}, ${chartdataset3[4]}, ${chartdataset3[5]}, 
+      				${chartdataset3[6]}, ${chartdataset3[7]}, ${chartdataset3[8]}]
       		},
       		{
       			label: "My Second dataset",
@@ -272,7 +274,9 @@
       			pointStrokeColor: "#fff",
       			pointHighlightFill: "#fff",
       			pointHighlightStroke: "rgba(151,187,205,1)",
-      			data: [1, 3, 8, 12, 9, 4, 3, 2, 1]
+      			data: [${chartdataset2[0]}, ${chartdataset2[1]}, ${chartdataset2[2]}, 
+      				${chartdataset2[3]}, ${chartdataset2[4]}, ${chartdataset2[5]}, 
+      				${chartdataset2[6]}, ${chartdataset2[7]}, ${chartdataset2[8]}]
       		}
       	]
       };

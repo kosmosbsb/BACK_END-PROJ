@@ -17,10 +17,13 @@ public class PsyController extends HttpServlet{
 		PsyDAO dao = new PsyDAO(req.getServletContext());
 		List<PsyDTO> list=dao.selectList();
 		int[] chartDatAr =dao.chartDataArray();
+		int[] chartDatAr3 =dao.chartDataArray3();
+		int[] chartDatAr2 =dao.chartDataArray2();
 		//int[] chartDatAr = {120,50,80,40,33,30};
 		dao.close();
 		req.setAttribute("chartdataset", chartDatAr);
-		//req.setAttribute("data", 120);
+		req.setAttribute("chartdataset3", chartDatAr3);
+		req.setAttribute("chartdataset2", chartDatAr2);
 		req.setAttribute("list", list);
 		
 		//뷰선택]
