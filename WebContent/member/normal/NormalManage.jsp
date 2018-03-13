@@ -194,7 +194,7 @@
 							
 							<c:if test="${requestScope.list==null}" var="flag">
 								<tr>
-									<td colspan="6"><a href="<c:url value='/MEMBER/HostMng.do'/>">등록된 자료가 없습니다</a></td>
+									<td colspan="6"><a href="<c:url value='#'/>">등록된 자료가 없습니다</a></td>
 								</tr>
 							</c:if>
 							
@@ -218,7 +218,7 @@
 				</div>	
 			</div>
 		<!-- 페이징 추가해야함 기억! -->
-		<div class="">
+		<div>
 		<div class="row justify-content-center">${pagingString}</div>
 
 	</main>
