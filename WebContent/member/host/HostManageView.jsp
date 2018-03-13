@@ -144,36 +144,36 @@
 				<table class="table table-hover table-bordered">
 				<tr id="picture2">
 					<td colspan="3">
-					<img id="picture2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Official_Portrait_of_President_Donald_Trump.jpg/220px-Official_Portrait_of_President_Donald_Trump.jpg" />
+					<img id="picture2" src="${imgurl}" alt="${imgurl}"/>
 					</td>
 				</tr>
 				<tr>
 					<td  rowspan="4" width="5%">
-					<img id="picture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Official_Portrait_of_President_Donald_Trump.jpg/220px-Official_Portrait_of_President_Donald_Trump.jpg" />
+					<img id="picture" src="${imgurl}" alt="${imgurl}"/>
 					</td>
 					<td width="10%" style="text-align:center;vertical-align: middle;">아이디</td>
-					<td id="info" style="text-align:center;vertical-align: middle;">여기에 아이디를 입력하세요</td>
+					<td id="info" style="text-align:center;vertical-align: middle;">${hid}</td>
 				</tr>
 				<tr>
-					<td width="10%" style="text-align:center;vertical-align: middle;">닉네임</td>
-					<td style="text-align:center;vertical-align: middle;">여기에 닉네임을 입력하세요</td>
+					<td width="10%" style="text-align:center;vertical-align: middle;">호스트 닉네임</td>
+					<td style="text-align:center;vertical-align: middle;">${hnick}</td>
 				</tr>
 				<tr>
 					<td width="10%" style="text-align:center;vertical-align: middle;">이메일</td>
-					<td style="text-align:center;vertical-align: middle;">여기에 이메일을 입력하세요</td>
+					<td style="text-align:center;vertical-align: middle;">${mail}</td>
 					
 				</tr>
 				<tr>
-					<td width="10%" style="text-align:center;vertical-align: middle;">가입일</td>
-					<td style="text-align:center;vertical-align: middle;">여기에 가입일을 입력하세요</td>
+					<td width="10%" style="text-align:center;vertical-align: middle;">성별</td>
+					<td style="text-align:center;vertical-align: middle;">${gender}</td>
 				</tr>
 				<tr>
 					<td colspan="3">자기 소개</td>
 				</tr>
 				<tr>
 					<td rowspan="3" colspan="3">
-					<div style="width:80%;margin-left: auto; margin-right: auto;" align="left">
-					자기소개 내용입니다. 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 장문 테스트 
+					<div style="width:80%;margin-left: auto; margin-right: auto;" align="center">
+					${introduce}
 					</div>
 					</td>
 				</tr>
@@ -189,7 +189,7 @@
 							href="<c:url value='/MEMBER/HostMng.do'/>" role="button">목록으로 돌아가기</a></td>
 					<td style="text-align:center;vertical-align: middle;">
 						호스트 관련 소식 수신 여부<br/>
-						이메일 : 예 / SNS : 아니오
+						이메일 : ${alarmMail} / SNS : ${alarmSns}
 					</td>
 				</tr>
 				

@@ -201,46 +201,75 @@ public class PsyDAO {
 		}//세로그래프 호스트)//
 		
 		//세로그래프 노멀(
-				public int[] chartDataArray3() {
-					int[] chardatar3 = {0,0,0,0,0,0,0,0,0};
-					String j=" 10 ";
-					String k=" 19 ";
-					for(int i = 0;i<=8;i++) {
-						String sql = "select count(id) from user_normal where age >="+j+" and age <="+k+" ";
-							if(i==0) {//10대
-								j=" 20 ";k=" 29 ";}
-							else if(i==1) {//20대
-								j=" 30 ";k=" 39 ";}
-							else if(i==2) {//30대
-								j=" 40 ";k=" 59 ";}
-							else if(i==3) {//40대
-								j=" 50 ";k=" 59 ";}
-							else if(i==4) {//50대
-								j=" 60 ";k=" 69 ";}
-							else if(i==5) {//60대
-								j=" 70 ";k=" 79 ";}
-							else if(i==6) {//70대
-								j=" 80 ";k=" 89 ";}
-							else if(i==7) {//80대
-								j=" 90 ";k=" 99 ";}
-							else if(i==8) {//90대
-								}
-							try {
-								psmt = conn.prepareStatement(sql);
-								rs = psmt.executeQuery();
-								while(rs.next()) {
-								chardatar3[i]=Integer.parseInt(rs.getString(1));
-								//System.out.println(sql);
-								//System.out.println(j+k);
-								//System.out.println(chardatar3[i]);
-								}
-								
-							} catch (SQLException e) {
-								e.printStackTrace();
-							}
-							
-					}//for
-					return chardatar3;
-				}//세로그래프 노멀)//
+		public int[] chartDataArray3() {
+			int[] chardatar3 = {0,0,0,0,0,0,0,0,0};
+			String j=" 10 ";
+			String k=" 19 ";
+			for(int i = 0;i<=8;i++) {
+				String sql = "select count(id) from user_normal where age >="+j+" and age <="+k+" ";
+					if(i==0) {//10대
+						j=" 20 ";k=" 29 ";}
+					else if(i==1) {//20대
+						j=" 30 ";k=" 39 ";}
+					else if(i==2) {//30대
+						j=" 40 ";k=" 59 ";}
+					else if(i==3) {//40대
+						j=" 50 ";k=" 59 ";}
+					else if(i==4) {//50대
+						j=" 60 ";k=" 69 ";}
+					else if(i==5) {//60대
+						j=" 70 ";k=" 79 ";}
+					else if(i==6) {//70대
+						j=" 80 ";k=" 89 ";}
+					else if(i==7) {//80대
+						j=" 90 ";k=" 99 ";}
+					else if(i==8) {//90대
+						}
+					try {
+						psmt = conn.prepareStatement(sql);
+						rs = psmt.executeQuery();
+						while(rs.next()) {
+						chardatar3[i]=Integer.parseInt(rs.getString(1));
+						//System.out.println(sql);
+						//System.out.println(j+k);
+						//System.out.println(chardatar3[i]);
+						}
+						
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+			}//for
+			return chardatar3;
+		}//세로그래프 노멀)//
+
+		//상세보기용(
+		public List<PsyDTO> selectOne(String id) {
+			List<PsyDTO> list = new Vector<PsyDTO>();
+			// 페이징 적용 - 구간 쿼리로 변경
+			String sql = "select N.IMG, H.ID, H.H_NICKNAME, N.MAIL, H.INTRODUCE, H.H_ALARM_MAIL, H.H_ALARM_SMS, N.gender from USER_HOST H INNER JOIN USER_NORMAL N on H.ID=N.ID where H.id = ? ";
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, id);
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					PsyDTO dto = new PsyDTO();
+					//System.out.println(rs.getString(1)+rs.getString(2)+rs.getString(3)+rs.getString(4)+rs.getString(5)+rs.getString(6)+rs.getString(7));
+					dto.setImg(rs.getString(1));
+					dto.setId(rs.getString(2));
+					dto.setH_nickname(rs.getString(3));
+					dto.setMail(rs.getString(4));
+					dto.setIntroduce(rs.getString(5));
+					dto.setH_alarm_mail(rs.getString(6));
+					dto.setH_alarm_sns(rs.getString(7));
+					dto.setGender(rs.getString(8));
+					list.add(dto);
+				}/////////////while
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+		}//상세보기용)//
 				
 }
