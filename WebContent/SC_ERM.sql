@@ -566,8 +566,10 @@ CREATE TABLE USER_NORMAL
 	N_ALARM_SMS char(1 char) NOT NULL,
 	-- 동의(Y), 비동의(N)
 	N_ALARM_MAIL char(1 char) NOT NULL,
-	-- 마일리지 정보
+	-- 마일리지 --
 	CREDIT number,
+	-- 회원 등급--
+	GRADE nvarchar2(10),
 	PRIMARY KEY (ID)
 );
 
