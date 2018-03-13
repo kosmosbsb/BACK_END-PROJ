@@ -197,7 +197,7 @@
 								 -->
 								<c:forEach var="host" items="${list}" varStatus="loop">
 									<tr>
-										<td><a href="<c:url value='view.go?no=${no}'/>">${host.id}</a></td>
+										<td><a href="<c:url value='/MEMBER/HostMng.do?id=${host.id}'/>">${host.id}</a></td>
 										<td>${host.name}</td>
 										<td>${host.h_nickname}</td>
 										<td>${host.gender}</td>

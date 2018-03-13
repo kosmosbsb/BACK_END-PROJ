@@ -185,9 +185,9 @@ public class PsyDAO {
 						rs = psmt.executeQuery();
 						while(rs.next()) {
 						chardatar2[i]=Integer.parseInt(rs.getString(1));
-						System.out.println(sql);
+						//System.out.println(sql);
 						//System.out.println(j+k);
-						System.out.println(chardatar2[i]);
+						//System.out.println(chardatar2[i]);
 						}
 						
 					} catch (SQLException e) {
@@ -230,9 +230,9 @@ public class PsyDAO {
 								rs = psmt.executeQuery();
 								while(rs.next()) {
 								chardatar3[i]=Integer.parseInt(rs.getString(1));
-								System.out.println(sql);
-								System.out.println(j+k);
-								System.out.println(chardatar3[i]);
+								//System.out.println(sql);
+								//System.out.println(j+k);
+								//System.out.println(chardatar3[i]);
 								}
 								
 							} catch (SQLException e) {
