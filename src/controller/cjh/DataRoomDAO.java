@@ -45,20 +45,22 @@ public class DataRoomDAO {
 		} catch (Exception e) {e.printStackTrace();}
 	}////////////////////////////
 	
-	public List<DataRoomDTO> selectList() {
+	public List<DataRoomDTO> selectList(int start, int end) {
 		List list = new Vector();
 		
-		String sql="SELECT * FROM NOMAL";
+		String sql="SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT * FROM USER_NORMAL) T)WHERE R BETWEEN ? AND ?";
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, start);
+			psmt.setInt(2, end);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				DataRoomDTO dto = new DataRoomDTO();
-				dto.setMileage(rs.getString(6));
-				dto.setGrade(rs.getString(5));
-				dto.setAge(rs.getString(4));
-				dto.setGender(rs.getString(3));
-				dto.setName(rs.getString(2));
+				dto.setMileage(rs.getString(11));
+				dto.setGrade(rs.getString(12));
+				dto.setAge(rs.getString(7));
+				dto.setGender(rs.getString(6));
+				dto.setName(rs.getString(4));
 				dto.setId(rs.getString(1));
 				
 				list.add(dto);				
@@ -72,7 +74,7 @@ public class DataRoomDAO {
 	// 전체 레코드수 얻기용]
 	public int getTotalRecordCount() {
 		int total = 0;
-		String sql = "SELECT COUNT(*) FROM NOMAL";
+		String sql = "SELECT COUNT(*) FROM USER_NORMAL";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -89,7 +91,7 @@ public class DataRoomDAO {
 	public int[] ageDataArray() {
 		int[] agedata = {0,0,0,0,0,0,0,0,0};
 		
-		String sql = "select count(*) from nomal where age between 10 and 19";
+		String sql = "select count(*) from USER_NORMAL where age between 10 and 19";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -101,7 +103,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from nomal where age between 20 and 29";
+		sql = "select count(*) from USER_NORMAL where age between 20 and 29";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -113,7 +115,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from nomal where age between 30 and 39";
+		sql = "select count(*) from USER_NORMAL where age between 30 and 39";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -125,7 +127,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from nomal where age between 40 and 49";
+		sql = "select count(*) from USER_NORMAL where age between 40 and 49";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -137,7 +139,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from nomal where age between 50 and 59";
+		sql = "select count(*) from USER_NORMAL where age between 50 and 59";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -149,7 +151,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from nomal where age between 60 and 69";
+		sql = "select count(*) from USER_NORMAL where age between 60 and 69";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -161,7 +163,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from nomal where age between 70 and 79";
+		sql = "select count(*) from USER_NORMAL where age between 70 and 79";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -173,7 +175,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from nomal where age between 80 and 89";
+		sql = "select count(*) from USER_NORMAL where age between 80 and 89";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -185,7 +187,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from nomal where age between 90 and 99";
+		sql = "select count(*) from USER_NORMAL where age between 90 and 99";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -203,7 +205,7 @@ public class DataRoomDAO {
 	public String[] genderDataArray() {
 		String[] genderArray = {null,null};
 		
-		String sql = "select count(*) from nomal where gender = '남'";
+		String sql = "select count(*) from USER_NORMAL where gender = 'm'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -214,7 +216,7 @@ public class DataRoomDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		 sql = "select count(*) from nomal where gender = '여'";
+		 sql = "select count(*) from USER_NORMAL where gender = 'f'";
 			try {
 				psmt = conn.prepareStatement(sql);
 				rs = psmt.executeQuery();
@@ -232,7 +234,7 @@ public class DataRoomDAO {
 	
 	public String[] gradeDataArray() {
 		String[] gradeArray = {null,null,null,null,null};
-		String sql = "select count(*) from nomal where grade = '브론즈'";
+		String sql = "select count(*) from USER_NORMAL where grade = '브론즈'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -244,7 +246,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from nomal where grade = '실버'";
+		sql = "select count(*) from USER_NORMAL where grade = '실버'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -256,7 +258,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from nomal where grade = '골드'";
+		sql = "select count(*) from USER_NORMAL where grade = '골드'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -267,7 +269,7 @@ public class DataRoomDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		sql = "select count(*) from nomal where grade = '플레티넘'";
+		sql = "select count(*) from USER_NORMAL where grade = '플레티넘'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -278,7 +280,7 @@ public class DataRoomDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		sql = "select count(*) from nomal where grade = 'VIP'";
+		sql = "select count(*) from USER_NORMAL where grade = 'VIP'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();

@@ -183,8 +183,9 @@
 	                  	</div>
 						<table class="table table-hover table-bordered" style="text-align: center">
 							<tr>
-								<th style="width: 25%;">아이디</th>
-								<th style="width: 20%;">이름</th>
+								<th style="width: 10%;">번호</th>
+								<th style="width: 20%;">아이디</th>
+								<th style="width: 15%;">이름</th>
 								<th style="width: 10%;">성별</th>
 								<th style="width: 10%;">나이</th>
 								<th style="width: 18%;">등급</th>
@@ -200,6 +201,7 @@
 							<c:if test="${not flag}">
 								<c:forEach var="host" items="${list}" varStatus="loop">
 									<tr>
+										<td>${totalRecordCount - (((nowPage - 1) * pageSize) + loop.index)}</td>
 										<td>${host.id}</td>
 										<td>${host.name}</td>
 										<td>${host.gender}</td>
@@ -218,26 +220,6 @@
 		<!-- 페이징 추가해야함 기억! -->
 		<div class="">
 		<div class="row justify-content-center">${pagingString}</div>
-		<nav aria-label="Page navigation example">
-		  <ul class="pagination justify-content-center">
-		    <li class="page-item">
-		      <a class="page-link" href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		        <span class="sr-only">Previous</span>
-		      </a>
-		    </li>
-		    <li class="page-item"><a class="page-link" href="#">1</a></li>
-		    <li class="page-item"><a class="page-link" href="#">2</a></li>
-		    <li class="page-item"><a class="page-link" href="#">3</a></li>
-		    <li class="page-item">
-		      <a class="page-link" href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		        <span class="sr-only">Next</span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
-		</div>
 
 	</main>
 	<!-- Essential javascripts for application to work-->
@@ -264,15 +246,15 @@
       			pointStrokeColor: "#fff",
       			pointHighlightFill: "#fff",
       			pointHighlightStroke: "rgba(220,220,220,1)",
-      			data: [${agedatearray[0]}, ${agedatearray[1]}, ${agedatearray[2]}, ${agedatearray[3]}, ${agedatearray[4]}, ${agedatearray[5]}, ${agedatearray[6]}, ${agedatearray[0]}, ${agedatearray[7]}]
+      			data: [${agedatearray[0]}, ${agedatearray[1]}, ${agedatearray[2]}, ${agedatearray[3]}, ${agedatearray[4]}, ${agedatearray[5]}, ${agedatearray[6]}, ${agedatearray[7]}, ${agedatearray[8]}]
       		}
       	]
       };
       var pdata = [
    	  {
        		value: ${agedatearray[0]},
-       		color:"#58FAD0",
-       		highlight: "#FFD642",
+       		color:"#F5A9A9",
+       		highlight: "#F6CECE",
        		label: "10대"
        	},
       	{
@@ -301,26 +283,26 @@
       	},
       	{
       		value: ${agedatearray[5]},
-      		color: "#F79F81",
-      		highlight: "#D0A9F5",
+      		color: "#BDBDBD",
+      		highlight: "#E6E6E6",
       		label: "60대"
       	},
       	{
       		value: ${agedatearray[6]},
-      		color: "#F79F81",
-      		highlight: "#D0A9F5",
+      		color: "#819FF7",
+      		highlight: "#A9D0F5",
       		label: "70대"
       	},
       	{
       		value: ${agedatearray[7]},
-      		color: "#F79F81",
-      		highlight: "#D0A9F5",
+      		color: "#F3F781",
+      		highlight: "#F2F5A9",
       		label: "80대"
       	},
       	{
       		value: ${agedatearray[8]},
-      		color: "#F79F81",
-      		highlight: "#D0A9F5",
+      		color: "#FA5858",
+      		highlight: "#F78181",
       		label: "90대"
       	}
       	
