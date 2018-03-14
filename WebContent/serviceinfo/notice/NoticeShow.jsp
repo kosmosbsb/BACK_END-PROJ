@@ -1,6 +1,21 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="controller.lmy.DataRoomDAO"%>
+<%@page import="controller.lmy.DataRoomDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	//현재 페이지 번호 받기 
+	String nowPage = request.getParameter("nowPage");
+
+	//리스트 보여주기
+	DataRoomDAO dao = new DataRoomDAO(application);
+	List<DataRoomDTO> list =dao.selectList();
+	
+%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +31,7 @@
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <title>SC 관리자 페이지1111</title>
+    <title>공지사항 관리</title>
   </head>
   
  <body class="app sidebar-mini">
@@ -97,24 +112,51 @@
       <div class="row">
          <div class="col-md-12" >
           <div class="tile">
-            <div class="tile-title">
+            <div class="tile-body">
               <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
                   <tr>
                     <th style="width: 10%" class="text-center">번호</th>
-                    
-                    
-                    <th style="width: 15%"  class="text-center">공지사항</th>
-                    <th  class="text-center">내용</th>
+             		<th style="width:10%" class="text-center">글쓴이</th>    
+                    <th style="width: 15%"  class="text-center">타이틀</th>
+                    <th class="text-center">내용</th>
                     <th style="width: 20%"  class="text-center">날짜</th>
-                  
                   </tr>
                 </thead>
-    				<tbody>
-               
-                  
+                	<tbody>	
+                		
+                		<% if(list.isEmpty()){ %>
+                             <tr bgcolor="white" align="center">
+                              <td colspan="5">등록된 글이 없어요</td>
+                             </tr>
+                           
+                          <% }else{ 
+                        	  	int loop=0;
+                          		for(DataRoomDTO record:list){
+                          %>  
+                             <tr>
+                            <td><%=record.getNo() %></td>
+                               <td><%=record.getName() %></td>
+                            	<td> <%=record.getTitle() %></td>
+                        		<td> <%=record.getContent() %></td>
+                               <td><%=record.getPostdate() %></td>
+                             </tr>                           
+                        <%		
+                        		loop++;
+                          		}//for
+                          }//else %>
+              
+               					
+    			
                 </tbody>
+                       
               </table>
+            <tr bgcolor="white" align="center">
+			                 <td colspan="2" >
+			                  	<a href="Edit.jsp">수정</a>|<a href = "#" onclick="isDelete()">삭제</a>|
+			     			
+			                 </td>		
+			           	</tr>      
             </div>
           </div>
         </div>

@@ -34,6 +34,7 @@ public class DataRoomDAO {
 		catch (SQLException e) {e.printStackTrace();}
 	
 	}///DataRoomDAO
+	
 	public void close() {
 		try {
 			//메모리 해제]
@@ -45,10 +46,11 @@ public class DataRoomDAO {
 		} catch (Exception e) {e.printStackTrace();}
 	}////////////////////////////
 
+	//list
 	public List<DataRoomDTO> selectList() {
-		List list = new Vector();
+		List <DataRoomDTO> list= new Vector<DataRoomDTO>();
 		
-		String sql="SELECT * FROM DATAROOM ORDER BY POSTDATE DESC";
+		String sql="SELECT * FROM NOTICE ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -67,54 +69,9 @@ public class DataRoomDAO {
 		return list;
 	}////////////////////////////
 
-	public int insert(DataRoomDTO dto) {
-		int affected=0;
-		String sql="INSERT INTO DataRoom(name,title) VALUES(SEQ_DATAROOM.NEXTVAL,?,?)";
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1,dto.getName());
-			psmt.setString(2, dto.getTitle());
-		
-			affected = psmt.executeUpdate();
-		} 
-		catch (Exception e) {	e.printStackTrace();}
-		return affected;
-	}///////////////////////
-	public Map<String,DataRoomDTO> prevNNext(String key){
-		Map<String,DataRoomDTO> map = new HashMap<String,DataRoomDTO>();		
-		try {
-			//이전글 얻기
-			String sql="SELECT no,title FROM bbs WHERE no=(SELECT min(no) FROM bbs WHERE no > ?)";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, key);
-			rs = psmt.executeQuery();			
-			if(rs.next()) {//이전글이 있는 경우
-				DataRoomDTO dto= new DataRoomDTO();
-				dto.setNo(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				map.put("PREV",dto);
-			}
-			//다음글 얻기
-			sql="SELECT no,title FROM bbs WHERE no=(SELECT max(no) FROM bbs WHERE no < ?)";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, key);
-			rs = psmt.executeQuery();			
-			if(rs.next()) {//다음글이 있는 경우
-				DataRoomDTO dto= new DataRoomDTO();
-				dto.setNo(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				map.put("NEXT",dto);
-			}
-			
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}		
-		return map;
-	}/////////////////////////////
-	public DataRoomDTO selectOne(String key) {
-		DataRoomDTO  dto = null;
-		String sql="select * from dataroom where no=? ";
+ 	public DataRoomDTO selectOne(String key) {
+		DataRoomDTO dto = null;
+		String sql="select * from NOTICE where no=? ";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -134,10 +91,65 @@ public class DataRoomDAO {
 		}		
 		return dto;
 	}//////////////////////////////
+	//입력용
+	public int insert(DataRoomDTO dto) {
+		int affected=0;
+		String sql="INSERT INTO NOTICE(no,name,title,content) VALUES(noticeseq.NEXTVAL,?,?,?)";
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, dto.getName());
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getContent());
+			
+			
+		
+			affected = psmt.executeUpdate();
+		} 
+		catch (Exception e) {	e.printStackTrace();}
+		return affected;
+	}///////////////////////
+	
+	//이전글/다음글 얻기
+	public Map<String,DataRoomDTO> prevNNext(String key){
+		Map<String,DataRoomDTO> map = new HashMap<String,DataRoomDTO>();		
+		try {
+			//이전글 얻기
+			String sql="SELECT no,title FROM NOTICE WHERE no=(SELECT min(no) FROM NOTICE WHERE no > ?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, key);
+			rs = psmt.executeQuery();			
+			if(rs.next()) {//이전글이 있는 경우
+				DataRoomDTO dto= new DataRoomDTO();
+				dto.setNo(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				map.put("PREV",dto);
+			}
+			//다음글 얻기
+			sql="SELECT no,title FROM NOTICE WHERE no=(SELECT max(no) FROM NOTICE WHERE no < ?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, key);
+			rs = psmt.executeQuery();			
+			if(rs.next()) {//다음글이 있는 경우
+				DataRoomDTO dto= new DataRoomDTO();
+				dto.setNo(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				map.put("NEXT",dto);
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}		
+		return map;
+	}/////////////////////////////
+	
 
+
+ 	//삭제
 	public int delete(String key) {
 		int affected =0;
-		String sql="DELETE FROM dataroom WHERE no=?";
+		String sql="DELETE FROM NOTICE WHERE no=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);		
@@ -147,63 +159,22 @@ public class DataRoomDAO {
 		}
 		return affected;
 	}
-	
+	//업데이트
 	public int update(DataRoomDTO dto) {
 		int affected=0;
-		String sql="UPDATE DATAROOM SET NAME=?,TITLE=?,CONTENT=?, WHERE NO=?";
+		String sql="UPDATE NOTICE SET NAME=?,TITLE=?,CONTENT=?, WHERE NO=?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, dto.getNo());
+		
+			psmt.setString(1,dto.getName());
 			psmt.setString(2, dto.getTitle());
-			psmt.setString(3,dto.getName());
-			psmt.setString(4, dto.getContent());
-
+			psmt.setString(3, dto.getContent());
+			psmt.setString(4, dto.getNo());
 			affected = psmt.executeUpdate();
 		} 
 		catch (Exception e) {	e.printStackTrace();}
 		return affected;
 		
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
