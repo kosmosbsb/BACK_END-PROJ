@@ -43,8 +43,91 @@
 	        $('.js-example-basic-single').select();
 	    });
     </script>
+    <script type="text/javascript" src="<c:url value="/js/plugins/chart.js"/>"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+	   	   var data = {
+         	      	labels: ["10대","20대","30대","40대","50대","60대","70대","80대","90대"],
+         	      	datasets: [
+      	      		{
+      	      			label: "My First dataset",
+      	      			fillColor: "#81BEF7",
+      	      			strokeColor: "#fff",
+      	      			pointColor: "#fff",
+      	      			pointStrokeColor: "#fff",
+      	      			pointHighlightFill: "#fff",
+      	      			pointHighlightStroke: "rgba(220,220,220,1)",
+      	      			data: [${agedatearray[0]}, ${agedatearray[1]}, ${agedatearray[2]}, ${agedatearray[3]}, ${agedatearray[4]}, ${agedatearray[5]}, ${agedatearray[6]}, ${agedatearray[7]}, ${agedatearray[8]}]
+      	      		}
+         	      	]};
+	            
+            var ctxb = $("#barChartDemo").get(0).getContext("2d");
+            var barChart = new Chart(ctxb).Bar(data);
+    	  
+            
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['10대', ${agedatearray[0]}],
+                ['20대', ${agedatearray[1]}],
+                ['30대', ${agedatearray[2]}],
+                ['40대', ${agedatearray[3]}],
+                ['50대', ${agedatearray[4]}],
+                ['60대', ${agedatearray[5]}],
+                ['70대', ${agedatearray[6]}],
+                ['80대', ${agedatearray[7]}],
+                ['90대', ${agedatearray[8]}]
+              ]);
+
+              var options = {
+                is3D: true,
+              };
+
+              var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+              chart.draw(data,options);
+              
+              
+              var data = google.visualization.arrayToDataTable([
+                  ['Task', 'Hours per Day'],
+                  ['남자', ${genderdataarray[0]}],
+                  ['여자', ${genderdataarray[1]}]
+                ]);
+              
+              var options = {
+                      pieHole: 0.4,
+                    };
+
+             var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+             chart.draw(data, options);
+                
+             var data = new google.visualization.DataTable();
+             data.addColumn('string', 'grade');
+             data.addColumn('number', 'Populartiy');
+             data.addRows([
+               ['브론즈', ${gradedataarray[0]}],
+               ['실버', ${gradedataarray[1]}],
+               ['골드', ${gradedataarray[2]}],
+               ['플레티넘', ${gradedataarray[3]}],
+               ['VIP', ${gradedataarray[4]}]
+             ]);
+
+             var options = {
+            	sliceVisibilityThreshold:.0
+             };
+
+             var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+             chart.draw(data, options);
+        
+      }
+      </script>
+      
+      
   </head>
-  
+  	<!-- Navbar menu -->
+	<body class="app sidebar-mini">
 	<jsp:include page="../../Top.jsp"/>
     
     <!-- Sidebar menu Left-->
@@ -83,9 +166,9 @@
 		        <div class="col-md-4">
 		          <div class="tile">
 		            <h3 class="tile-title">회원 나이 비율</h3>
-	            		<div class="embed-responsive embed-responsive-16by9">
-			            	<canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
-			            </div>
+		            <div class="embed-responsive embed-responsive-16by9">
+	              		<div class="embed-responsive-item" id="piechart_3d" style="width: 500px; height: 250px;"></div>
+			        </div>   	
 		          </div>
 		        </div>
 		        
@@ -93,7 +176,7 @@
 		          <div class="tile">
 		            <h3 class="tile-title">회원 남/녀 비율</h3>
 		            <div class="embed-responsive embed-responsive-16by9">
-		              <canvas class="embed-responsive-item" id="doughnutChartDemo"></canvas>
+		            	 <div class="embed-responsive-item" id="donutchart" style="width: 500px; height: 250px;"></div>
 		            </div>
 		          </div>
 		        </div>
@@ -101,9 +184,9 @@
 		        <div class="col-md-4">
 		          <div class="tile">
 		          <h3 class="tile-title">회원 등급 비율</h3>
-	            		<div class="embed-responsive embed-responsive-16by9">
-			            	<canvas class="embed-responsive-item" id="pieChartDemo3"></canvas>
-			            </div>
+            		<div class="embed-responsive embed-responsive-16by9">
+			             <div class="embed-responsive-item" id="chart_div" style="width: 500px; height: 250px;"></div>
+		            </div>
 		          </div>
 		        </div>
 		        
@@ -196,147 +279,10 @@
       	ga('send', 'pageview');
       }
     </script>
-	<script type="text/javascript" src="<c:url value="/js/plugins/chart.js"/>"></script>
 	<script type="text/javascript">
     	var url = window.location.href;
     	console.log(url);
 	</script>
-    <script type="text/javascript">
-      var data = {
-      	labels: ["10대","20대","30대","40대","50대","60대","70대","80대","90대"],
-      	datasets: [
-      		{
-      			label: "My First dataset",
-      			fillColor: "#81BEF7",
-      			strokeColor: "#fff",
-      			pointColor: "#fff",
-      			pointStrokeColor: "#fff",
-      			pointHighlightFill: "#fff",
-      			pointHighlightStroke: "rgba(220,220,220,1)",
-      			data: [${agedatearray[0]}, ${agedatearray[1]}, ${agedatearray[2]}, ${agedatearray[3]}, ${agedatearray[4]}, ${agedatearray[5]}, ${agedatearray[6]}, ${agedatearray[7]}, ${agedatearray[8]}]
-      		}
-      	]
-      };
-      var pdata = [
-   	  {
-       		value: ${agedatearray[0]},
-       		color:"#F5A9A9",
-       		highlight: "#F6CECE",
-       		label: "10대"
-       	},
-      	{
-      		value: ${agedatearray[1]},
-      		color:"#58FAD0",
-      		highlight: "#FFD642",
-      		label: "20대"
-      	},
-      	{
-      		value: ${agedatearray[2]},
-      		color: "#ACFA58",
-      		highlight: "#E1F5A9",
-      		label: "30대"
-      	},
-      	{
-      		value: ${agedatearray[3]},
-      		color: "#F781BE",
-      		highlight: "#F6CEE3",
-      		label: "40대"
-      	},
-      	{
-      		value: ${agedatearray[4]},
-      		color: "#F79F81",
-      		highlight: "#D0A9F5",
-      		label: "50대"
-      	},
-      	{
-      		value: ${agedatearray[5]},
-      		color: "#BDBDBD",
-      		highlight: "#E6E6E6",
-      		label: "60대"
-      	},
-      	{
-      		value: ${agedatearray[6]},
-      		color: "#819FF7",
-      		highlight: "#A9D0F5",
-      		label: "70대"
-      	},
-      	{
-      		value: ${agedatearray[7]},
-      		color: "#F3F781",
-      		highlight: "#F2F5A9",
-      		label: "80대"
-      	},
-      	{
-      		value: ${agedatearray[8]},
-      		color: "#FA5858",
-      		highlight: "#F78181",
-      		label: "90대"
-      	}
-      	
-      ]
-      
-      var pdata2 = [
-        	{
-          		value: ${genderdataarray[0]},
-          		color:"#58D3F7",
-          		highlight: "#BCF5A9",
-          		label: "남성"
-          	},
-          	{
-          		value: ${genderdataarray[1]},
-          		color: "#F6CEF5",
-          		highlight: "#E1F5A9",
-          		label: "여성"
-          	}
-        ]
-      
-      var pdata3 = [
-       	{
-         	value: ${gradedataarray[0]},
-         	color: "#FAAC58",
-         	highlight: "#F5D0A9",
-         	label: "브론즈"
-         },
-      	{
-      		value: ${gradedataarray[1]},
-      		color:"#D8D8D8",
-      		highlight: "#E6E6E6",
-      		label: "실버"
-      	},
-      	{
-      		value: ${gradedataarray[2]},
-      		color:"#FACC2E",
-      		highlight: "#F5D0A9",
-      		label: "골드"
-      	},
-      	{
-      		value: ${gradedataarray[3]},
-      		color:"#2EFEF7",
-      		highlight: "#81F7F3",
-      		label: "플레티넘"
-      	},
-      	{
-      		value: ${gradedataarray[4]},
-      		color:"#F5A9F2",
-      		highlight: "#F6CEE3",
-      		label: "VIP"
-      	}
-         
-        ]
-  
-      var ctxp = $("#pieChartDemo").get(0).getContext("2d");
-      var pieChart = new Chart(ctxp).Pie(pdata);
-      
-      var ctxd = $("#doughnutChartDemo").get(0).getContext("2d");
-      var doughnutChart = new Chart(ctxd).Doughnut(pdata2);
-      
-      var ctxp3 = $("#pieChartDemo3").get(0).getContext("2d");
-      var pieChart = new Chart(ctxp3).Pie(pdata3);
-      
-      var ctxb = $("#barChartDemo").get(0).getContext("2d");
-      var barChart = new Chart(ctxb).Bar(data);
-      
-    </script>
    
 </body>
 </html>
