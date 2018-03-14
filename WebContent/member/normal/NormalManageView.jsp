@@ -53,7 +53,8 @@
 </style>
 
 </head>
-
+	<!-- Navbar menu -->
+	<body class="app sidebar-mini">
 	<jsp:include page="../../Top.jsp" />
 	
 	<!-- Sidebar menu Left-->
