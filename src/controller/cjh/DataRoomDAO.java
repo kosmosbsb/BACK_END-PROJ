@@ -45,18 +45,18 @@ public class DataRoomDAO {
 		} catch (Exception e) {e.printStackTrace();}
 	}////////////////////////////
 	
-	public List<DataRoomDTO> selectList(int start, int end) {
+	public List<DataRoomDTO> selectList() {
 		List list = new Vector();
 		
-		String sql="SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT * FROM USER_NORMAL) T)WHERE R BETWEEN ? AND ?";
+		String sql="SELECT * FROM USER_NORMAL ORDER BY CREDIT";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, start);
-			psmt.setInt(2, end);
+//			psmt.setInt(1, start);
+//			psmt.setInt(2, end);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				DataRoomDTO dto = new DataRoomDTO();
-				dto.setMileage(rs.getString(11));
+				dto.setCredit(rs.getString(11));
 				dto.setGrade(rs.getString(12));
 				dto.setAge(rs.getString(7));
 				dto.setGender(rs.getString(6));
@@ -70,6 +70,35 @@ public class DataRoomDAO {
 		return list;
 	}////////////////////////////
 	
+	public List<DataRoomDTO> selectOne(String id) {
+		List list = new Vector();
+		String sql = "select * from USER_NORMAL where id=? ";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				DataRoomDTO dto = new DataRoomDTO();
+				dto.setGrade(rs.getString(12));
+				dto.setCredit(rs.getString(11));
+				dto.setN_alarm_mail(rs.getString(10));
+				dto.setN_alarm_sms(rs.getString(9));
+				dto.setPhone(rs.getString(8));
+				dto.setAge(rs.getString(7));
+				dto.setGender(rs.getString(6));
+				dto.setMail(rs.getString(5));
+				dto.setName(rs.getString(4));
+				dto.setN_nickname(rs.getString(3));
+				dto.setImg(rs.getString(2));
+				dto.setId(rs.getString(1));
+				
+				list.add(dto);				
+			}			
+		} catch (Exception e) {e.printStackTrace();}
+		
+		return list;
+		
+	}
 	
 	// 전체 레코드수 얻기용]
 	public int getTotalRecordCount() {
@@ -86,7 +115,6 @@ public class DataRoomDAO {
 		
 		return total;
 	}////////////
-	
 	
 	public int[] ageDataArray() {
 		int[] agedata = {0,0,0,0,0,0,0,0,0};
@@ -295,91 +323,6 @@ public class DataRoomDAO {
 		return gradeArray;
 	}
 	
-	
-	//차트에 카운트 세팅
-	public int[] chartDataArray(){
-		int[] chardatar = {0,0,0,0,0,0};
-		
-		//일반유저중 호스트유저 비율(
-		String sql = "select count(id) from user_normal";
-		try {
-			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-			//System.out.println(Integer.parseInt(rs.getString(1)));
-			chardatar[0]=Integer.parseInt(rs.getString(1));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		sql = "select count(id) from user_host";
-		try {
-			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-			chardatar[1]=Integer.parseInt(rs.getString(1));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//일반유저중 호스트유저 비율)//
-		
-		//일반 회원 성별 비율(
-		sql = "select count(id) from user_normal where gender='m'";
-		try {
-			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-			chardatar[2]=Integer.parseInt(rs.getString(1));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		sql = "select count(id) from user_normal where gender='f'";
-		try {
-			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-			chardatar[3]=Integer.parseInt(rs.getString(1));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//일반 회원 성별 비율)//
-		
-		//호스트 회원 성별 비율
-		sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where gender='m'";
-		try {
-			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-			chardatar[4]=Integer.parseInt(rs.getString(1));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where gender='f'";
-		try {
-			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-			chardatar[5]=Integer.parseInt(rs.getString(1));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//호스트 회원 성별 비율//
-		
-		
-		return chardatar;
-	}
 
 	
 		

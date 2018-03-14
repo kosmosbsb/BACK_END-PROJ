@@ -29,9 +29,10 @@
     
     <title>SC 관리자 페이지</title>
     <style>
-    .table td {
-		   text-align: center;   
-		}
+	    .table td {
+			   text-align: center;   
+			}
+		 
 		h3.tile-title {
 			text-align: center;
 		}
@@ -44,56 +45,7 @@
     </script>
   </head>
   
- <body class="app sidebar-mini">
-    <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="<c:url value='../../index.jsp'/>" ><img src="<c:url value='/Images/backend_logo.png'/>" style="width: 220px; height: auto; margin-left: -10px; margin-top: -10px;"/></a>
-      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"></a>
-      <!-- Navbar Right Menu-->
-      <ul class="app-nav">
-        <li class="app-search">
-          <input class="app-search__input" type="search" placeholder="Search">
-          <button class="app-search__button"><i class="fa fa-search"></i></button>
-        </li>
-        <!--Notification Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown"><i class="fa fa-bell-o fa-lg"></i></a>
-          <ul class="app-notification dropdown-menu dropdown-menu-right">
-            <li class="app-notification__title">You have 4 new notifications.</li>
-            <div class="app-notification__content">
-            <!-- 
-            <i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse">
-            <i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i>
-            <i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i>
-             -->
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
-                  <div>
-                    <p class="app-notification__message">Lisa sent you a mail</p>
-                    <p class="app-notification__meta">2 min ago</p>
-                  </div></a></li>
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
-                  <div>
-                    <p class="app-notification__message">Mail server not working</p>
-                    <p class="app-notification__meta">5 min ago</p>
-                  </div></a></li>
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
-                  <div>
-                    <p class="app-notification__message">Transaction complete</p>
-                    <p class="app-notification__meta">2 days ago</p>
-                  </div></a></li>
-
-            </div>
-            <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
-          </ul>
-        </li>
-        <!-- User Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown"><i class="fa fa-user fa-lg"></i></a>
-          <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href='<c:url value="/Session06/Logout.jsp"/>'><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </header>
+	<jsp:include page="../../Top.jsp"/>
     
     <!-- Sidebar menu Left-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
@@ -169,57 +121,53 @@
 			</div>
 			
 			
-			<div class="row">
-				<div class="col-md-12">
-					<div class="tile">
-					<h3 class="tile-title">일반 회원 목록</h3>
-						<div class="form-group" style="float: right">
-		                    <select class="form-control" id="exampleSelect">
-		                      <option>성별</option>
-		                      <option>나이</option>
-		                      <option>등급</option>
-		                      <option>적립금</option>
-		                    </select>
-	                  	</div>
-						<table class="table table-hover table-bordered" style="text-align: center">
+		<div class="row">
+         <div class="col-md-12" >
+          <div class="tile">
+            <div class="tile-body">
+              <table class="table table-hover table-bordered" id="sampleTable" style="text-align: center;" >
+                <thead>
+                  <tr>
+					<th style="width: 20%;">아이디</th>
+					<th style="width: 15%;">이름</th>
+					<th style="width: 10%;">성별</th>
+					<th style="width: 10%;">나이</th>
+					<th style="width: 18%;">등급</th>
+					<th>적립금</th>
+                  </tr>
+                </thead>
+                <tbody>
+                	<c:if test="${requestScope.list==null}" var="flag">
 							<tr>
-								<th style="width: 10%;">번호</th>
-								<th style="width: 20%;">아이디</th>
-								<th style="width: 15%;">이름</th>
-								<th style="width: 10%;">성별</th>
-								<th style="width: 10%;">나이</th>
-								<th style="width: 18%;">등급</th>
-								<th>적립금</th>
+								<td colspan="6"><a href="<c:url value='#'/>">등록된 자료가 없습니다</a></td>
 							</tr>
+					</c:if>
 							
-							<c:if test="${requestScope.list==null}" var="flag">
-								<tr>
-									<td colspan="6"><a href="<c:url value='#'/>">등록된 자료가 없습니다</a></td>
-								</tr>
-							</c:if>
-							
-							<c:if test="${not flag}">
-								<c:forEach var="host" items="${list}" varStatus="loop">
-									<tr>
-										<td>${totalRecordCount - (((nowPage - 1) * pageSize) + loop.index)}</td>
-										<td>${host.id}</td>
-										<td>${host.name}</td>
-										<td>${host.gender}</td>
-										<td>${host.age}</td>
-										<td>${host.grade}</td>
-										<td>${host.mileage}</td>
-									</tr>
-								</c:forEach>
-							
-							</c:if>
-			
-						</table>
-					</div>
-				</div>	
-			</div>
-		<!-- 페이징 추가해야함 기억! -->
-		<div>
-		<div class="row justify-content-center">${pagingString}</div>
+					<c:if test="${not flag}">
+						<c:forEach var="host" items="${list}" varStatus="loop">
+							<tr>
+								<td><a href="<c:url value='/member/normal/NormalManage.do?id=${host.id}'/>">${host.id}</a></td>
+								<td>${host.name}</td>
+								<c:if test="${host.gender == 'm'}" var="gender" >
+									<td>남자</td>	
+								</c:if>
+								<c:if test="${not gender}">
+									<td>여자</td>
+								</c:if>
+								<td>${host.age}</td>
+								<td>${host.grade}</td>
+								<td>${host.credit}</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+		
+		
 
 	</main>
 	<!-- Essential javascripts for application to work-->
@@ -229,10 +177,28 @@
 	<script src="<c:url value="/js/main.js"/>"></script>
 	<!-- The javascript plugin to display page loading on top-->
 	<script src="<c:url value="/js/plugins/pace.min.js"/>"></script>
+	!-- Page specific javascripts-->
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="../../js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable({
+    		"lengthMenu": [[3, 6, 9, -1], [3, 6, 9, "All"]]}
+    		);</script>
+    <!-- Google analytics script-->
+    <script type="text/javascript">
+      if(document.location.hostname == 'pratikborsadiya.in') {
+      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      	ga('create', 'UA-72504830-1', 'auto');
+      	ga('send', 'pageview');
+      }
+    </script>
 	<script type="text/javascript" src="<c:url value="/js/plugins/chart.js"/>"></script>
 	<script type="text/javascript">
-    var url = window.location.href;
-    console.log(url);
+    	var url = window.location.href;
+    	console.log(url);
 	</script>
     <script type="text/javascript">
       var data = {
@@ -369,18 +335,7 @@
       var ctxb = $("#barChartDemo").get(0).getContext("2d");
       var barChart = new Chart(ctxb).Bar(data);
       
-      
     </script>
-    <!-- Google analytics script-->
-    <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1', 'auto');
-      	ga('send', 'pageview');
-      }
-    </script>
+   
 </body>
 </html>
