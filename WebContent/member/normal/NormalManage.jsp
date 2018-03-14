@@ -184,6 +184,7 @@
     <script type="text/javascript">$('#sampleTable').DataTable({
     		"lengthMenu": [[3, 6, 9, -1], [3, 6, 9, "All"]]}
     		);</script>
+    		
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {
