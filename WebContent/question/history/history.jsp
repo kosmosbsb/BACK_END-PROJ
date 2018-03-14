@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ include file="/common/IsMember.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,65 +29,7 @@
   
  <body class="app sidebar-mini">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="index.jsp" ><img src="<c:url value='/Images/backend_logo.png'/>" style="width: 220px; height: auto; margin-left: -10px; margin-top: -10px;"/></a>
-      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"></a>
-      <!-- Navbar Right Menu-->
-      <ul class="app-nav">
-        <li class="app-search">
-          <input class="app-search__input" type="search" placeholder="Search">
-          <button class="app-search__button"><i class="fa fa-search"></i></button>
-        </li>
-        <!--Notification Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown"><i class="fa fa-bell-o fa-lg"></i></a>
-          <ul class="app-notification dropdown-menu dropdown-menu-right">
-            <li class="app-notification__title">You have 4 new notifications.</li>
-            <div class="app-notification__content">
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
-                  <div>
-                    <p class="app-notification__message">Lisa sent you a mail</p>
-                    <p class="app-notification__meta">2 min ago</p>
-                  </div></a></li>
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
-                  <div>
-                    <p class="app-notification__message">Mail server not working</p>
-                    <p class="app-notification__meta">5 min ago</p>
-                  </div></a></li>
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
-                  <div>
-                    <p class="app-notification__message">Transaction complete</p>
-                    <p class="app-notification__meta">2 days ago</p>
-                  </div></a></li>
-              <div class="app-notification__content">
-                <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
-                    <div>
-                      <p class="app-notification__message">Lisa sent you a mail</p>
-                      <p class="app-notification__meta">2 min ago</p>
-                    </div></a></li>
-                <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
-                    <div>
-                      <p class="app-notification__message">Mail server not working</p>
-                      <p class="app-notification__meta">5 min ago</p>
-                    </div></a></li>
-                <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
-                    <div>
-                      <p class="app-notification__message">Transaction complete</p>
-                      <p class="app-notification__meta">2 days ago</p>
-                    </div></a></li>
-              </div>
-            </div>
-            <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
-          </ul>
-        </li>
-        <!-- User Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown"><i class="fa fa-user fa-lg"></i></a>
-          <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </header>
+    <jsp:include page="/Top.jsp"/>
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <!-- 사이드바 Left.jsp-------------------------------- -->
@@ -100,14 +42,18 @@
       <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i>문의 통계</h1>
-          <p style="font-style: normal;">기간별,유형별</p>
+          <p style="font-style: normal;">고객들의 문의를 기간별,유형별 그래프를 통해 한눈으로 !</p>
         </div>
         
         <!-- 차트 버튼 -->
      		<div class="btn-group btn-group-toggle" data-toggle="buttons">
-								<button type="radio" class="btn btn-primary btn-filter" data-target="pagado">기간별</button>
-								<button type="radio" class="btn btn-primary btn-filter" data-target="pendiente">유형별</button>
-							</div>
+				<button type="radio" class="btn btn-primary btn-filter" data-target="pagado">기간별</button>
+								<!-- <div class="btn-group" role="group">
+				                  <button class="btn btn-primary dropdown-toggle" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+				                  <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Dropdown link</a><a class="dropdown-item" href="#">Dropdown link</a></div>
+				                </div> -->
+				<button type="radio" class="btn btn-primary btn-filter" data-target="pendiente">유형별</button>
+			</div>
       </div>
       <!-- --------------------------------------------------------------- -->
       
@@ -164,7 +110,7 @@
     <script type="text/javascript" src="<c:url value='/js/plugins/chart.js'/>"></script>
     <script type="text/javascript">
       var data = {
-      	labels: ["January", "February", "March", "April", "May","June"],
+      	labels: ["1월", "2월", "3월", "4월", "5월","6월","7월","8월","9월","10월","11월","12월"],
       	datasets: [
       		{
       			label: "My First dataset",
@@ -174,7 +120,7 @@
       			pointStrokeColor: "#fff",
       			pointHighlightFill: "#fff",
       			pointHighlightStroke: "rgba(220,220,220,1)",
-      			data: [65, 59, 80, 81, 56,90]
+      			data: [65, 59, 80, 81, 56,90,20,30,30,70,60,100]
       		},
       		{
       			label: "My Second dataset",
@@ -184,7 +130,7 @@
       			pointStrokeColor: "#fff",
       			pointHighlightFill: "#fff",
       			pointHighlightStroke: "rgba(151,187,205,1)",
-      			data: [28, 48, 40, 19, 86,50]
+      			data: [28, 48, 40, 19, 86,50,65, 59, 80, 81, 56,90]
       		}
       	]
       };
@@ -193,19 +139,19 @@
         		value: 300,
         		color:"#F7464A",
         		highlight: "#FF5A5E",
-        		label: "Red"
+        		label: "공간"
         	},
         	{
         		value: 50,
         		color: "#46BFBD",
         		highlight: "#5AD3D1",
-        		label: "Green"
+        		label: "예약"
         	},
         	{
         		value: 100,
         		color: "#FDB45C",
         		highlight: "#FFC870",
-        		label: "Yellow"
+        		label: "결제"
         	}
         ]
       

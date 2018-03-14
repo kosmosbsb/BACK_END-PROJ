@@ -88,8 +88,33 @@ public class AnalysisDAO {
 	}
 
 	public int[] getPieChartResult_gender() {
-		// TODO Auto-generated method stub
-		return null;
+		int[] chardatar = {0,0}; //남자, 여자
+		
+		String sql = "select count(*) from reserve R join user_normal U where U.gender='m'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				chardatar[i-1]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		String sql = "select count(*) from reserve R join user_normal U where length('U.age')=2 and substr('U.age',1,1)="+i;
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				chardatar[i-1]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return chardatar;
 	}
 	
 	

@@ -19,7 +19,12 @@
     
     <title>SC 관리자 페이지</title>
   </head>
-<body class="app sidebar-mini">
+  
+  	<!-- Navbar menu -->
+	<body class="app sidebar-mini">
+    <jsp:include page="/Top.jsp"/>
+  
+	<body class="app sidebar-mini">
 
     <!-- Navbar-->
     <header class="app-header"><a class="app-header__logo" href="index.jsp" ><img src="<c:url value='/Images/backend_logo.png'/>" style="width: 220px; height: auto; margin-left: -10px; margin-top: -10px;"/></a>
