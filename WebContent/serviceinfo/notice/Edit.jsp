@@ -136,7 +136,7 @@ dao.close();
                 
                 <div>
                   <label class="control-label">내용을 입력하세요</label>
-                  <textarea class="form-control" ><%=record.getContent() %></textarea>
+                  <textarea  class="form-control" ><%=record.getContent() %></textarea>
                 </div>
                 <% }%>
             </tbody>
