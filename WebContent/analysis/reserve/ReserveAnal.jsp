@@ -38,21 +38,27 @@
           <p>고객들의 서비스 이용 패턴을 확인하세요.</p>
         </div>
       </div>
-      
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-		<button type="radio" class="btn btn-primary btn-filter" data-target="month_anal">월별 통계</button>
-		<button type="radio" class="btn btn-primary btn-filter" data-target="gender_anal">성별 통계</button>
-		<button type="radio" class="btn btn-primary btn-filter" data-target="age_anal">나이별 통계</button>
-	  </div>
-							
+      <div class="container">
+      <div class="row">
+	      <div class="col-md-12">
+		      <div class="btn-group btn-group-toggle pull-right" data-toggle="buttons">
+				<button class="btn btn-primary btn-filter pull-right" data-target="month_anal">월별 통계</button>
+				<button class="btn btn-primary btn-filter pull-right" data-target="gender_anal">성별 통계</button>
+				<button class="btn btn-primary btn-filter pull-right" data-target="age_anal">나이별 통계</button>
+			  </div>
+		  </div>
+	  </div>	
+	  			
       <div class="row" data-status="month_anal" >
-        <div class="col-md-12" >
+        <div class="col-md-12">
           <div class="tile">
             <h3 class="tile-title">월별 이용 통계</h3>
+            <button class="btn btn-primary pull-right" type="button" onclick='location.href="<c:url value='/member/admin/IncludeAdmin.jsp'/>"'><i class="fa fa-file-excel-o"></i>엑셀 파일 다운로드</button>
             <div class="embed-responsive embed-responsive-16by9">
               <canvas class="embed-responsive-item" id="barChart_month"></canvas>
             </div>
           </div>
+          
         </div>
    	  </div>
    	  
@@ -62,6 +68,7 @@
            <h3 class="tile-title">성별 이용 통계</h3>
            <div class="embed-responsive embed-responsive-16by9">
              <canvas class="embed-responsive-item" id="pieChart_gender"></canvas>
+             
            	 </div>
            </div>
          </div>
@@ -77,7 +84,7 @@
           </div>
         </div>
    	  </div>
-   	  
+   	  </div>
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="<c:url value='/js/jquery-3.2.1.min.js'/>"></script>
@@ -138,25 +145,24 @@
     	      			pointStrokeColor: "#fff",
     	      			pointHighlightFill: "#fff",
     	      			pointHighlightStroke: "rgba(220,220,220,1)",
-    	      			data: [	${barChartResult_month[0]}, ${barChartResult_month[1]},
-    			      			${barChartResult_month[2]}, ${barChartResult_month[3]},
-    			      			${barChartResult_month[4]}, ${barChartResult_month[5]},
-    			      			${barChartResult_month[6]}, ${barChartResult_month[7]},
-    			      			${barChartResult_month[8]}, ${barChartResult_month[9]},
-    			      			${barChartResult_month[10]},${barChartResult_month[11]}]
+    	      			data: [	${barChartResult_age[0]}, ${barChartResult_age[1]},
+    			      			${barChartResult_age[2]}, ${barChartResult_age[3]},
+    			      			${barChartResult_age[4]}, ${barChartResult_age[5]},
+    			      			${barChartResult_age[6]}, ${barChartResult_age[7]},
+    			      			${barChartResult_age[8]}]
     	      		}
     	      	]
     	      };
 
       var pieChart_gender_data = [
                  	{
-                 		value: 50,
+                 		value: ${pieChartResult_gender[0]},
                  		color: "#46BFBD",
                  		highlight: "#5AD3D1",
                  		label: "Green"
                  	},
                  	{
-                 		value: 100,
+                 		value: ${pieChartResult_gender[1]},
                  		color: "#FDB45C",
                  		highlight: "#FFC870",
                  		label: "Yellow"
@@ -166,7 +172,7 @@
       var ctxb = $("#barChart_month").get(0).getContext("2d");
       var barChart_month = new Chart(ctxb).Bar(barChart_month_data);
 
-      var ctxb = $("#barChart_month").get(0).getContext("2d");
+      var ctxb = $("#barChart_age").get(0).getContext("2d");
       var barChart_age = new Chart(ctxb).Bar(barChart_age_data);
       
       var ctxp = $("#pieChart_gender").get(0).getContext("2d");

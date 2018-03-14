@@ -71,8 +71,8 @@ public class AnalysisDAO {
 	public int[] getBarChartResult_age() {
 		int[] chardatar = {0,0,0,0,0,0,0,0,0}; //10대~90대 이상
 		
-		for(int i=1 ; i <= 8 ; i++) {
-			String sql = "select count(*) from reserve R join user_normal U where length('U.age')=2 and substr('U.age',1,1)="+i;
+		for(int i=1 ; i <= 9 ; i++) {
+			String sql = "select count(*) from reserve R join user_normal U on R.ID=U.ID where length(U.age)=2 and substr(U.age,1,1)="+i;
 			try {
 				psmt = conn.prepareStatement(sql);
 				rs = psmt.executeQuery();
@@ -86,28 +86,28 @@ public class AnalysisDAO {
 		}
 		return chardatar;
 	}
-
+	
 	public int[] getPieChartResult_gender() {
 		int[] chardatar = {0,0}; //남자, 여자
 		
-		String sql = "select count(*) from reserve R join user_normal U where U.gender='m'";
+		String sql = "select count(*) from reserve R join user_normal U on U.id=R.id where U.gender='m'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				chardatar[i-1]=Integer.parseInt(rs.getString(1));
+				chardatar[0]=Integer.parseInt(rs.getString(1));
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		String sql = "select count(*) from reserve R join user_normal U where length('U.age')=2 and substr('U.age',1,1)="+i;
+		sql = "select count(*) from reserve R join user_normal U on U.id=R.id where U.gender='f'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				chardatar[i-1]=Integer.parseInt(rs.getString(1));
+				chardatar[1]=Integer.parseInt(rs.getString(1));
 			}
 			
 		} catch (SQLException e) {
