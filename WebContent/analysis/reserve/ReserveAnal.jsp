@@ -30,7 +30,6 @@
     
     <jsp:include page="/Left.jsp"/>
     
-    
    <main class="app-content">
       <div class="app-title">
         <div>
@@ -53,7 +52,10 @@
         <div class="col-md-12">
           <div class="tile">
             <h3 class="tile-title">월별 이용 통계</h3>
-            <button class="btn btn-primary pull-right" type="button" onclick='location.href="<c:url value='/member/admin/IncludeAdmin.jsp'/>"'><i class="fa fa-file-excel-o"></i>엑셀 파일 다운로드</button>
+            <form method="post" name="post" action="<c:url value='/analysis/reserve/ReserveAnalProcess.jsp'/>">
+            	<input type="hidden" name="input" value=''/>
+            	<input type="button" class="btn btn-primary pull-right" onclick="submitValue();" value="엑셀 파일 다운로드"/>
+            </form>
             <div class="embed-responsive embed-responsive-16by9">
               <canvas class="embed-responsive-item" id="barChart_month"></canvas>
             </div>
@@ -93,11 +95,14 @@
     <script src="<c:url value='/js/main.js'/>"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="<c:url value='/js/plugins/pace.min.js'/>"></script>
- 
     <script type="text/javascript" src="<c:url value='/js/plugins/chart.js'/>"></script>
     <script type="text/javascript">
-    /* 버튼클릭시 활성/비활성*/
+    
 	$(document).ready(function () {
+
+		//태그 문자 그대로 걍 찍어버리네...
+		//$('input[type="submit"]').attr("value",'<i class="fa fa-file-excel-o"></i>엑셀 파일 다운로드');
+		
 		$('div[data-status="gender_anal"]').css('display', 'none');
 		$('div[data-status="age_anal"]').css('display', 'none');
 	$('.btn-filter').on('click', function () {
@@ -112,7 +117,12 @@
 	
 	});
 
-
+	var barChartResult_month_str = ${barChartResult_month[0]}+","+ ${barChartResult_month[1]}+","+
+									${barChartResult_month[2]}+","+ ${barChartResult_month[3]}+","+
+									${barChartResult_month[4]}+","+ ${barChartResult_month[5]}+","+
+									${barChartResult_month[6]}+","+ ${barChartResult_month[7]}+","+
+									${barChartResult_month[8]}+","+ ${barChartResult_month[9]}+","+
+									${barChartResult_month[10]}+","+ ${barChartResult_month[11]};
     var barChart_month_data = {
       	labels: ["1월", "2월", "3월", "4월", "5월","6월","7월","8월","9월","10월","11월","12월"],
       	datasets: [
@@ -177,7 +187,11 @@
       
       var ctxp = $("#pieChart_gender").get(0).getContext("2d");
       var pieChart_gender = new Chart(ctxp).Pie(pieChart_gender_data);
-      
+
+  	function submitValue(){
+		document.post.input.value=barChartResult_month_str;
+		document.post.submit();
+	}
     </script>
   </body>
 </html>

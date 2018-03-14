@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.analysis.AnalysisDAO;
 import model.analysis.AnalysisDTO;
+import model.analysis.ExcelOuter;
 
 public class AnalysisController extends HttpServlet{
 
