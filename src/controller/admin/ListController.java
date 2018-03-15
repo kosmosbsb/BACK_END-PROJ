@@ -28,7 +28,7 @@ public class ListController extends HttpServlet {
 		dao.close();
 
 		req.setAttribute("list", list);//글목록들
-		//req.setAttribute("active","dataroom");//메뉴 활성화용
+		req.setAttribute("active","active");//메뉴 활성화용
 		
 		RequestDispatcher dispatcher=req.getRequestDispatcher("/member/admin/AdminInfo.jsp");
 		//포워딩]

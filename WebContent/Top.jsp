@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="<c:url value='/index.jsp'/>" ><img src="<c:url value='/Images/backend_logo.png'/>" style="width: 220px; height: auto; margin-left: -10px; margin-top: -10px;"/></a>
+    <header class="app-header"><a class="app-header__logo" href="<c:url value='/ADMIN/List.do'/>" ><img src="<c:url value='/Images/backend_logo.png'/>" style="width: 220px; height: auto; margin-left: -10px; margin-top: -10px;"/></a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">

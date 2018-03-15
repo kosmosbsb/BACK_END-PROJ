@@ -63,7 +63,9 @@
                 <tbody>
                 <c:forEach var="item" items="${list}" varStatus="loop">
 	   				<tr>
-	   					<td>${item.admin_level == 'M' ? '마스터관리자' : item.admin_level == 'A' ? '통계관리자' : 'CS관리자'}</td>
+	   					<td>${item.admin_level == 'M' ? '마스터관리자' :
+	   							item.admin_level == 'A' ? '통계관리자' :
+	   							item.admin_level == 'S' ? '서비스관리자' : 'CS관리자'}</td>
 	   					<td>${item.id}</td>
 	   					<td>${item.admin_name}</td>
 	   					<td>${item.regidate}</td>
@@ -71,7 +73,7 @@
 	   						<c:if test="${item.id == USER_ID}">
 	   						&nbsp;&nbsp;<button class="btn btn-primary" type="button" onclick='location.href="<c:url value='/member/admin/IncludeAdmin.jsp'/>"'><i class="fa fa-fw fa-lg fa-wrench"></i>수정&nbsp;</button>
 	   						</c:if>
-	   						<c:if test="${USER_LEVEL == 'M'}">
+	   						<c:if test="${USER_LEVEL == 'M' and item.id != USER_ID}">
 	   						&nbsp;&nbsp;<button class="btn btn-danger" type="button" onclick="deleteOK('${item.id}')"><i class="fa fa-fw fa-lg fa-times-circle"></i>삭제&nbsp;</button>
 	   						</c:if>
 	   					</td>
@@ -97,7 +99,7 @@
     <script type="text/javascript" src="<c:url value='/js/plugins/dataTables.bootstrap.min.js'/>"></script>
     <script type="text/javascript">
     	$('#sampleTable').DataTable({
-    		"lengthMenu": [[3, 6, 9, -1], [3, 6, 9, "All"]]
+    		"lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]]
         });</script>
     <!-- Google analytics script-->
     <script type="text/javascript">

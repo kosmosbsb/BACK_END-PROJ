@@ -134,12 +134,17 @@
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="admin_level" value="A">통계 관리자
+                        <input class="form-check-input" type="radio" name="admin_level" value="S">서비스 관리자
                       </label>
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
                         <input class="form-check-input" type="radio" name="admin_level" value="C">CS 관리자
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="admin_level" value="A">통계 관리자
                       </label>
                     </div>
                   </div>
