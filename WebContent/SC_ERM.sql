@@ -66,7 +66,7 @@ CREATE TABLE HELP
 	TITLE nvarchar2(100),
 	-- 웹에디터로 이미지경로, 링크버튼 등 추가
 	CONTENT nvarchar2(500),
-	REGIDATE date,
+	REGIDATE date DEFAULT SYSDATE,
 	-- 일반(N), 호스트(H)
 	NORMAL_OR_HOST char(1 char),
 	CATEGORY nvarchar2(10),
@@ -81,7 +81,7 @@ CREATE TABLE NOTICE
 	TITLE nvarchar2(100),
 	-- 웹에디터로 이미지경로, 링크버튼 등 추가
 	CONTENT nvarchar2(500),
-	REGIDATE date,
+	REGIDATE date DEFAULT SYSDATE,
 	-- 일반(N), 호스트(H)
 	NORMAL_OR_HOST char(1 char),
 	CATEGORY nvarchar2(10),
@@ -174,7 +174,7 @@ CREATE TABLE SERVICEINFO_NORMALINFO
 	CONTENT nvarchar2(500) NOT NULL,
 	TITLE nvarchar2(50) NOT NULL,
 	NAME nvarchar2(10) NOT NULL,
-	POSTDATE date NOT NULL,
+	POSTDATE date DEFAULT SYSDATE NOT NULL,
 	ID varchar2(15 char) NOT NULL,
 	PRIMARY KEY (NO)
 );
@@ -225,7 +225,6 @@ CREATE TABLE SPACE_BIZMAN
 	ACCOUNT nvarchar2(50),
 	PRIMARY KEY (SPACE_NO)
 );
-
 
 CREATE TABLE SPACE_DETAIL
 (
@@ -445,7 +444,7 @@ CREATE TABLE SPACE_QNA
 	QNA_NO number NOT NULL,
 	REVIEWER nvarchar2(10),
 	CONTENT nvarchar2(400),
-	QNA_DATE date,
+	QNA_DATE date DEFAULT SYSDATE,
 	-- 공간 일련번호와 동일
 	SPACE_NO number NOT NULL,
 	PRIMARY KEY (QNA_NO)

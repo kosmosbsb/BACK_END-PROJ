@@ -22,12 +22,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelOuter {
 	
-	String filePath = "D:/KHW";
-	String excelName = "test.xlsx";
+	String filePath = "C:\\Users\\kosmo01\\Downloads";
+	String excelName = "통계 데이터.xlsx";
 	Map<String,String> headerList = new HashMap<String,String>();
 	Map<String,String> list = new HashMap<String,String>();
 	List<String> data = new Vector<String>();
-
+	
 	public void createExcelFile(String result) {
 		
 		String[] resultArr = result.split(",");
