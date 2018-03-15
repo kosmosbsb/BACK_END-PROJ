@@ -247,7 +247,7 @@ public class PsyDAO {
 		public List<PsyDTO> selectOne(String id) {
 			List<PsyDTO> list = new Vector<PsyDTO>();
 			// 페이징 적용 - 구간 쿼리로 변경
-			String sql = "select N.IMG, H.ID, H.H_NICKNAME, N.MAIL, H.INTRODUCE, H.H_ALARM_MAIL, H.H_ALARM_SMS, N.gender from USER_HOST H INNER JOIN USER_NORMAL N on H.ID=N.ID where H.id = ? ";
+			String sql = "select N.IMG, H.ID, H.H_NICKNAME, N.MAIL, H.INTRODUCE, H.H_ALARM_MAIL, H.H_ALARM_SMS, N.gender, N.age, N.phone from USER_HOST H INNER JOIN USER_NORMAL N on H.ID=N.ID where H.id = ? ";
 			try {
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, id);
@@ -264,6 +264,8 @@ public class PsyDAO {
 					dto.setH_alarm_mail(rs.getString(6));
 					dto.setH_alarm_sns(rs.getString(7));
 					dto.setGender(rs.getString(8));
+					dto.setAge(rs.getString(9));
+					dto.setPhone(rs.getString(10));
 					list.add(dto);
 				}/////////////while
 			}catch (Exception e) {
@@ -271,5 +273,19 @@ public class PsyDAO {
 			}
 			return list;
 		}//상세보기용)//
-				
+		
+		public int getTotalRecordCount() {
+			int total = 0;
+			String sql = "SELECT COUNT(*) FROM USER_HOST";
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				rs.next();
+				total = rs.getInt(1);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return total;
+		}////////////
 }

@@ -31,6 +31,8 @@ public class PsyController extends HttpServlet{
 			req.setAttribute("alarmMail",list.get(0).getH_alarm_mail());
 			req.setAttribute("alarmSns",list.get(0).getH_alarm_sns());
 			req.setAttribute("gender",list.get(0).getGender());
+			req.setAttribute("age",list.get(0).getAge());
+			req.setAttribute("phone",list.get(0).getPhone());
 			
 			req.getRequestDispatcher("/member/host/HostManageView.jsp").forward(req, resp);
 		}
@@ -43,6 +45,7 @@ public class PsyController extends HttpServlet{
 		if(req.getParameter("id")!=null) {doGet(req,resp);}
 		//System.out.println("doget으로 들어오는데 성공함");
 		PsyDAO dao = new PsyDAO(req.getServletContext());
+		int totalRecordCount = dao.getTotalRecordCount();
 		List<PsyDTO> list=dao.selectList();
 		int[] chartDatAr =dao.chartDataArray();
 		int[] chartDatAr3 =dao.chartDataArray3();
@@ -54,6 +57,8 @@ public class PsyController extends HttpServlet{
 		req.setAttribute("chartdataset2", chartDatAr2);
 		req.setAttribute("list", list);
 		
+		
+		req.setAttribute("totalRecordCount", totalRecordCount);
 		//뷰선택]
 		RequestDispatcher dispatcher=req.getRequestDispatcher("/member/host/HostManage.jsp");
 		//포워딩]

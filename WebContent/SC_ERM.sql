@@ -53,6 +53,7 @@ CREATE TABLE ADMIN_ANSWER
 	-- 문의 일련변호와 동일함
 	NO number NOT NULL,
 	ANSWER_DATE date DEFAULT SYSDATE,
+	CONTENT nvarchar2(300),
 	ID varchar2(15 char),
 	PRIMARY KEY (NO)
 );
@@ -603,6 +604,7 @@ CREATE TABLE USER_QUESTION
 	QUESTION_TITLE nvarchar2(20),
 	QUESTION_CONTENT nvarchar2(300),
 	REGIDATE date DEFAULT SYSDATE,
+	PASSDATE date,
 	-- 네아로에서 얻어옴
 	ID varchar2(15 char) NOT NULL,
 	PRIMARY KEY (NO)
