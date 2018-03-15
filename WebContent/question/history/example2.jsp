@@ -1,143 +1,163 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    
-<script>
-$(function () {
-    if (window.location == window.parent.location) {
-        $('#fullscreen').text('Go back to Blog Layout Snippet on Bootsnipp (Click Here)');
-        $('#fullscreen').attr('href', 'http://bootsnipp.com/mouse0270/snippets/846vX');
-        $('#fullscreen').css('margin-left','-391.5px')
-    }    
-    $('#fullscreen').on('click', function(event) {
-        event.preventDefault();
-        window.parent.location =  $('#fullscreen').attr('href');
-    });
-    
-    
-    
-    $('#toggle_posts').on('click', function(event) {
-      event.preventDefault();
-      $('#posts').toggleClass('open');
-   });
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-   $('a[href^="#post-"]').on('click', function(event) {
-      event.preventDefault();
-      $('article.active').removeClass('active');
-      $('#comments').removeClass('active');
-
-      var percentage = parseInt($(window).width()) - parseInt($(this).css('width'));
-      percentage = percentage / parseInt($(window).width());
-      percentage = percentage * 100;
-
-      if (percentage <= 20) {
-         $('#posts').removeClass('open');
-      }
-
-      // THIS IS WHERE AJAX CODE WOULD GO TO LOAD ARTICLES DYNAMICALLY
-      $($(this).attr('href')).addClass('active');
-   });
-
-   $('a[href^="#comments-"]').on('click', function(event) {
-      event.preventDefault();
-
-      // THIS IS WHERE AJAX CODE WOULD GO TO LOAD ARTICLES DYNAMICALLY
-      $('#comments').toggleClass('active');
-   });
-
-   $('article > .title > .close').on('click', function(event) {
-      event.preventDefault();
-      $('#comments').removeClass('active');
-      $(this).closest('article').removeClass('active');
-   });
-   $('#comments > .title > .close').on('click', function(event) {
-      event.preventDefault();
-      $(this).closest('#comments').removeClass('active');
-   });   
-});
-</script>
-    
-    
-    
-    
-    
-    
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-  body {
-      position: relative; 
-  }
-  #section1 {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
-  #section2 {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
-  #section3 {padding-top:50px;height:500px;color: #fff; background-color: #ff9800;}
-  #section41 {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
-  #section42 {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
-  </style>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Easy Table Filter - Bootsnipp.com</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    </style>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body>
+	<div class="container">
+	<div class="row">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="#section1">Section 1</a></li>
-          <li><a href="#section2">Section 2</a></li>
-          <li><a href="#section3">Section 3</a></li>
-          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#section41">Section 4-1</a></li>
-              <li><a href="#section42">Section 4-2</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</nav>    
+		<section class="content">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="pull-right">
+							<div class="btn-group btn-group-toggle" data-toggle="buttons">
+								<button type="radio" class="btn btn-primary btn-filter" data-target="pagado">기간별</button>
+								<button type="radio" class="btn btn-primary btn-filter" data-target="pendiente">유형별</button>
+							</div>
+							<!-- --------------------------------------------------------------- --> 
+							
+							<!-- --------------------------------------------------------------- --> 
+						</div>
+						<div class="table-container">
+							<table class="table table-filter">
+								<tbody>
+									<tr data-status="pagado">
+										<td>
+										<!-- --------------------------------------------------------------- --> 
+											<div class="row" id="periodchart">
+												<div class="col-md-10" style="padding-left: 200px">
+													<div class="tile">
+														<h3 class="tile-title">기간별 문의 통계</h3>
+														<div class="embed-responsive embed-responsive-16by9">
+															<canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- --------------------------------------------------------------- --> 
+										</td>
+										</tr>
+									<tr data-status="pendiente">
+										<td>
+										<!-- --------------------------------------------------------------- --> 
+											<div class="row" id="typechart">
+												<div class="col-md-10" style="padding-left: 200px">
+													<div class="tile">
+														<h3 class="tile-title">유형별 문의 통계</h3>
+														<div class="embed-responsive embed-responsive-16by9">
+															<canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- --------------------------------------------------------------- --> 
+											</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 
-<div id="section1" class="container-fluid">
-  <h1>Section 1</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-<div id="section2" class="container-fluid">
-  <h1>Section 2</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-<div id="section3" class="container-fluid">
-  <h1>Section 3</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-<div id="section41" class="container-fluid">
-  <h1>Section 4 Submenu 1</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-<div id="section42" class="container-fluid">
-  <h1>Section 4 Submenu 2</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+			</div>
+		</section>
+		
+	</div>
 </div>
 
+ <!-- --------------------------------------------------------------- -->   
+
+    <!-- Essential javascripts for application to work-->
+    <script src="<c:url value='/js/jquery-3.2.1.min.js'/>"></script>
+    <script src="<c:url value='/js/popper.min.js'/>"></script>
+    <script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+    <script src="<c:url value='/js/main.js'/>"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="<c:url value='/js/plugins/pace.min.js'/>"></script>
+    <!-- Page specific javascripts-->
+    <script type="text/javascript" src="<c:url value='/js/plugins/chart.js'/>"></script>
+    <script type="text/javascript">
+      var data = {
+      	labels: ["January", "February", "March", "April", "May","June"],
+      	datasets: [
+      		{
+      			label: "My First dataset",
+      			fillColor: "rgba(220,220,220,0.2)",
+      			strokeColor: "rgba(220,220,220,1)",
+      			pointColor: "rgba(220,220,220,1)",
+      			pointStrokeColor: "#fff",
+      			pointHighlightFill: "#fff",
+      			pointHighlightStroke: "rgba(220,220,220,1)",
+      			data: [65, 59, 80, 81, 56,90]
+      		},
+      		{
+      			label: "My Second dataset",
+      			fillColor: "rgba(151,187,205,0.2)",
+      			strokeColor: "rgba(151,187,205,1)",
+      			pointColor: "rgba(151,187,205,1)",
+      			pointStrokeColor: "#fff",
+      			pointHighlightFill: "#fff",
+      			pointHighlightStroke: "rgba(151,187,205,1)",
+      			data: [28, 48, 40, 19, 86,50]
+      		}
+      	]
+      };
+      var pdata = [
+        	{
+        		value: 300,
+        		color:"#F7464A",
+        		highlight: "#FF5A5E",
+        		label: "Red"
+        	},
+        	{
+        		value: 50,
+        		color: "#46BFBD",
+        		highlight: "#5AD3D1",
+        		label: "Green"
+        	},
+        	{
+        		value: 100,
+        		color: "#FDB45C",
+        		highlight: "#FFC870",
+        		label: "Yellow"
+        	}
+        ]
+      
+      var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+      var lineChart = new Chart(ctxl).Line(data);
+      
+      var ctxp = $("#pieChartDemo").get(0).getContext("2d");
+      var pieChart = new Chart(ctxp).Pie(pdata);
+      
+	$(document).ready(function () {
+    $('.btn-filter').on('click', function () {
+      var $target = $(this).data('target');
+      if ($target != 'all') {
+        $('.table tr').css('display', 'none');
+        $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+      } else {
+        $('.table tr').css('display', 'none').fadeIn('slow');
+      }
+    });
+
+ });
+	</script>
+	<!-- ------------------------------------------------------------------- -->
 </body>
 </html>

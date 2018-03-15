@@ -105,6 +105,29 @@
   	<param-name>BLOCK_PAGE</param-name>
   	<param-value>3</param-value>
   </context-param>
+ 
+   <!--처리현황 서블릿 등록 박세현 -->
+  <servlet>
+ 	<servlet-name>QuestionControl</servlet-name>
+	<servlet-class>controller.psh.QuestionController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 박세현 -->
+  <servlet-mapping>
+	<servlet-name>QuestionControl</servlet-name>
+	<url-pattern>/question/current/Current.do</url-pattern>
+  </servlet-mapping>
+
+   <!--문의 통계 서블릿 등록 박세현-->
+<!--    <servlet>
+ 	<servlet-name>ProcessingControl</servlet-name>
+	<servlet-class>controller.psh.ProcessingController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>CurrentControl</servlet-name>
+	<url-pattern>/question/current/Processing.do</url-pattern>
+  </servlet-mapping>
+   -->
   
 
   <welcome-file-list>
