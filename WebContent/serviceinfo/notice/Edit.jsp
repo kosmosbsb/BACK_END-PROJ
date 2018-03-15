@@ -11,13 +11,13 @@
 String articleId = request.getParameter("articleId");
 //현재 페이지번호 받기
 String nowPage = request.getParameter("nowPage");
+
 //2]CRUD작업용 BbsDAO생성
 DataRoomDAO dao = new DataRoomDAO(application);
 //상세보기용 메소드 호출	
 List<DataRoomDTO> list =dao.selectList();
 //3]자원반납
 dao.close();
-
 
 
 %>
@@ -104,53 +104,70 @@ dao.close();
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     
     <jsp:include page="../../Left.jsp"/>
-      
-       <main class="app-content">
+     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>수정폼관리</h1>
+          <h1><i class="fa fa-dashboard"></i>수정 관리</h1>
       
         </div>
       
       </div>
+      
        <div class="row">
-        <div class="col-md-12">
+         <div class="col-md-12" >
           <div class="tile">
-            <h3 class="tile-title">수정폼</h3>
             <div class="tile-body">
-             <tbody>
-              
-
-				<%
-				int loop =0;
-				for(DataRoomDTO record:list){%>
-				 <div class="form-group">
-                  <label class="control-label">이름</label>
-                  <textarea class="form-control" disabled="disabled" rows="1"><%=record.getName() %></textarea>
-                </div>
-				
-				<div class="form-group">
-                  <label class="control-label">제목</label>
-                  <textarea class="form-control" rows="1"><%=record.getTitle() %></textarea>
-                </div>
+              <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>  	
+	                   <tbody>
+	                        <form action="EditOk.jsp" method="post">
+			                  	<% 
+			                  			for(DataRoomDTO record:list){%>
+                         					  
+			                  	<input type="hidden" name="articleId" value="<%=record.getNotice_no()%>"/>
+			                  	<input type="hidden" name="nowPage" value="<%=nowPage%>"/>
+			                  	                 	
+			                  		
+			                  </thread>			
+			                  		<tr>
+			                  			<td class="text-center">카타고리</td>
+			                  			<td >
+			                  			<input type="text"  value="<%=record.getCategory()%>" name="title" style="width:98%"/>
+			                  			</td>
+			                  		</tr>
+			                  		<tr>
+			                  			<td class="text-center">제목</td>
+			                  			<td >
+			                  			<input type="text"  value="<%=record.getTitle() %>" name="title" style="width:98%"/>
+			                  			</td>
+			                  		</tr>
+			                  			<tr>
+			                  			<td align="center">내용</td>
+			                  			<td>
+			                  			<textarea rows="10" style="width:98%" name="content"><%=record.getContent()%></textarea>
+			                  			</td>
+			                  			
+			                  		</tr>
+			                  		<tr bgcolor="white" align="center">
+			                  			<td colspan="2">
+			                  			<input type="submit" value="확인"/>
+			                  			</td>
+			                  		</tr>                  	
+			                  	<%} %>
+			                  	</tbody>
+			                  	</table> 
+		                 
+		                  	</form>
+	                   
+	                                         
+                   </table>
+                    </div>
                 
-                <div>
-                  <label class="control-label">내용을 입력하세요</label>
-                  <textarea  class="form-control" ><%=record.getContent() %></textarea>
                 </div>
-                <% }%>
-            </tbody>
-             <tr bgcolor="white" align="center">
-			                 <td colspan="2" >
-			                  	<a href="EditOK.jsp">확인</a>|<a href = "Edit.jsp" onclick="isDelete()">취소</a>|
-			     				<a href ="NoticeShow.jsp">목록</a>
-			                 </td>		
-			           	</tr>      
-            </div>
-     	</div>
-     </div>
-   </div>
-</main> 
+          
+ </div>
+     
+</div>
       
     <!-- Essential javascripts for application to work-->
     <script src="../../js/jquery-3.2.1.min.js"></script>

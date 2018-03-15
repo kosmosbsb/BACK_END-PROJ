@@ -117,17 +117,21 @@
                 <thead>
                   <tr>
                     <th style="width: 10%" class="text-center">번호</th>
-             		<th style="width:10%" class="text-center">글쓴이</th>    
-                    <th style="width: 15%"  class="text-center">타이틀</th>
-                    <th class="text-center">내용</th>
-                    <th style="width: 20%"  class="text-center">날짜</th>
+             		<th style="width:10%" class="text-center">타이틀</th>    
+                    <th style="width: 10%"  class="text-center">내용</th>
+                    <th style="width: 10%"  class="text-center">날짜</th>
+                     <th style="width: 10%"  class="text-center">호스트</th>
+                     <th style="width: 10%"  class="text-center">카테고리</th>
+                   <th style="width: 10%"  class="text-center">ID</th>
+                    <th style="width: 10%" class="text-center"> 관리</th>
+                     
                   </tr>
                 </thead>
                 	<tbody>	
                 		
                 		<% if(list.isEmpty()){ %>
                              <tr bgcolor="white" align="center">
-                              <td colspan="5">등록된 글이 없어요</td>
+                              <td colspan="8">등록된 글이 없어요</td>
                              </tr>
                            
                           <% }else{ 
@@ -135,11 +139,18 @@
                           		for(DataRoomDTO record:list){
                           %>  
                              <tr>
-                            <td><%=record.getNo() %></td>
-                               <td><%=record.getName() %></td>
-                            	<td> <%=record.getTitle() %></td>
-                        		<td> <%=record.getContent() %></td>
-                               <td><%=record.getPostdate() %></td>
+                               <td style="width: 10%" class="text-center"><%=record.getNotice_no() %></td>
+                               <td style="width: 10%"class="text-center"> <%=record.getTitle() %></td>
+                        	   <td class="center-texte"> <%=record.getContent() %></td>
+                               <td style="width: 10%" class="text-center"><%=record.getRegidate() %></td>
+                               <td style="width: 10%" class="text-center"><%=record.getNormal_or_host() %></td>
+                               <td style="width: 10%" class="text-center"><%=record.getCategory() %></td>
+                               <td style="width: 10%" class="text-center"><%=record.getId() %></td>
+                             
+                              <td>
+			                  	<a href="Edit.jsp?articleId=<%=record.getNotice_no()%>&nowPage=<%=nowPage%>">수정</a>|<a href = "#" onclick="isDelete()">삭제</a>
+			                 </td>		
+			           	</tr>    
                              </tr>                           
                         <%		
                         		loop++;
@@ -150,13 +161,12 @@
     			
                 </tbody>
                        
+                       
+                       		
+                       
               </table>
-            <tr bgcolor="white" align="center">
-			                 <td colspan="2" >
-			                  	<a href="Edit.jsp">수정</a>|<a href = "#" onclick="isDelete()">삭제</a>|
-			     			
-			                 </td>		
-			           	</tr>      
+           
+			               <button class="btn btn-primary" type="button" onclick ="Write.jsp">추가 </button>
             </div>
           </div>
         </div>

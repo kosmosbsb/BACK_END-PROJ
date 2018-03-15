@@ -14,6 +14,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
+import javax.xml.transform.Source;
+
 import controller.lmy.DataRoomDTO;
 import model.BbsDTO;
 
@@ -57,12 +59,13 @@ public class DataRoomDAO {
 			while(rs.next()) {
 				DataRoomDTO dto = new DataRoomDTO();
 
-				dto.setNo(rs.getString(1));
-				dto.setName(rs.getString(2));
-				dto.setTitle(rs.getString(3));
-				dto.setContent(rs.getString(4));
-				dto.setPostdate(rs.getDate(5));
-				
+				dto.setNotice_no(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				dto.setContent(rs.getString(3));
+				dto.setRegidate(rs.getDate(4));
+				dto.setNormal_or_host(rs.getString(5));
+				dto.setCategory(rs.getString(6));
+				dto.setId(rs.getString(7));
 				list.add(dto);				
 			}			
 		} catch (Exception e) {e.printStackTrace();}
@@ -80,11 +83,13 @@ public class DataRoomDAO {
 			if(rs.next()) {
 				dto = new DataRoomDTO();
 			
-				dto.setNo(rs.getString(1));
-				dto.setName(rs.getString(2));			
+				dto.setNotice_no(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
-				dto.setPostdate(rs.getDate(5));
+				dto.setId(rs.getString(2));
+				dto.setRegidate(rs.getDate(5));
+				dto.setNormal_or_host(rs.getString(6));
+				dto.setCategory(rs.getString(7));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -94,13 +99,15 @@ public class DataRoomDAO {
 	//입력용
 	public int insert(DataRoomDTO dto) {
 		int affected=0;
-		String sql="INSERT INTO NOTICE(no,name,title,content) VALUES(noticeseq.NEXTVAL,?,?,?)";
+		String sql="INSERT INTO NOTICE(no,name,title,content,postdate) VALUES(noticeseq.NEXTVAL,?,?,?,?,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			
-			psmt.setString(1, dto.getName());
-			psmt.setString(2, dto.getTitle());
-			psmt.setString(3, dto.getContent());
+			psmt.setString(1, dto.getNotice_no());
+			
+			psmt.setString(3, dto.getTitle());
+			psmt.setString(4, dto.getContent());
+		
 			
 			
 		
@@ -121,7 +128,7 @@ public class DataRoomDAO {
 			rs = psmt.executeQuery();			
 			if(rs.next()) {//이전글이 있는 경우
 				DataRoomDTO dto= new DataRoomDTO();
-				dto.setNo(rs.getString(1));
+				dto.setNotice_no(rs.getString(1));
 				dto.setTitle(rs.getString(2));
 				map.put("PREV",dto);
 			}
@@ -132,7 +139,7 @@ public class DataRoomDAO {
 			rs = psmt.executeQuery();			
 			if(rs.next()) {//다음글이 있는 경우
 				DataRoomDTO dto= new DataRoomDTO();
-				dto.setNo(rs.getString(1));
+				dto.setNotice_no(rs.getString(1));
 				dto.setTitle(rs.getString(2));
 				map.put("NEXT",dto);
 			}
@@ -162,15 +169,15 @@ public class DataRoomDAO {
 	//업데이트
 	public int update(DataRoomDTO dto) {
 		int affected=0;
-		String sql="UPDATE NOTICE SET NAME=?,TITLE=?,CONTENT=?, WHERE NO=?";
+		String sql="UPDATE NOTICE SET TITLE=?, CONTENT=?,CATEGORY =? WHERE Notice_no=?";
 		try {
 			psmt = conn.prepareStatement(sql);
-		
-			psmt.setString(1,dto.getName());
-			psmt.setString(2, dto.getTitle());
-			psmt.setString(3, dto.getContent());
-			psmt.setString(4, dto.getNo());
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getCategory());
+			psmt.setString(4, dto.getNotice_no());
 			affected = psmt.executeUpdate();
+			
 		} 
 		catch (Exception e) {	e.printStackTrace();}
 		return affected;
