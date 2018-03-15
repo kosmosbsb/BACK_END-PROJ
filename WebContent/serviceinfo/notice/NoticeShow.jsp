@@ -20,6 +20,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+   	
    	<meta charset="utf-8">
 	
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +31,7 @@
     
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
     
     <title>공지사항 관리</title>
   </head>
@@ -148,7 +150,7 @@
                                <td style="width: 10%" class="text-center"><%=record.getId() %></td>
                              
                               <td>
-			                  	<a href="Edit.jsp?articleId=<%=record.getNotice_no()%>">수정</a>|<a href = "#" onclick="isDelete()">삭제</a>
+			                  	<a href="Edit.jsp?articleId=<%=record.getNotice_no()%>">수정</a>|<a href = "Delete.jsp?articleId=<%=record.getNotice_no()%>">삭제</a>
 			                 </td>		
 			           	</tr>    
                              </tr>                           

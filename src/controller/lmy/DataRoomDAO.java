@@ -103,7 +103,6 @@ public class DataRoomDAO {
 		String sql="INSERT INTO NOTICE(no,name,title,content,postdate) VALUES(noticeseq.NEXTVAL,?,?,?,?,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
-			
 			psmt.setString(1, dto.getNotice_no());
 			
 			psmt.setString(3, dto.getTitle());
@@ -157,7 +156,7 @@ public class DataRoomDAO {
  	//삭제
 	public int delete(String key) {
 		int affected =0;
-		String sql="DELETE FROM NOTICE WHERE no=?";
+		String sql="DELETE FROM NOTICE WHERE Notice_no=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);		
