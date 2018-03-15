@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/common/IsMember.jsp" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,84 +44,127 @@
 	        $('.js-example-basic-single').select();
 	    });
     </script>
+    
     <script type="text/javascript" src="<c:url value="/js/plugins/chart.js"/>"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
-
+     
       function drawChart() {
-	   	   var data = {
-         	      	labels: ["10대","20대","30대","40대","50대","60대","70대","80대","90대"],
-         	      	datasets: [
-      	      		{
-      	      			label: "My First dataset",
-      	      			fillColor: "#81BEF7",
-      	      			strokeColor: "#fff",
-      	      			pointColor: "#fff",
-      	      			pointStrokeColor: "#fff",
-      	      			pointHighlightFill: "#fff",
-      	      			pointHighlightStroke: "rgba(220,220,220,1)",
-      	      			data: [${agedatearray[0]}, ${agedatearray[1]}, ${agedatearray[2]}, ${agedatearray[3]}, ${agedatearray[4]}, ${agedatearray[5]}, ${agedatearray[6]}, ${agedatearray[7]}, ${agedatearray[8]}]
-      	      		}
-         	      	]};
-	            
-            var ctxb = $("#barChartDemo").get(0).getContext("2d");
-            var barChart = new Chart(ctxb).Bar(data);
-    	  
-            
-            var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['10대', ${agedatearray[0]}],
-                ['20대', ${agedatearray[1]}],
-                ['30대', ${agedatearray[2]}],
-                ['40대', ${agedatearray[3]}],
-                ['50대', ${agedatearray[4]}],
-                ['60대', ${agedatearray[5]}],
-                ['70대', ${agedatearray[6]}],
-                ['80대', ${agedatearray[7]}],
-                ['90대', ${agedatearray[8]}]
-              ]);
-
-              var options = {
-                is3D: true,
-              };
-
-              var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-              chart.draw(data,options);
-              
-              
-              var data = google.visualization.arrayToDataTable([
-                  ['Task', 'Hours per Day'],
-                  ['남자', ${genderdataarray[0]}],
-                  ['여자', ${genderdataarray[1]}]
-                ]);
-              
-              var options = {
-                      pieHole: 0.4,
-                    };
-
-             var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-             chart.draw(data, options);
-                
-             var data = new google.visualization.DataTable();
-             data.addColumn('string', 'grade');
-             data.addColumn('number', 'Populartiy');
-             data.addRows([
-               ['브론즈', ${gradedataarray[0]}],
-               ['실버', ${gradedataarray[1]}],
-               ['골드', ${gradedataarray[2]}],
-               ['플레티넘', ${gradedataarray[3]}],
-               ['VIP', ${gradedataarray[4]}]
+           
+           var data = google.visualization.arrayToDataTable([
+               ['Task', 'Age'],
+               ['10대', ${agedatearray[0]}],
+               ['20대', ${agedatearray[1]}],
+               ['30대', ${agedatearray[2]}],
+               ['40대', ${agedatearray[3]}],
+               ['50대', ${agedatearray[4]}],
+               ['60대', ${agedatearray[5]}],
+               ['70대', ${agedatearray[6]}],
+               ['80대', ${agedatearray[7]}],
+               ['90대', ${agedatearray[8]}]
              ]);
 
              var options = {
-            	sliceVisibilityThreshold:.0
+       			width: 470,
+       			height: 220,
+             	is3D: true,
+             	sliceVisibilityThreshold:0,
+       			"bold": true,
+             	"fontSize": 11,
+               	colors: ['#F5A9A9', '#58FAD0', '#ACFA58', '#F781BE', '#F79F81', '#BDBDBD',"#819FF7","#F3F781","#FA5858"]
              };
 
-             var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-             chart.draw(data, options);
+             var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+             chart.draw(data,options);
+             
+             
+             var data = google.visualization.arrayToDataTable([
+                 ['Task', 'Gender'],
+                 ['남자', ${genderdataarray[0]}],
+                 ['여자', ${genderdataarray[1]}]
+               ]);
+             
+             var options = {
+           		  	width: 510,
+           		  	height: 220,
+                 	pieHole: 0.4,
+                  	sliceVisibilityThreshold:0,
+                    "bold": true,
+                    "fontSize": 11,
+                    colors: ['#58D3F7', '#FA5858']
+                   };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+            
+               
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'grade');
+            data.addColumn('number', 'Populartiy');
+            data.addRows([
+              ['브론즈', ${gradedataarray[0]}],
+              ['실버', ${gradedataarray[1]}],
+              ['골드', ${gradedataarray[2]}],
+              ['플레티넘', ${gradedataarray[3]}],
+              ['VIP', ${gradedataarray[4]}]
+            ]);
+
+            var options = {
+          		width: 470,
+          		height: 220,
+          		sliceVisibilityThreshold:0,
+          		"bold": true,
+               	"fontSize": 11,
+           		colors: ['#FAAC58', '#D8D8D8',"#FACC2E","#2EFEF7","#F5A9F2"]
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+            
+            var data = google.visualization.arrayToDataTable([
+             	["Title","10대", {role:'annotation'}, "20대", {role:'annotation'},"30대", {role:'annotation'},"40대", {role:'annotation'},"50대", {role:'annotation'},"60대", {role:'annotation'},"70대", {role:'annotation'},"80대", {role:'annotation'},"90대", {role:'annotation'}],
+				[""
+                    ,${agedatearray[0]}, ${agedatearray[0]}
+                    ,${agedatearray[1]}, ${agedatearray[1]}
+                    ,${agedatearray[2]}, ${agedatearray[2]}
+                    ,${agedatearray[3]}, ${agedatearray[3]}
+                    ,${agedatearray[4]}, ${agedatearray[4]}
+                    ,${agedatearray[5]}, ${agedatearray[5]}
+                    ,${agedatearray[6]}, ${agedatearray[6]}
+                    ,${agedatearray[7]}, ${agedatearray[7]}
+                    ,${agedatearray[8]}, ${agedatearray[8]}] 
+              ]);
         
+              var barChartOption = {
+                      bars: 'vertical',
+                      height :'100%',
+                      width :'100%',
+                      legend: { position: "top" },
+                      colors: ['#F5A9A9', '#58FAD0', '#ACFA58', '#F781BE', '#F79F81', '#BDBDBD',"#819FF7","#F3F781","#FA5858"],
+                      isStacked: false,
+                      tooltip:{textStyle : {fontSize:12}, showColorCode : true},
+                      animation: { //차트가 뿌려질때 실행될 애니메이션 효과
+                     	startup: true,
+                      	duration: 1000,
+                      	easing: 'linear'},
+                      annotations: {
+                      	textStyle: {
+	                        fontSize: 15,
+	                        bold: true,
+	                        italic: true,
+	                        color: '#871b47',
+	                        auraColor: '#871b47',
+	                        opacity: 1.8
+                        }
+                     }
+               };
+         
+               var chart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
+               chart.draw(data, barChartOption);
+               
+               window.addEventListener('resize', function() {chart.draw(data, barChartOption)}, false);
       }
       </script>
       
@@ -167,7 +211,7 @@
 		          <div class="tile">
 		            <h3 class="tile-title">회원 나이 비율</h3>
 		            <div class="embed-responsive embed-responsive-16by9">
-	              		<div class="embed-responsive-item" id="piechart_3d" style="width: 500px; height: 250px;"></div>
+	              		<div class="embed-responsive-item" id="piechart_3d" style="width: 500px; height: 230px;"></div>
 			        </div>   	
 		          </div>
 		        </div>
@@ -176,7 +220,7 @@
 		          <div class="tile">
 		            <h3 class="tile-title">회원 남/녀 비율</h3>
 		            <div class="embed-responsive embed-responsive-16by9">
-		            	 <div class="embed-responsive-item" id="donutchart" style="width: 500px; height: 250px;"></div>
+		            	 <div class="embed-responsive-item" id="donutchart" style="width: 530px; height: 240px;"></div>
 		            </div>
 		          </div>
 		        </div>
@@ -185,7 +229,7 @@
 		          <div class="tile">
 		          <h3 class="tile-title">회원 등급 비율</h3>
             		<div class="embed-responsive embed-responsive-16by9">
-			             <div class="embed-responsive-item" id="chart_div" style="width: 500px; height: 250px;"></div>
+			             <div class="embed-responsive-item" id="chart_div" style="width: 510px; height: 230px;"></div>
 		            </div>
 		          </div>
 		        </div>
@@ -195,9 +239,9 @@
 			<div class="row">
 				<div class="col-md-12">
 		          	<div class="tile">
-			            <h3 class="tile-title">연령별 일반 회원 그래프</h3>
+			            <h3 class="tile-title">나이별 일반 회원 그래프</h3>
 			            <div class="embed-responsive embed-responsive-16by9">
-			              <canvas class="embed-responsive-item" id="barChartDemo"></canvas>
+			              <div class="embed-responsive-item" id="bar_chart_div" ></div>
 			            </div>
 					</div>
 	        	</div>
@@ -253,6 +297,7 @@
 		
 
 	</main>
+	
 	<!-- Essential javascripts for application to work-->
 	<script src="<c:url value="/js/jquery-3.2.1.min.js"/>"></script>
 	<script src="<c:url value="/js/popper.min.js"/>"></script>

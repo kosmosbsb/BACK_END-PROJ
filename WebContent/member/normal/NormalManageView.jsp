@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/common/IsMember.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,7 +91,7 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center">
-                 	<img alt="User Pic" src="<c:url value='9.png'/>" class="img-circle img-responsive"> 
+                 	<img alt="User Pic" src="${imgurl}" class="img-circle img-responsive"> 
                  	</div>
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
