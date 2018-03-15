@@ -15,6 +15,7 @@ import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 import controller.cjh.DataRoomDTO;
+import controller.psy.PsyDTO;
 import model.BbsDTO;
 
 public class QuestionDAO {
@@ -55,13 +56,13 @@ public class QuestionDAO {
 	public List<QuestionDTO> selectList_A(){
 		List<QuestionDTO> list = new Vector<QuestionDTO>();
 		//System.out.println(list);
-		String sql ="select UQ.question_type, UQ.question_title, UN.n_nickname, UQ.regidate, AA.answer_date, SA.id, UQ.state " + 
+		String sql ="select UQ.question_type, UQ.question_title, UN.n_nickname, UQ.regidate, AA.answer_date, SA.id, UQ.state, UQ.no, UN.id " + 
 				"from " + 
 				"USER_NORMAL UN " + 
 				"INNER JOIN USER_QUESTION UQ on UN.id=UQ.id " + 
 				"INNER JOIN ADMIN_ANSWER AA on UQ.no=AA.no " + 
 				"INNER JOIN SC_ADMIN SA on AA.id=SA.id ";
-		System.out.println(sql);
+		//System.out.println(sql);
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -77,6 +78,8 @@ public class QuestionDAO {
 				//		rs.getString(6)+"\r\n"+
 				//		rs.getString(7)+"\r\n"
 				//		);
+				//System.out.println(rs.getInt(8));
+				//System.out.println(rs.getString(9));
 				dto.setQuestion_type(rs.getString(1));
 				dto.setQuestion_title(rs.getString(2));
 				dto.setId(rs.getString(3));
@@ -84,6 +87,8 @@ public class QuestionDAO {
 				dto.setState(rs.getString(7));
 				dto.setAnswer_date(rs.getDate(5));
 				dto.setAdmin_id(rs.getString(6));
+				dto.setNo(rs.getInt(8));
+				dto.setRealid(rs.getString(9));
 				list.add(dto);
 			}/////////////while
 		}catch (Exception e) {
@@ -95,11 +100,11 @@ public class QuestionDAO {
 	public List<QuestionDTO> selectList_N(){
 		List<QuestionDTO> list = new Vector<QuestionDTO>();
 		//System.out.println(list);
-		String sql ="SELECT UQ.NO,QUESTION_TYPE,QUESTION_TITLE,N_NICKNAME,REGIDATE, UQ.state " + 
+		String sql ="SELECT UQ.NO,QUESTION_TYPE,QUESTION_TITLE,N_NICKNAME,REGIDATE, UQ.state, UN.id " + 
 				"FROM USER_NORMAL UN " + 
 				"inner JOIN USER_QUESTION UQ ON UN.ID=UQ.ID " + 
 				"where UQ.state is null ";
-		System.out.println(sql);
+		//System.out.println(sql);
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -114,12 +119,63 @@ public class QuestionDAO {
 				//		rs.getDate(5)+"\r\n"+
 				//		rs.getString(6)+"\r\n"
 				//		);
+				//System.out.println(rs.getInt(1));
+				//System.out.println(rs.getString(7));
 				dto.setNo(rs.getInt(1));
 				dto.setQuestion_type(rs.getString(2));
 				dto.setQuestion_title(rs.getString(3));
 				dto.setId(rs.getString(4));
 				dto.setRegidate(rs.getDate(5));
 				dto.setState(rs.getString(6));
+				dto.setRealid(rs.getString(7));
+				list.add(dto);
+			}/////////////while
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List<QuestionDTO> viewQinfo(String no) {
+		//System.out.println(no);
+		List<QuestionDTO> list = new Vector<QuestionDTO>();
+		String sql ="select UQ.state, UQ.question_type, UQ.Question_title, UQ.regidate, UQ.Question_content, UN.img, UN.id, UN.n_nickname, UN.grade, UN.gender, UN.age, UN.mail, UN.phone, UN.n_alarm_sms, UN.n_alarm_mail " + 
+				"from User_Question UQ " + 
+				"inner join User_Normal UN on UQ.id=UN.id " + 
+				"where UQ.no=? ";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, no);
+			rs = psmt.executeQuery();
+			//System.out.println(sql);
+			while(rs.next()) {
+				QuestionDTO dto = new QuestionDTO();
+				//System.out.println(
+				//		rs.getInt(1)+"\r\n" +
+				//		rs.getString(2)+"\r\n"
+				//		rs.getString(3)+"\r\n"+
+				//		rs.getString(4)+"\r\n"+
+				//		rs.getDate(5)+"\r\n"+
+				//		rs.getString(6)+"\r\n"
+				//		);
+				//System.out.println(rs.getInt(1));
+				//System.out.println(rs.getString(7));
+				dto.setState(String.valueOf(rs.getInt(1)));
+				dto.setQuestion_type(rs.getString(2));
+				dto.setQuestion_title(rs.getString(3));
+				dto.setRegidate(rs.getDate(4));
+				dto.setQuestion_content(rs.getString(5));//
+				dto.setImg(rs.getString(6));
+				dto.setRealid(rs.getString(7));
+				dto.setId(rs.getString(8));
+				dto.setGrade(rs.getString(9));
+				dto.setGender(rs.getString(10));
+				dto.setAge(rs.getString(11));//
+				dto.setMail(rs.getString(12));
+				dto.setPhone(String.valueOf(rs.getLong(13)));
+				dto.setN_alarm_sms(rs.getString(14));
+				dto.setN_alarm_mail(rs.getString(15));
+				
 				list.add(dto);
 			}/////////////while
 		}catch (Exception e) {

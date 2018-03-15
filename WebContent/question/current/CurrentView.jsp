@@ -37,56 +37,60 @@
           <li class="breadcrumb-item active"><a href="#">문의 처리 현황</a></li>
         </ul>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="tile">
-            <div class="tile-body">
-              <table class="table table-hover table-bordered" id="sampleTable">
-          
-                <thead>
-                  <tr style="text-align: center;">
-                    <th>유형</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>날짜</th>
-                    <th>처리 여부</th>
-                    <th>처리 날짜</th>
-                    <th>담당자</th>
-                  </tr>
-                  </thead>
-                  
-                  <tbody class="text-center">
-						
-							<c:forEach var="item" items="${list}" varStatus="loop">
-								<tr>
-									<td>${item.question_type}</td>
-									<td><a href="<c:url value='/question/current/Current.do?no=${item.no}&realid=${item.realid}'/>">${item.question_title}</a></td>
-									<td>${item.id}</td>
-									<td>${item.regidate}</td>
-									<td>답변완료</td>
-									<td>${item.answer_date}</td>
-									<td>${item.admin_id}</td>
-								</tr>
-							</c:forEach>
-							<c:forEach var="itemn" items="${listn}" varStatus="loop">
-								<tr>
-									<td>${itemn.question_type}</td>
-									<td><a href="<c:url value='/question/current/Current.do?no=${itemn.no}&realid=${itemn.realid}'/>">${itemn.question_title}</a></td>
-									<td>${itemn.id}</td>
-									<td>${itemn.regidate}</td>
-									<td>처리 대기중</td>
-									<td>처리 대기중</td>
-									<td>담당자 없음</td>
-								</tr>
-							</c:forEach>
-								
-						</tbody>
-                
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+		<div class="col-md-12">
+		<div class="tile">
+			<div class="panel-heading">
+				<h3 class="panel-title">QnA 상세보기</h3>
+			</div>
+			<div class="row justify-content-center">
+				<table class="table bordered">
+					<tr>
+						<td colspan="3" rowspan="4"><img src="${img}" height="auto" width="200px" alt="<c:url value="Images/missing_img.png"/>"/></td>
+						<td>질문유형 : ${question_type}</td>
+						<td>제목 : ${question_title}</td>
+						<td>작성일 : ${regidate}</td>
+						<td>처리 대기중</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td rowspan="2">${realid} ( ${n_nickname} )<br/>${gender} | ${age}</td>
+						<td>${grade} 회원</td>
+						<td>이메일 : ${mail}</td>
+						<td>연락처 : ${phone}</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="4" style="text-align:center">일반 회원 소식 이메일 수신여부 : ${n_alarm_mail} | SMS 수신여부 : ${n_alarm_sms}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="8" style="text-align:center">질문 내용</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="8" style="text-align:center"><div style="width: 80%; margin-left: auto; margin-right: auto;"
+								align="center">${question_content}</div></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td><a href="<c:url value='/question/current/Current.do'/>"
+							class="btn btn-primary">목록으로 이동</a></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href="<c:url value='/question/current/Current.do'/>"
+							class="btn btn-primary">답변 달기</a></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
     </main>
     
     

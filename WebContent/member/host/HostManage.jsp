@@ -174,7 +174,7 @@ href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.cs
 				<div>
 					<ul style="list-style-type: none;">
 						<li><span style='color:#6D3BFF;background-color:#6D3BFF;'>시</span>호스트 회원 남성 : ${chartdataset[4]}명 / <fmt:formatNumber value="${(chartdataset[4]/(chartdataset[4]+chartdataset[5]))*100}" type="number" pattern="#" />%</li>
-						<li><span style='color:#8B64FF;background-color:#8B64FF;'>시</span>호스트 회원 여성 : ${chartdataset[5]}명 / <fmt:formatNumber value="${(chartdataset[5]/(chartdataset[4]+chartdataset[5]))*100}" type="number" pattern="#" />%</li>
+						<li><span style='color:#BFAAFF;background-color:#BFAAFF;'>시</span>호스트 회원 여성 : ${chartdataset[5]}명 / <fmt:formatNumber value="${(chartdataset[5]/(chartdataset[4]+chartdataset[5]))*100}" type="number" pattern="#" />%</li>
 					</ul>
 				</div>
 				<div class="embed-responsive embed-responsive-16by9">
