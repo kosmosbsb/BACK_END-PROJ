@@ -194,107 +194,115 @@
 				<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
 			</ul>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-md-6">
-				<div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+				<div class="widget-small primary coloured-icon">
+					<i class="icon fa fa-users fa-3x"></i>
 					<div class="info">
-			            <h4>일반 회원</h4>
-			            <p><b>${totalRecordCount}명</b></p>
-		            </div>
-	            </div>
-	        </div>
-	       </div>
-
-			<div class="row">
-		        <div class="col-md-4">
-		          <div class="tile">
-		            <h3 class="tile-title">회원 나이 비율</h3>
-		            <div class="embed-responsive embed-responsive-16by9">
-	              		<div class="embed-responsive-item" id="piechart_3d" style="width: 500px; height: 230px;"></div>
-			        </div>   	
-		          </div>
-		        </div>
-		        
-		        <div class="col-md-4">
-		          <div class="tile">
-		            <h3 class="tile-title">회원 남/녀 비율</h3>
-		            <div class="embed-responsive embed-responsive-16by9">
-		            	 <div class="embed-responsive-item" id="donutchart" style="width: 530px; height: 240px;"></div>
-		            </div>
-		          </div>
-		        </div>
-		        
-		        <div class="col-md-4">
-		          <div class="tile">
-		          <h3 class="tile-title">회원 등급 비율</h3>
-            		<div class="embed-responsive embed-responsive-16by9">
-			             <div class="embed-responsive-item" id="chart_div" style="width: 510px; height: 230px;"></div>
-		            </div>
-		          </div>
-		        </div>
-		        
-			</div>
-			
-			<div class="row">
-				<div class="col-md-12">
-		          	<div class="tile">
-			            <h3 class="tile-title">나이별 일반 회원 그래프</h3>
-			            <div class="embed-responsive embed-responsive-16by9">
-			              <div class="embed-responsive-item" id="bar_chart_div" ></div>
-			            </div>
+						<h4>일반 회원</h4>
+						<p>
+							<b>${totalRecordCount}명</b>
+						</p>
 					</div>
-	        	</div>
+				</div>
 			</div>
-			
-			
+		</div>
+
 		<div class="row">
-         <div class="col-md-12" >
-          <div class="tile">
-            <div class="tile-body">
-              <table class="table table-hover table-bordered" id="sampleTable" style="text-align: center;" >
-                <thead>
-                  <tr>
-					<th style="width: 20%;">아이디</th>
-					<th style="width: 15%;">이름</th>
-					<th style="width: 10%;">성별</th>
-					<th style="width: 10%;">나이</th>
-					<th style="width: 18%;">등급</th>
-					<th>적립금</th>
-                  </tr>
-                </thead>
-                <tbody>
-                	<c:if test="${requestScope.list==null}" var="flag">
-							<tr>
-								<td colspan="6"><a href="<c:url value='#'/>">등록된 자료가 없습니다</a></td>
-							</tr>
-					</c:if>
-							
-					<c:if test="${not flag}">
-						<c:forEach var="host" items="${list}" varStatus="loop">
-							<tr>
-								<td><a href="<c:url value='/member/normal/NormalManage.do?id=${host.id}'/>">${host.id}</a></td>
-								<td>${host.name}</td>
-								<c:if test="${host.gender == 'm'}" var="gender" >
-									<td>남자</td>	
+			<div class="col-md-12">
+				<div class="tile">
+					<div class="tile-body">
+						<table class="table table-hover table-bordered" id="sampleTable"
+							style="text-align: center;">
+							<thead>
+								<tr>
+									<th style="width: 20%;">아이디</th>
+									<th style="width: 15%;">이름</th>
+									<th style="width: 10%;">성별</th>
+									<th style="width: 10%;">나이</th>
+									<th style="width: 18%;">등급</th>
+									<th>적립금</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:if test="${requestScope.list==null}" var="flag">
+									<tr>
+										<td colspan="6"><a href="<c:url value='#'/>">등록된 자료가
+												없습니다</a></td>
+									</tr>
 								</c:if>
-								<c:if test="${not gender}">
-									<td>여자</td>
+	
+								<c:if test="${not flag}">
+									<c:forEach var="host" items="${list}" varStatus="loop">
+										<tr>
+											<td><a
+												href="<c:url value='/member/normal/NormalManage.do?id=${host.id}'/>">${host.id}</a></td>
+											<td>${host.name}</td>
+											<c:if test="${host.gender == 'm'}" var="gender">
+												<td>남자</td>
+											</c:if>
+											<c:if test="${not gender}">
+												<td>여자</td>
+											</c:if>
+											<td>${host.age}</td>
+											<td>${host.grade}</td>
+											<td>${host.credit}</td>
+										</tr>
+									</c:forEach>
 								</c:if>
-								<td>${host.age}</td>
-								<td>${host.grade}</td>
-								<td>${host.credit}</td>
-							</tr>
-						</c:forEach>
-					</c:if>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-		
-		
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="tile">
+					<h3 class="tile-title">회원 나이 비율</h3>
+					<div class="embed-responsive embed-responsive-16by9">
+						<div class="embed-responsive-item" id="piechart_3d"
+							style="width: 500px; height: 230px;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="tile">
+					<h3 class="tile-title">회원 남/녀 비율</h3>
+					<div class="embed-responsive embed-responsive-16by9">
+						<div class="embed-responsive-item" id="donutchart"
+							style="width: 530px; height: 240px;"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="tile">
+					<h3 class="tile-title">회원 등급 비율</h3>
+					<div class="embed-responsive embed-responsive-16by9">
+						<div class="embed-responsive-item" id="chart_div"
+							style="width: 510px; height: 230px;"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="tile">
+					<h3 class="tile-title">나이별 일반 회원 그래프</h3>
+					<div class="embed-responsive embed-responsive-16by9">
+						<div class="embed-responsive-item" id="bar_chart_div"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 	</main>
 	
