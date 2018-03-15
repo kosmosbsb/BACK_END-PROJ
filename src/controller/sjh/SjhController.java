@@ -31,9 +31,9 @@ public class SjhController extends HttpServlet {
 		dao.close();
 		
 		req.setAttribute("list", list);//글목록들
-		req.setAttribute("active","dataroom");//메뉴 활성화용
+		//req.setAttribute("active","dataroom");//메뉴 활성화용
 		
-		RequestDispatcher dispatcher=req.getRequestDispatcher("/Serviceinfo/normalinfo/normalinfo.jsp");
+		RequestDispatcher dispatcher=req.getRequestDispatcher("/serviceinfo/normalinfo/normalinfo.jsp");
 		//포워딩]
 		dispatcher.forward(req, resp);
 	}///////////////////

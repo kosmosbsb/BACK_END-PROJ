@@ -30,7 +30,7 @@ public class EditController extends HttpServlet{
 		dao.close();
 		//필요한 값 리퀘스트 영역에 저장
 		req.setAttribute("dto",dto);
-		req.getRequestDispatcher("/Serviceinfo/normalinfo/normal.jsp").forward(req,resp);
+		req.getRequestDispatcher("/serviceinfo/normalinfo/normal.jsp").forward(req,resp);
 		
 		}
 	

@@ -50,20 +50,20 @@ public class SjhDAO {
 	public List<SjhDTO> selectList() {
 		List <SjhDTO> list= new Vector<SjhDTO>();
 		
-		String sql="SELECT * FROM normalinfo ";
+		String sql="select category, title, name, postdate from SERVICEINFO_NORMALINFO ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				SjhDTO dto = new SjhDTO();
-
-				dto.setNo(rs.getString(1));	
-				dto.setContent(rs.getString(2));
-				dto.setCategory(rs.getString(3));
-				dto.setTitle(rs.getString(4));
-				dto.setName(rs.getString(5));
-				dto.setPostdate(rs.getDate(6));				
-				
+				SjhDTO dto = new SjhDTO();				
+//				System.out.println(rs.getString(1));
+//				System.out.println(rs.getString(2));
+//				System.out.println(rs.getString(3));
+//				System.out.println(rs.getDate(4));
+				dto.setCategory(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				dto.setName(rs.getString(3));
+				dto.setPostdate(rs.getDate(4));						
 				
 				
 				list.add(dto);				
