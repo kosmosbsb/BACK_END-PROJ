@@ -143,8 +143,8 @@ href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.cs
 				<h3 class="tile-title">일반회원 중 호스트 회원 비율</h3>
 				<div>
 					<ul style="list-style-type: none;">
-						<li><span style='color:#FFC700;background-color:#FFC700;'>시</span>일반 회원 : ${chartdataset[0]}명, <fmt:formatNumber value="${(chartdataset[0]/(chartdataset[0]+chartdataset[1]))*100}" type="number" pattern="#" />%</li>
-						<li><span style='color:#6D3BFF;background-color:#6D3BFF;'>시</span>호스트 회원 : ${chartdataset[1]}명, <fmt:formatNumber value="${(chartdataset[1]/(chartdataset[0]+chartdataset[1]))*100}" type="number" pattern="#" />%</li>
+						<li><span style='color:#FFC700;background-color:#FFC700;'>시</span>일반 회원 : ${chartdataset[0]}명 / <fmt:formatNumber value="${(chartdataset[0]/(chartdataset[0]+chartdataset[1]))*100}" type="number" pattern="#" />%</li>
+						<li><span style='color:#6D3BFF;background-color:#6D3BFF;'>시</span>호스트 회원 : ${chartdataset[1]}명 / <fmt:formatNumber value="${(chartdataset[1]/(chartdataset[0]+chartdataset[1]))*100}" type="number" pattern="#" />%</li>
 					</ul>
 				</div>
 				<div class="embed-responsive embed-responsive-16by9">
@@ -158,8 +158,8 @@ href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.cs
 				<h3 class="tile-title">일반 회원 성별 비율</h3>
 				<div>
 					<ul style="list-style-type: none;">
-						<li><span style='color:#FFC700;background-color:#FFC700;'>시</span>일반 회원 남성 : ${chartdataset[2]}명, <fmt:formatNumber value="${(chartdataset[2]/(chartdataset[2]+chartdataset[3]))*100}" type="number" pattern="#" />%</li>
-						<li><span style='color:#FFEFB8;background-color:#FFEFB8;'>시</span>일반 회원 여성 : ${chartdataset[3]}명, <fmt:formatNumber value="${(chartdataset[3]/(chartdataset[2]+chartdataset[3]))*100}" type="number" pattern="#" />%</li>
+						<li><span style='color:#FFC700;background-color:#FFC700;'>시</span>일반 회원 남성 : ${chartdataset[2]}명 / <fmt:formatNumber value="${(chartdataset[2]/(chartdataset[2]+chartdataset[3]))*100}" type="number" pattern="#" />%</li>
+						<li><span style='color:#FFEFB8;background-color:#FFEFB8;'>시</span>일반 회원 여성 : ${chartdataset[3]}명 / <fmt:formatNumber value="${(chartdataset[3]/(chartdataset[2]+chartdataset[3]))*100}" type="number" pattern="#" />%</li>
 					</ul>
 				</div>
 				<div class="embed-responsive embed-responsive-16by9">
@@ -173,8 +173,8 @@ href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.cs
 				<h3 class="tile-title">호스트 회원 성별 비율</h3>
 				<div>
 					<ul style="list-style-type: none;">
-						<li><span style='color:#6D3BFF;background-color:#6D3BFF;'>시</span>호스트 회원 남성 : ${chartdataset[4]}명, <fmt:formatNumber value="${(chartdataset[4]/(chartdataset[4]+chartdataset[5]))*100}" type="number" pattern="#" />%</li>
-						<li><span style='color:#8B64FF;background-color:#8B64FF;'>시</span>호스트 회원 여성 : ${chartdataset[5]}명, <fmt:formatNumber value="${(chartdataset[5]/(chartdataset[4]+chartdataset[5]))*100}" type="number" pattern="#" />%</li>
+						<li><span style='color:#6D3BFF;background-color:#6D3BFF;'>시</span>호스트 회원 남성 : ${chartdataset[4]}명 / <fmt:formatNumber value="${(chartdataset[4]/(chartdataset[4]+chartdataset[5]))*100}" type="number" pattern="#" />%</li>
+						<li><span style='color:#8B64FF;background-color:#8B64FF;'>시</span>호스트 회원 여성 : ${chartdataset[5]}명 / <fmt:formatNumber value="${(chartdataset[5]/(chartdataset[4]+chartdataset[5]))*100}" type="number" pattern="#" />%</li>
 					</ul>
 				</div>
 				<div class="embed-responsive embed-responsive-16by9">

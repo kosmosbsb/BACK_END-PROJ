@@ -15,7 +15,17 @@ public class QuestionDTO {
 	private String admin_id;
 	//답변날짜
 	private Date answer_date;
+	//처리여부
+	private String state;
 	
+	
+	
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
 	public Date getAnswer_date() {
 		return answer_date;
 	}

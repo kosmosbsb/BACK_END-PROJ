@@ -63,26 +63,22 @@
 									<td>${item.question_title}</td>
 									<td>${item.id}</td>
 									<td>${item.regidate}</td>
-									<td>처리여부</td>
+									<td>답변완료</td>
 									<td>${item.answer_date}</td>
 									<td>${item.admin_id}</td>
 								</tr>
 							</c:forEach>
-								<c:forEach var="item_N" items="${list_N}" varStatus="loop">
-									<c:if test="${item.admin_id==item_N.admin_id}" var="fflag">
-									<tr>
-										<td>${item_N.question_type}</td>
-										<td>${item_N.question_title}</td>
-										<td>${item_N.id}</td>
-										<td>${item_N.regidate}</td>
-										<td>N</td>
-										<td></td>
-										<td></td>
-									</tr>
-									</c:if>
-									<c:if test="${not fflag}">
-                      				</c:if>
-								</c:forEach>
+							<c:forEach var="itemn" items="${listn}" varStatus="loop">
+								<tr>
+									<td>${itemn.question_type}</td>
+									<td>${itemn.question_title}</td>
+									<td>${itemn.id}</td>
+									<td>${itemn.regidate}</td>
+									<td>처리 대기중</td>
+									<td>처리 대기중</td>
+									<td>담당자 없음</td>
+								</tr>
+							</c:forEach>
 								
 						</tbody>
                 
@@ -107,8 +103,8 @@
     <!-- The javascript plugin to display page loading on top-->
     <script src="<c:url value='/js/plugins/pace.min.js'/>"></script>
     
-    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="<c:url value="/js/plugins/jquery.dataTables.min.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/js/plugins/dataTables.bootstrap.min.js" />"></script>
     
     <script type="text/javascript">
     $('#sampleTable').DataTable({

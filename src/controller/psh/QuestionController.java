@@ -19,12 +19,12 @@ public class QuestionController extends HttpServlet{
 		System.out.println(req.getParameter("no"));*/
 		QuestionDAO dao = new QuestionDAO(req.getServletContext());
 		List<QuestionDTO> list = dao.selectList_A();
-		List<QuestionDTO> list_N=dao.selectList_N();
+		List<QuestionDTO> list_N =dao.selectList_N();
 		dao.close();
 		//라]결과값이 있으면 리퀘스트 영역에 저장
 		// 페이지용 문자열 생성]
 		req.setAttribute("list", list);
-		req.setAttribute("list_N", list_N);
+		req.setAttribute("listn", list_N);
 		//글목록들
 		//뷰선택]
 		RequestDispatcher dispatcher=req.getRequestDispatcher("/question/current/Current.jsp");

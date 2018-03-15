@@ -55,29 +55,35 @@ public class QuestionDAO {
 	public List<QuestionDTO> selectList_A(){
 		List<QuestionDTO> list = new Vector<QuestionDTO>();
 		//System.out.println(list);
-		String sql ="select UQ.no, UQ.question_type,UQ.question_title,UN.n_nickname,UQ.REGIDATE,AA.ID,AA.ANSWER_DATE from user_question UQ INNER JOIN user_normal UN on UQ.id=UN.id INNER JOIN ADMIN_ANSWER AA ON UQ.NO=AA.NO INNER JOIN SC_ADMIN SA ON AA.ID=SA.ID";
-		//System.out.println(sql);
+		String sql ="select UQ.question_type, UQ.question_title, UN.n_nickname, UQ.regidate, AA.answer_date, SA.id, UQ.state " + 
+				"from " + 
+				"USER_NORMAL UN " + 
+				"INNER JOIN USER_QUESTION UQ on UN.id=UQ.id " + 
+				"INNER JOIN ADMIN_ANSWER AA on UQ.no=AA.no " + 
+				"INNER JOIN SC_ADMIN SA on AA.id=SA.id ";
+		System.out.println(sql);
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			//System.out.println(sql);
 			while(rs.next()) {
 				QuestionDTO dto = new QuestionDTO();
-/*				System.out.println(rs.getString(1)+"\r\n"+
-						rs.getString(2)+"\r\n"+
-						rs.getString(3)+"\r\n"+
-						rs.getString(4)+"\r\n"+
-						rs.getDate(5)+"\r\n"+
-						rs.getString(6)+"\r\n"+
-						rs.getDate(7)+"\r\n"
-						);*/
-				dto.setNo(Integer.parseInt(rs.getString(1)));
-				dto.setQuestion_type(rs.getString(2));
-				dto.setQuestion_title(rs.getString(3));
-				dto.setId(rs.getString(4));
-				dto.setRegidate(rs.getDate(5));
+				//System.out.println(
+				//		rs.getString(1)+"\r\n"+
+				//		rs.getString(2)+"\r\n"+
+				//		rs.getString(3)+"\r\n"+
+				//		rs.getDate(4)+"\r\n"+
+				//		rs.getDate(5)+"\r\n"+
+				//		rs.getString(6)+"\r\n"+
+				//		rs.getString(7)+"\r\n"
+				//		);
+				dto.setQuestion_type(rs.getString(1));
+				dto.setQuestion_title(rs.getString(2));
+				dto.setId(rs.getString(3));
+				dto.setRegidate(rs.getDate(4));
+				dto.setState(rs.getString(7));
+				dto.setAnswer_date(rs.getDate(5));
 				dto.setAdmin_id(rs.getString(6));
-				dto.setAnswer_date(rs.getDate(7));
 				list.add(dto);
 			}/////////////while
 		}catch (Exception e) {
@@ -87,35 +93,39 @@ public class QuestionDAO {
 	}
 	
 	public List<QuestionDTO> selectList_N(){
-		List<QuestionDTO> list_N = new Vector<QuestionDTO>();
-		//System.out.println(list_N);
-		String sql ="SELECT NO,QUESTION_TYPE,QUESTION_TITLE,N_NICKNAME,REGIDATE "; 
-				sql+="FROM USER_NORMAL UN JOIN USER_QUESTION UQ ON UN.ID=UQ.ID";
-		//System.out.println(sql);
+		List<QuestionDTO> list = new Vector<QuestionDTO>();
+		//System.out.println(list);
+		String sql ="SELECT UQ.NO,QUESTION_TYPE,QUESTION_TITLE,N_NICKNAME,REGIDATE, UQ.state " + 
+				"FROM USER_NORMAL UN " + 
+				"inner JOIN USER_QUESTION UQ ON UN.ID=UQ.ID " + 
+				"where UQ.state is null ";
+		System.out.println(sql);
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			//System.out.println(sql);
 			while(rs.next()) {
 				QuestionDTO dto = new QuestionDTO();
-				/*System.out.println(rs.getString(1)+"\r\n"+
-						rs.getString(2)+"\r\n"+
-						rs.getString(3)+"\r\n"+
-						rs.getString(4)+"\r\n"+
-						rs.getDate(5)+"\r\n"
-						);*/
-				dto.setNo(Integer.parseInt(rs.getString(1)));
+				//System.out.println(
+				//		rs.getString(1)+"\r\n"+
+				//		rs.getString(2)+"\r\n"+
+				//		rs.getString(3)+"\r\n"+
+				//		rs.getString(4)+"\r\n"+
+				//		rs.getDate(5)+"\r\n"+
+				//		rs.getString(6)+"\r\n"
+				//		);
+				dto.setNo(rs.getInt(1));
 				dto.setQuestion_type(rs.getString(2));
 				dto.setQuestion_title(rs.getString(3));
 				dto.setId(rs.getString(4));
 				dto.setRegidate(rs.getDate(5));
-				dto.setAdmin_id("-1");
-				list_N.add(dto);
+				dto.setState(rs.getString(6));
+				list.add(dto);
 			}/////////////while
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return list_N;
+		return list;
 	}
 	
 	
