@@ -152,23 +152,20 @@
                               <td>
 			                  	<a href="Edit.jsp?articleId=<%=record.getNotice_no()%>">수정</a>|<a href = "Delete.jsp?articleId=<%=record.getNotice_no()%>">삭제</a>
 			                 </td>		
+			          
 			           	</tr>    
-                             </tr>                           
+                                                       
                         <%		
                         		loop++;
+                          		
                           		}//for
+                         
                           }//else %>
-              
-               					
-    			
                 </tbody>
                        
                        
-                       		
-                       
               </table>
-           
-			               <button class="btn btn-primary" type="button" onclick ="Write.jsp">추가 </button>
+			     <a href="Write.jsp">추가</a>
             </div>
           </div>
         </div>

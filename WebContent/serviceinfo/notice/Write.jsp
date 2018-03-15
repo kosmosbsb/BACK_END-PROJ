@@ -7,18 +7,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-//1]파라미터(키값) 받기
-String articleId = request.getParameter("articleId");
-//현재 페이지번호 받기
-String nowPage = request.getParameter("nowPage");
-//2]CRUD작업용 BbsDAO생성
-DataRoomDAO dao = new DataRoomDAO(application);
-//상세보기용 메소드 호출	
-List<DataRoomDTO> list =dao.selectList();
-//3]자원반납
-dao.close();
-
-
+				//1]파라미터(키값) 받기
+				String articleId = request.getParameter("articleId");
+				//현재 페이지번호 받기
+				//String nowPage = request.getParameter("nowPage");
+				
+				//2]CRUD작업용 BbsDAO생성
+				DataRoomDAO dao = new DataRoomDAO(application);
+				//상세보기용 메소드 호출	
+				DataRoomDTO dto =dao.selectOne(articleId);
+				//3]자원반납
+				dao.close();
+				
 
 %>
 
@@ -107,7 +107,7 @@ dao.close();
      <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>글작성</h1>
+          <h1><i class="fa fa-dashboard"></i>글 등록</h1>
       
         </div>
       
@@ -117,55 +117,65 @@ dao.close();
          <div class="col-md-12" >
           <div class="tile">
             <div class="tile-body">
-              <table class="table table-hover table-bordered" id="sampleTable">
-                  <thead>  	
-	                   <tbody>
-	                        <form action="WriteOk.jsp" method="post">
-			                  	<% 
-			                  			for(DataRoomDTO record:list){%>
-                         					  
-			                  	<input type="hidden" name="articleId" value="<%=record.getNo()%>"/>
-			                  	<input type="hidden" name="articleDay" value="<%=record.getPostdate()%>"/>
-			                  	<input type="hidden" name="nowPage" value="<%=nowPage%>"/>
-			                  	                 	
+            <form action="WriteOk.jsp" method="post">
+			   
+              <table class="table table-hover table-bordered">
+			                  <tr>
+				                  <td class="text-center">번호</td>
+				                  <td >
+				                  <input type="text"  name="notice_no"  style="width:98%"/>
+				                  </td>
+			                  </tr>
+			                 
+			                 <tr>
+				                  <td class="text-center">제목</td>
+				                  <td >
+				                  <input type="text"  name="title" style="width:98%"/>
+				                  </td>
+			                  </tr>
+			                 
+			                  <tr>
+			                  		<td align="center">내용</td>
+			                  		<td>
+			                  		<textarea rows="10"  style="width:98%" name="content"></textarea>
+			                  		</td>
+			                  			
+			                  </tr>
 			                  		
-			                  </thread>			
+			                  <tr>
+			                  		<td class="text-center">카타고리</td>
+			                  		<td >
+			                  		<input type="text"   name="category" style="width:98%"/>
+			                  		</td>
+			                  </tr>
 			                  		<tr>
-			                  			<td class="text-center">이름</td>
-			                  			<td >
-			                  			<input type="text" name="title" style="width:98%"/>
-			                  			</td>
+			                  		<td class="text-center">관리자ID</td>
+			                  		<td >
+			                  		<input type="text"   name="name" style="width:98%"/>
+			                  		</td>
+			                  	</tr>
+			                  	
+			                  		<tr>
+			                  		<td class="text-center">호스트</td>
+			                  		<td >
+			                  		<input type="text"   name="normal_or_host" style="width:98%"/>
+			                  		</td>
+			                  	</tr>
+			                  	
 			                  		
-			                  		</tr>
-			                  		<tr>
-			                  			<td class="text-center">제목</td>
-			                  			<td >
-			                  			<input type="text"   name="title" style="width:98%"/>
-			                  			</td>
-			                  		</tr>
-			                  			<tr>
-			                  			<td align="center">내용</td>
-			                  			<td>
-			                  			<textarea rows="10" style="width:98%" name="content"></textarea>
-			                  			</td>
-			                  		</tr>
 			                  		<tr bgcolor="white" align="center">
 			                  			<td colspan="2">
 			                  			<input type="submit" value="확인"/>
 			                  			</td>
 			                  		</tr>                  	
-			                  	<%} %>
+			                
 			                  	</tbody>
 			                  	</table> 
 		                 
 		                  	</form>
-	                   
-	                                         
                    </table>
                     </div>
-                
                 </div>
-          
  </div>
      
 </div>
@@ -196,3 +206,4 @@ dao.close();
   </body>
 </html>
     
+   

@@ -10,11 +10,17 @@
 	String title= request.getParameter("title");
 	String content= request.getParameter("content");
 	String name  = request.getParameter("name");
+	String category = request.getParameter("category");
+	String notice_no = request.getParameter("notice_no");
+	String normal_or_host = request.getParameter("normal_or_host");
 	//3]데이타를 전달할 DTO객체 생성및 데이타 설정
 	DataRoomDTO dto = new DataRoomDTO();
+	dto.setNotice_no(notice_no);
 	dto.setTitle(title);
 	dto.setContent(content);
-	dto.setName(name);
+	dto.setCategory(category);
+	dto.setId(name);
+	dto.setNormal_or_host(normal_or_host);
 	//4]CRUD작업용 DAO계열 객체 생성
 	DataRoomDAO dao = new DataRoomDAO(application);
 	int affected = dao.insert(dto);

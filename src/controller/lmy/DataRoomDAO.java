@@ -100,18 +100,18 @@ public class DataRoomDAO {
 	//입력용
 	public int insert(DataRoomDTO dto) {
 		int affected=0;
-		String sql="INSERT INTO NOTICE(no,name,title,content,postdate) VALUES(noticeseq.NEXTVAL,?,?,?,?,?)";
+		String sql="insert into notice(NOTICE_NO,TITLE,CONTENT,NORMAL_OR_HOST,CATEGORY,ID) values(?,?,?,?,?,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, dto.getNotice_no());
+			psmt.setString(1,dto.getNotice_no());
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getContent());
+			psmt.setString(4, dto.getNormal_or_host());
+			psmt.setString(5, dto.getCategory());
+			psmt.setString(6, dto.getId());
 			
-			psmt.setString(3, dto.getTitle());
-			psmt.setString(4, dto.getContent());
-		
-			
-			
-		
 			affected = psmt.executeUpdate();
+			System.out.println(affected);
 		} 
 		catch (Exception e) {	e.printStackTrace();}
 		return affected;
