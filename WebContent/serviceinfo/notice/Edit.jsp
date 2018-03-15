@@ -10,12 +10,12 @@
 //1]파라미터(키값) 받기
 String articleId = request.getParameter("articleId");
 //현재 페이지번호 받기
-String nowPage = request.getParameter("nowPage");
+//String nowPage = request.getParameter("nowPage");
 
 //2]CRUD작업용 BbsDAO생성
 DataRoomDAO dao = new DataRoomDAO(application);
 //상세보기용 메소드 호출	
-List<DataRoomDTO> list =dao.selectList();
+DataRoomDTO dto =dao.selectOne(articleId);
 //3]자원반납
 dao.close();
 
@@ -117,34 +117,25 @@ dao.close();
          <div class="col-md-12" >
           <div class="tile">
             <div class="tile-body">
-              <table class="table table-hover table-bordered" id="sampleTable">
-                  <thead>  	
-	                   <tbody>
-	                        <form action="EditOk.jsp" method="post">
-			                  	<% 
-			                  			for(DataRoomDTO record:list){%>
-                         					  
-			                  	<input type="hidden" name="articleId" value="<%=record.getNotice_no()%>"/>
-			                  	<input type="hidden" name="nowPage" value="<%=nowPage%>"/>
-			                  	                 	
-			                  		
-			                  </thread>			
+            <form action="EditOK.jsp" method="post">
+			                  	<input type="hidden" name="articleId" value="<%=dto.getNotice_no()%>"/>
+              <table class="table table-hover table-bordered">
 			                  		<tr>
 			                  			<td class="text-center">카타고리</td>
 			                  			<td >
-			                  			<input type="text"  value="<%=record.getCategory()%>" name="title" style="width:98%"/>
+			                  			<input type="text"  value="<%=dto.getCategory()%>" name="category" style="width:98%"/>
 			                  			</td>
 			                  		</tr>
 			                  		<tr>
 			                  			<td class="text-center">제목</td>
 			                  			<td >
-			                  			<input type="text"  value="<%=record.getTitle() %>" name="title" style="width:98%"/>
+			                  			<input type="text"  value="<%=dto.getTitle() %>" name="title" style="width:98%"/>
 			                  			</td>
 			                  		</tr>
 			                  			<tr>
 			                  			<td align="center">내용</td>
 			                  			<td>
-			                  			<textarea rows="10" style="width:98%" name="content"><%=record.getContent()%></textarea>
+			                  			<textarea rows="10" style="width:98%" name="content"><%=dto.getContent()%></textarea>
 			                  			</td>
 			                  			
 			                  		</tr>
@@ -153,18 +144,14 @@ dao.close();
 			                  			<input type="submit" value="확인"/>
 			                  			</td>
 			                  		</tr>                  	
-			                  	<%} %>
+			                
 			                  	</tbody>
 			                  	</table> 
 		                 
 		                  	</form>
-	                   
-	                                         
                    </table>
                     </div>
-                
                 </div>
-          
  </div>
      
 </div>

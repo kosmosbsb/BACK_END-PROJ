@@ -74,7 +74,7 @@ public class DataRoomDAO {
 
  	public DataRoomDTO selectOne(String key) {
 		DataRoomDTO dto = null;
-		String sql="select * from NOTICE where no=? ";
+		String sql="select * from NOTICE where notice_no=? ";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -83,13 +83,14 @@ public class DataRoomDAO {
 			if(rs.next()) {
 				dto = new DataRoomDTO();
 			
+
 				dto.setNotice_no(rs.getString(1));
-				dto.setTitle(rs.getString(3));
-				dto.setContent(rs.getString(4));
-				dto.setId(rs.getString(2));
-				dto.setRegidate(rs.getDate(5));
-				dto.setNormal_or_host(rs.getString(6));
-				dto.setCategory(rs.getString(7));
+				dto.setTitle(rs.getString(2));
+				dto.setContent(rs.getString(3));
+				dto.setRegidate(rs.getDate(4));
+				dto.setNormal_or_host(rs.getString(5));
+				dto.setCategory(rs.getString(6));
+				dto.setId(rs.getString(7));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

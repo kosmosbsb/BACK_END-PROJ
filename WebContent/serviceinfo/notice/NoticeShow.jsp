@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	//현재 페이지 번호 받기 
-	String nowPage = request.getParameter("nowPage");
+	// String nowPage = request.getParameter("nowPage");
 
 	//리스트 보여주기
 	DataRoomDAO dao = new DataRoomDAO(application);
@@ -148,7 +148,7 @@
                                <td style="width: 10%" class="text-center"><%=record.getId() %></td>
                              
                               <td>
-			                  	<a href="Edit.jsp?articleId=<%=record.getNotice_no()%>&nowPage=<%=nowPage%>">수정</a>|<a href = "#" onclick="isDelete()">삭제</a>
+			                  	<a href="Edit.jsp?articleId=<%=record.getNotice_no()%>">수정</a>|<a href = "#" onclick="isDelete()">삭제</a>
 			                 </td>		
 			           	</tr>    
                              </tr>                           

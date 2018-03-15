@@ -9,20 +9,20 @@
 	String title= request.getParameter("title");
 	String content= request.getParameter("content");
 	String articleId= request.getParameter("articleId");
-	//현재 페이지번호 받기
-	String nowPage = request.getParameter("nowPage");
+	String category= request.getParameter("category");
 	
 	//3]데이타를 전달할 DTO객체 생성및 데이타 설정
 	DataRoomDTO dto = new DataRoomDTO();
 	dto.setTitle(title);
 	dto.setContent(content);
-	dto.setNo(articleId);
+	dto.setNotice_no(articleId);
+	dto.setCategory(category);
 	//4]CRUD작업용 DAO계열 객체 생성
 	DataRoomDAO dao = new DataRoomDAO(application);
 	int affected = dao.update(dto);
 	dao.close();
 	if(affected == 1){
-		response.sendRedirect("NoticeShow.jsp?articleId="+articleId+"&nowPage="+nowPage);
+		response.sendRedirect("NoticeShow.jsp");
 	}
 	else{%>
 		<script>
