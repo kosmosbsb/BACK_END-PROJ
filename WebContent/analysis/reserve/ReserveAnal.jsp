@@ -128,9 +128,9 @@
       	datasets: [
       		{
       			label: "My First dataset",
-      			fillColor: "rgba(220,220,220,0.2)",
-      			strokeColor: "rgba(220,220,220,1)",
-      			pointColor: "rgba(220,220,220,1)",
+      			fillColor: "rgba(250,88,88,0.2)",
+      			strokeColor: "rgba(250,88,88,1)",
+      			pointColor: "rgba(250,88,88,1)",
       			pointStrokeColor: "#fff",
       			pointHighlightFill: "#fff",
       			pointHighlightStroke: "rgba(220,220,220,1)",
@@ -149,9 +149,9 @@
     	      	datasets: [
     	      		{
     	      			label: "My First dataset",
-    	      			fillColor: "rgba(220,220,220,0.2)",
-    	      			strokeColor: "rgba(220,220,220,1)",
-    	      			pointColor: "rgba(220,220,220,1)",
+    	      			fillColor: "rgba(250,88,88,0.2)",
+    	      			strokeColor: "rgba(250,88,88,1)",
+    	      			pointColor: "rgba(250,88,88,1)",
     	      			pointStrokeColor: "#fff",
     	      			pointHighlightFill: "#fff",
     	      			pointHighlightStroke: "rgba(220,220,220,1)",
@@ -169,13 +169,13 @@
                  		value: ${pieChartResult_gender[0]},
                  		color: "#46BFBD",
                  		highlight: "#5AD3D1",
-                 		label: "Green"
+                 		label: "남자"
                  	},
                  	{
                  		value: ${pieChartResult_gender[1]},
                  		color: "#FDB45C",
                  		highlight: "#FFC870",
-                 		label: "Yellow"
+                 		label: "여자"
                  	}
                  ]
       
