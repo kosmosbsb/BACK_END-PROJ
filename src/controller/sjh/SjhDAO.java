@@ -72,19 +72,19 @@ public class SjhDAO {
 		return list;
 	}////////////////////////////
 	
-	public SjhDTO selectOne(String key) {
+	public SjhDTO selectOne(String title) {
 		SjhDTO dto=null;
-		String sql="SELECT * FROM serviceinfo_nomalinfo WHERE no =?";
+		String sql="SELECT * from SERVICEINFO_NORMALINFO WHERE title =?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, key);
+			psmt.setString(1, title);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
-				dto = new SjhDTO();								
-				dto.setTitle(rs.getString(3));
-				dto.setContent(rs.getString(4));				
-				dto.setPostdate(rs.getDate(2));							
-				dto.setName(rs.getString(1));
+				dto = new SjhDTO();
+				dto.setContent(rs.getString(3));									
+				dto.setTitle(rs.getString(4));
+				dto.setName(rs.getString(5));
+				dto.setPostdate(rs.getDate(6));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

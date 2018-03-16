@@ -60,7 +60,7 @@
                 <c:forEach var="item" items="${list}" varStatus="loop">
 	   				<tr>
 	   					<td>${item.category}</td>
-	   					<td><a href="<c:url value='/NormalInfoView/View.do?key=${item.no}'/>">${item.title}</a></td>
+	   					<td><a href="<c:url value='/NormalInfoView/View.do?title=${item.title}'/>">${item.title}</a></td>
 	   					<td>${item.name}</td>
 	   					<td>${item.postdate}</td>
 	   				</tr>
