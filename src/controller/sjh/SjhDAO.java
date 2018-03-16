@@ -71,6 +71,26 @@ public class SjhDAO {
 		} catch (Exception e) {e.printStackTrace();}
 		return list;
 	}////////////////////////////
+	
+	public SjhDTO selectOne(String key) {
+		SjhDTO dto=null;
+		String sql="SELECT * FROM serviceinfo_nomalinfo WHERE no =?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, key);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				dto = new SjhDTO();								
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));				
+				dto.setPostdate(rs.getDate(2));							
+				dto.setName(rs.getString(1));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		return dto;
+	}//////////////////////////////
 
 
 }
