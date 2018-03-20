@@ -138,6 +138,17 @@
 	<url-pattern>/question/current/Current.do</url-pattern>
   </servlet-mapping>
 
+  <!-- 답변처리 서블릿 등록 박세현 -->
+    <servlet>
+ 	<servlet-name>ReplyController</servlet-name>
+	<servlet-class>controller.psh.ReplyController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 박세현 -->
+  <servlet-mapping>
+	<servlet-name>ReplyController</servlet-name>
+	<url-pattern>/question/current/Reply.do</url-pattern>
+  </servlet-mapping>
+
    <!--문의 통계 서블릿 등록 박세현-->
 <!--    <servlet>
  	<servlet-name>ProcessingControl</servlet-name>
