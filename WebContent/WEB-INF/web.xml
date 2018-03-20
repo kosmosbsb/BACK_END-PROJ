@@ -78,6 +78,17 @@
 	<url-pattern>/NormalInfoView/View.do</url-pattern>
   </servlet-mapping>
   
+  <!-- 서블릿 등록 성주현 -->
+  <servlet>
+ 	<servlet-name>NormalInfoEdit</servlet-name>
+	<servlet-class>controller.sjh.EditController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 성주현 -->
+  <servlet-mapping>
+	<servlet-name>NormalInfoEdit</servlet-name>
+	<url-pattern>/NormalInfoView/Edit.do</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
   	<!-- 서블릿 명:임의로 지정 최지훈-->
   	<servlet-name>DataList</servlet-name>

@@ -14,8 +14,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
-import controller.lmy.DataRoomDTO;
-import model.BbsDTO;
+
+
 
 
 public class SjhDAO {
@@ -91,6 +91,23 @@ public class SjhDAO {
 		}		
 		return dto;
 	}//////////////////////////////
+	
+	public int update(SjhDTO dto) {//no,category,content,title,name,sysdate,id
+		int affected=0;
+		String sql="UPDATE SERVICEINFO_NORMALINFO SET category=?,content=?,title=?,name=? WHERE title=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,dto.getCategory());
+			psmt.setString(2,dto.getContent());
+			psmt.setString(3, dto.getTitle());						
+			psmt.setString(4, dto.getName());
+			
+			
+			affected = psmt.executeUpdate();
+		} 
+		catch (Exception e) {	e.printStackTrace();}
+		return affected;
+	}///////////////////////////////////////
 
 
 }

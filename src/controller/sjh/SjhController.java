@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.lmy.DataRoomDAO;
-import controller.lmy.DataRoomDTO;
 
 //1]사용자 요청을 받을 수 있도록 서블릿 클래스로 만들기(HttpServlet상속)
 //즉 컨트롤러로 만들기

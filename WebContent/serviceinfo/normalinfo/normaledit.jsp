@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ include file="/common/IsMember.jsp" %> 
+<%@ include file="/common/IsMember.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -36,13 +36,13 @@
 		<div>
 		
 			<h1>
-				<i class="fa fa-dashboard"></i> 상세보기
+				<i class="fa fa-dashboard"></i> 수정
 			</h1>
-			<p>일반 정보 상세보기</p>
+			<p>일반 정보 수정</p>
 		</div>
 		<ul class="app-breadcrumb breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-			<li class="breadcrumb-item"><a href="#">normalinfo view</a></li>
+			<li class="breadcrumb-item"><a href="#">normalinfo edit</a></li>
 		</ul>
 	</div>
 	
@@ -57,26 +57,26 @@
               <form>
                 <div class="form-group">
                   <label class="control-label">작성자</label>
-                  <label class="form-control">${dto.name}</label>
+                  <input class="form-control" type="text" placeholder="${dto.name}">                  
                 </div>
                 <div class="form-group">
                   <label class="control-label">작성일</label>
-                  <label class="form-control">${dto.postdate}</label>
+                  <input class="form-control" type="text" placeholder="${dto.postdate}">
                 </div>
                 <div class="form-group">
                   <label class="control-label">제목</label>
-                  <label class="form-control">${dto.title}</label>
+                  <input class="form-control" type="text" placeholder="${dto.title}">
                 </div>
                 <div class="form-group">
                   <label class="control-label">내용</label>
-                  <label class="form-control">${dto.content}</label>
+                  <textarea class="form-control" rows="4" placeholder="${dto.content}">${dto.content}</textarea>
                 </div>                                
                 
               </form>
             </div>
             <div class="row justify-content-center">     
             
-              <a class="btn btn-primary" href="<c:url value='/NormalInfoView/Edit.do?title=${dto.title}'/>">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">목록</a>
+              <a class="btn btn-primary" href="<c:url value='/NormalInfo/List.do'/>">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">취소</a>
             </div>
           </div>
         </div>

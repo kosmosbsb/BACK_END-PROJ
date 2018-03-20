@@ -12,29 +12,36 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 
 import model.PBKDF2;
-import controller.lmy.DataRoomDAO;
-import controller.lmy.DataRoomDTO;
+import controller.sjh.SjhDAO;
+import controller.sjh.SjhDTO;
 
 
-public class EditController extends HttpServlet{
-@Override
- 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+public class EditController extends HttpServlet {
 	
-	if(req.getMethod().toUpperCase().equals("GET")) {
-		//파라미터 받기
-		String key = req.getParameter("key");
+	@Override
+	protected void service(HttpServletRequest req, 
+			HttpServletResponse resp) throws ServletException, IOException {
 		
-		DataRoomDAO dao = new DataRoomDAO(req.getServletContext());
-		DataRoomDTO dto = dao.selectOne(key);
-		dto.setContent(dto.getContent().replace("\r\n","<br/>"));
-		dao.close();
-		//필요한 값 리퀘스트 영역에 저장
-		req.setAttribute("dto",dto);
-		req.getRequestDispatcher("/serviceinfo/normalinfo/normal.jsp").forward(req,resp);
-		
+		//요청분석]
+		if(req.getMethod().toUpperCase().equals("GET")) {//수정폼으로 이동
+			//키값 파라미터 받기]
+			String title = req.getParameter("title");
+			//모델 호출 및 결과 값 받기]
+			SjhDAO dao = new SjhDAO(req.getServletContext());
+			SjhDTO dto = dao.selectOne(title);
+			dao.close();
+			//리퀘스트 영역에 저장]
+			req.setAttribute("dto", dto);
+			//포워드]
+			req.getRequestDispatcher("/serviceinfo/normalinfo/normaledit.jsp").forward(req, resp);
 		}
-	
-	
-	
-	}
+		else {
+			//※파라미터로 전달된 값들을 MultipartRequest가
+			//가로채서 
+			//상세보기로 이동하기 위해 영역에 키값 저장]
+			
+			//6]포워드<c:url value='/NormalInfo/List.do'/>
+			req.getRequestDispatcher("/serviceinfo/normalinfo/normalinfo.jsp").forward(req, resp);
+		}
+	}////////////////////////////
 }
