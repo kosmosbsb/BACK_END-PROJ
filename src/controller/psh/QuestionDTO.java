@@ -35,6 +35,8 @@ public class QuestionDTO {
 	//답변 내용
 	private String content;
 	
+	
+	
 	public String getContent() {
 		return content;
 	}
