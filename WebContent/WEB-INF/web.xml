@@ -161,16 +161,16 @@
   </servlet-mapping>
 
    <!--문의 통계 서블릿 등록 박세현-->
-<!--    <servlet>
+   <servlet>
  	<servlet-name>ProcessingControl</servlet-name>
 	<servlet-class>controller.psh.ProcessingController</servlet-class>
   </servlet>
   
   <servlet-mapping>
-	<servlet-name>CurrentControl</servlet-name>
+	<servlet-name>ProcessingControl</servlet-name>
 	<url-pattern>/question/current/Processing.do</url-pattern>
   </servlet-mapping>
-   -->
+
  
   
 

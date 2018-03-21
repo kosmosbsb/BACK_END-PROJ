@@ -15,8 +15,11 @@ public class ReplyController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		req.setCharacterEncoding("UTF-8");
+		
 		QuestionDAO dao=new QuestionDAO(req.getServletContext());
-		QuestionDTO dto= dao.reply(req.getParameter("no"), req.getParameter("content"),req.getParameter("admin_id"));
+		System.out.println(req.getParameter("no")+"번호1"+req.getParameter("content")+"내용1"+ req.getParameter("admin_id")+"아이디");
+		QuestionDTO dto= dao.reply(req.getParameter("no"),req.getParameter("content"), req.getParameter("admin_id"));
 		req.setAttribute("dto", dto);
 		
 		List<QuestionDTO> list = dao.viewQinfo(req.getParameter("no"));
@@ -35,7 +38,7 @@ public class ReplyController extends HttpServlet{
 		req.setAttribute("phone", list.get(0).getPhone());
 		req.setAttribute("n_alarm_sms", list.get(0).getN_alarm_sms());
 		req.setAttribute("n_alarm_mail", list.get(0).getN_alarm_mail());
-		
+		req.setAttribute("content", dto.getContent());
 		
 		
 		// 뷰선택]

@@ -184,6 +184,71 @@ public class QuestionDAO {
 		return list;
 	}
 	
+	public QuestionDTO reply(String no,String content,String admin_id){
+		QuestionDTO dto=new QuestionDTO();
+		System.out.println(no+"번호");
+		System.out.println(content+"내용");
+		System.out.println(admin_id+"아이디");
+		String sql="UPDATE USER_QUESTION SET STATE=1 WHERE NO='"+no+"'";
+		int updateAffected=0;
+		int insertAffected=0;
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			updateAffected = psmt.executeUpdate();
+			System.out.println(updateAffected);
+			
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		sql="INSERT INTO ADMIN_ANSWER (NO,ANSWER_DATE,CONTENT,ID) VALUES (?,SYSDATE,?,?) ";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, Integer.parseInt(no));
+			psmt.setString(2,content);
+			psmt.setString(3,admin_id);
+			
+			insertAffected=psmt.executeUpdate();
+			System.out.println(insertAffected);
+			
+			dto.setNo(Integer.parseInt(no));
+			dto.setContent(content);
+			dto.setAdmin_id(admin_id);
+			
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		
+		sql="SELECT ANSWER_DATE FROM ADMIN_ANSWER WHERE NO='"+no+"'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				dto.setAnswer_date(rs.getDate(1));
+			}
+			
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		return dto;
+	}
+	
+	public String content(String no) {
+		String sql="SELECT CONTENT FROM ADMIN_ANSWER WHERE NO='"+no+"'";
+		String content=null;
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs=psmt.executeQuery();
+			while(rs.next()) {
+				content=rs.getString(1);
+			}
+		}
+		catch (SQLException e) {e.printStackTrace();}
+		return content;
+	}
+	
 	
 	
 }

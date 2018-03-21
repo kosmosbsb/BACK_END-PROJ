@@ -32,6 +32,15 @@ public class QuestionDTO {
 	private String h_nickname;
 	private String h_alarm_sms;
 	private String h_alarm_mail;
+	//답변 내용
+	private String content;
+	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	
 	
 	public String getMail() {

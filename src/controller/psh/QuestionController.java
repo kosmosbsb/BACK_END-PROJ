@@ -48,6 +48,7 @@ public class QuestionController extends HttpServlet{
 		req.getParameter("realid");
 		QuestionDAO dao = new QuestionDAO(req.getServletContext());
 		List<QuestionDTO> list = dao.viewQinfo(no);
+		req.setAttribute("no", no);
 		req.setAttribute("state", list.get(0).getState());
 		req.setAttribute("question_type", list.get(0).getQuestion_type());
 		req.setAttribute("question_title", list.get(0).getQuestion_title());
@@ -63,6 +64,8 @@ public class QuestionController extends HttpServlet{
 		req.setAttribute("phone", list.get(0).getPhone());
 		req.setAttribute("n_alarm_sms", list.get(0).getN_alarm_sms());
 		req.setAttribute("n_alarm_mail", list.get(0).getN_alarm_mail());
+		req.setAttribute("content", dao.content(no));
+		
 		
 		//뷰선택]
 		RequestDispatcher dispatcher=req.getRequestDispatcher("/question/current/CurrentView.jsp");

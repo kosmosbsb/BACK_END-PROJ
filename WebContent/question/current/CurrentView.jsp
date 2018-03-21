@@ -110,7 +110,7 @@
                       </tr>
                       <tr>
                       <td>처리 여부</td>
-                      <td>처리 대기중</td>
+                      <td>${state eq "0"?'처리 대기중':'답변 완료' }</td>
                       </tr>
                       <tr>
                       	<td>아이디</td>
@@ -140,32 +140,47 @@
                     </tbody>
                   </table>
                   
-                  <div class="row justify-content-center">
-	                  <div class="row justify-content-center" style="margin-right: 1.5em;">
-	                  	<a href="<c:url value='/question/current/Current.do'/>" class="btn btn-primary">목록으로 이동</a>
-	                  </div>
-	                  <!-- ---------------------답변하기--------------------------------------------- -->
-	                  <div class="row justify-content-center">
-	                  	<a href="#reply" class="btn btn-primary" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample">답변하기</a>
-	                  </div>
-	              </div>
-								<div class="collapse" id="reply">
-									<!--  ----------------------------->
-									<form action="<c:url value='/question/current/Reply.do'/>" method="post" onsubmit="return isValidate(this)">
-									
-									<input type="hidden" name="no" value="${dto.no }"/>
-									<input type="hidden" name="admin_id" value="${sessionScope.USER_ID}"/>
-									
-										<div class="form-group">
-											<label for="comment">답변 내용</label>
-											
-											<textarea name="content" class="form-control" rows="3"></textarea>
-										</div>
-											<button type="button" class="btn btn-primary" id="complete">완료</button>
-									</form>
-									
+                     <c:if test="${admin_id eq null && state eq '0'}">
+		                  <div class="row justify-content-center">
+			                  <div class="row justify-content-center" style="margin-right: 1.5em;">
+			                  	<a href="<c:url value='/question/current/Current.do'/>" class="btn btn-primary">목록으로 이동</a>
+			                  </div>
+			                  <!-- ---------------------답변하기--------------------------------------------- -->
+			                  <div class="row justify-content-center">
+			                  	<a href="#reply" class="btn btn-primary" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample">답변하기</a>
+			                  
+			                  </div>
+			              </div>
+							<div class="collapse" id="reply">
+								<!-- ---------------------답변하기--------------------------------------------- -->
+								<form action="<c:url value='/question/current/Reply.do'/>" method="post" onsubmit="return isValidate(this)">
+								
+								<input type="hidden" name="no" value="${no }"/>
+								<input type="hidden" name="admin_id" value="${sessionScope.USER_ID}"/>
+								
+									<div class="form-group">
+										<label for="comment">답변 내용</label>
+										<textarea name="content" class="form-control" rows="3"></textarea>
+									</div>
+										<button type="submit" class="btn btn-primary" id="complete">완료</button>
+								</form>
+							</div>
+					  </c:if>
+					  
+					  <c:if test="${state eq '1' }">
+					  		<div>
+								<div class="form-group">
+									<label for="comment">답변 내용</label>
+									<article class="form-control" rows="3">${content}</article>
 								</div>
 							</div>
+					  		<div class="row justify-content-center">
+			                  <div class="row justify-content-center" style="margin-right: 1.5em;">
+			                  	<a href="<c:url value='/question/current/Current.do'/>" class="btn btn-primary">목록으로 이동</a>
+			                  </div>
+			                
+			              	</div>
+			           </c:if>
               <!-- ------------------------------------------------------------------- -->
               </div>
             </div>
@@ -190,11 +205,11 @@
 	</script>
 <!-- 완료 버튼클릭시 박아주는 함수-------------------------------------------------- -->	
 	<script>
-	$(function(){
+	/* $(function(){
 		$('button[id*="complete"]').click(function(){
 			$('textarea').replaceWith('<article>'+$('textarea').text()+'</article>');
 		});
-	});
+	}); */
 </script>
 
 <script>

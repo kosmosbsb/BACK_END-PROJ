@@ -63,7 +63,7 @@
 									<td><a href="<c:url value='/question/current/Current.do?no=${item.no}&realid=${item.realid}'/>">${item.question_title}</a></td>
 									<td>${item.id}</td>
 									<td>${item.regidate}</td>
-									<td>답변완료</td>
+									<td>답변 완료</td>
 									<td>${item.answer_date}</td>
 									<td>${item.admin_id}</td>
 								</tr>
