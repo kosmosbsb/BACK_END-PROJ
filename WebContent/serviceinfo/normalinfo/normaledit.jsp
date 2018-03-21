@@ -76,7 +76,7 @@
             </div>
             <div class="row justify-content-center">     
             
-              <a class="btn btn-primary" href="<c:url value='/NormalInfo/List.do'/>">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">취소</a>
+              <a class="btn btn-primary" href="<c:url value='/NormalInfoView/Edit.do?title=${item.title}'/>">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">취소</a>
             </div>
           </div>
         </div>

@@ -14,15 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 
 //1]사용자 요청을 받을 수 있도록 서블릿 클래스로 만들기(HttpServlet상속)
 //즉 컨트롤러로 만들기
+
 public class SjhController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req,resp);
+		
 	}/////////////////	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		
 		SjhDAO dao = new SjhDAO(req.getServletContext());
 		
 		List<SjhDTO> list=dao.selectList();

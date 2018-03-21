@@ -97,6 +97,11 @@ public class SjhDAO {
 		String sql="UPDATE SERVICEINFO_NORMALINFO SET category=?,content=?,title=?,name=? WHERE title=?";
 		try {
 			psmt = conn.prepareStatement(sql);
+			System.out.println(dto.getCategory());
+			System.out.println(dto.getContent());
+			System.out.println(dto.getTitle());
+			System.out.println(dto.getName());
+			
 			psmt.setString(1,dto.getCategory());
 			psmt.setString(2,dto.getContent());
 			psmt.setString(3, dto.getTitle());						
