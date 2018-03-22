@@ -188,9 +188,9 @@ public class QuestionDAO {
 	
 	public QuestionDTO reply(String no,String content,String admin_id){
 		QuestionDTO dto=new QuestionDTO();
-		System.out.println(no+"번호");
+		/*System.out.println(no+"번호");
 		System.out.println(content+"내용");
-		System.out.println(admin_id+"아이디");
+		System.out.println(admin_id+"아이디");*/
 		String sql="UPDATE USER_QUESTION SET STATE=1 WHERE NO='"+no+"'";
 		int updateAffected=0;
 		int insertAffected=0;
@@ -198,7 +198,7 @@ public class QuestionDAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 			updateAffected = psmt.executeUpdate();
-			System.out.println(updateAffected);
+			//System.out.println(updateAffected);
 			
 		} 
 		catch (SQLException e) {e.printStackTrace();}
@@ -211,7 +211,7 @@ public class QuestionDAO {
 			psmt.setString(3,admin_id);
 			
 			insertAffected=psmt.executeUpdate();
-			System.out.println(insertAffected);
+			//System.out.println(insertAffected);
 			
 			dto.setNo(Integer.parseInt(no));
 			dto.setContent(content);
