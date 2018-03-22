@@ -120,7 +120,12 @@
       			pointStrokeColor: "#fff",
       			pointHighlightFill: "#fff",
       			pointHighlightStroke: "rgba(220,220,220,1)",
-      			data: [65, 59, 80, 81, 56,90,20,30,30,70,60,100]
+      			data: [${lineChartUser_month[0]},${lineChartUser_month[1]},
+      				${lineChartUser_month[2]},${lineChartUser_month[3]},
+      				${lineChartUser_month[4]},${lineChartUser_month[5]},
+      				${lineChartUser_month[6]},${lineChartUser_month[7]},
+      				${lineChartUser_month[8]},${lineChartUser_month[9]},
+      				${lineChartUser_month[10]},${lineChartUser_month[11]}]
       		},
       		{
       			label: "My Second dataset",
@@ -130,28 +135,33 @@
       			pointStrokeColor: "#fff",
       			pointHighlightFill: "#fff",
       			pointHighlightStroke: "rgba(151,187,205,1)",
-      			data: [28, 48, 40, 19, 86,50,65, 59, 80, 81, 56,90]
+      			data: [${lineChartHost_month[0]},${lineChartHost_month[1]},
+      				${lineChartHost_month[2]},${lineChartHost_month[3]},
+      				${lineChartHost_month[4]},${lineChartHost_month[5]},
+      				${lineChartHost_month[6]},${lineChartHost_month[7]},
+      				${lineChartHost_month[8]},${lineChartHost_month[9]},
+      				${lineChartHost_month[10]},${lineChartHost_month[11]}]
       		}
       	]
       };
       var pdata = [
         	{
-        		value: 300,
+        		value: ${pieChartResult_type[0]},
         		color:"#F7464A",
         		highlight: "#FF5A5E",
         		label: "공간"
         	},
         	{
-        		value: 50,
+        		value: ${pieChartResult_type[1]},
         		color: "#46BFBD",
         		highlight: "#5AD3D1",
-        		label: "예약"
+        		label: "결제"
         	},
         	{
-        		value: 100,
+        		value: ${pieChartResult_type[2]},
         		color: "#FDB45C",
         		highlight: "#FFC870",
-        		label: "결제"
+        		label: "예약"
         	}
         ]
       

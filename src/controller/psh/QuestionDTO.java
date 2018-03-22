@@ -3,6 +3,7 @@ package controller.psh;
 import java.sql.Date;
 
 public class QuestionDTO {
+	
 	//처리 현황
 	private int no;
 	private String question_type;
@@ -27,16 +28,19 @@ public class QuestionDTO {
 	private String age;
 	private String mail;
 	private String phone;
+	
 	private String n_alarm_sms;
 	private String n_alarm_mail;
-	private String h_nickname;
-	private String h_alarm_sms;
-	private String h_alarm_mail;
+	
 	//답변 내용
 	private String content;
 	
+	///////////////////////////////////////////////////////////밑으로 history.jsp 변수 선언
 	
 	
+	
+	
+///////////////////////////////////////////////get/set	
 	public String getContent() {
 		return content;
 	}
@@ -69,24 +73,7 @@ public class QuestionDTO {
 	public void setN_alarm_mail(String n_alarm_mail) {
 		this.n_alarm_mail = n_alarm_mail;
 	}
-	public String getH_nickname() {
-		return h_nickname;
-	}
-	public void setH_nickname(String h_nickname) {
-		this.h_nickname = h_nickname;
-	}
-	public String getH_alarm_sms() {
-		return h_alarm_sms;
-	}
-	public void setH_alarm_sms(String h_alarm_sms) {
-		this.h_alarm_sms = h_alarm_sms;
-	}
-	public String getH_alarm_mail() {
-		return h_alarm_mail;
-	}
-	public void setH_alarm_mail(String h_alarm_mail) {
-		this.h_alarm_mail = h_alarm_mail;
-	}
+
 	public String getGrade() {
 		return grade;
 	}

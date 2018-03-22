@@ -53,6 +53,8 @@ public class QuestionDAO {
 		catch (Exception e) {}
 	}// close()
 	
+///////////////////////////////////////////////////////////////////////current.jsp
+	
 	public List<QuestionDTO> selectList_A(){
 		List<QuestionDTO> list = new Vector<QuestionDTO>();
 		//System.out.println(list);
@@ -248,6 +250,100 @@ public class QuestionDAO {
 		catch (SQLException e) {e.printStackTrace();}
 		return content;
 	}
+///////////////////////////////////////////////////////////////////////history.jsp
+
+	public int[] getlineChartUser_month() {
+		int[] userArray = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }; // 1월~12월
+
+		for (int i = 1; i <= 12; i++) {
+			String sql = "SELECT COUNT(*) " + 
+					" FROM (SELECT * " + 
+					" FROM (SELECT UN.ID FROM USER_NORMAL UN LEFT OUTER JOIN USER_HOST UH ON UN.ID=UH.ID " + 
+					" WHERE UH.ID IS NULL) A " + 
+					" JOIN USER_QUESTION B ON A.ID=B.ID) " + 
+					" WHERE TO_CHAR(REGIDATE,'MM')="+(i<10?"0"+i:i);
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while (rs.next()) {
+					userArray[i - 1] = Integer.parseInt(rs.getString(1));
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return userArray;
+	}
+
+	public int[] getlineChartHost_month() {
+		int[] hostArray = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }; // 1월~12월
+
+		for (int i = 1; i <= 12; i++) {
+			String sql = "SELECT COUNT(*) " + 
+					" FROM (SELECT * " + 
+					" FROM (SELECT UN.ID FROM USER_NORMAL UN LEFT OUTER JOIN USER_HOST UH ON UN.ID=UH.ID " + 
+					" WHERE UH.ID IS NOT NULL) A " + 
+					" JOIN USER_QUESTION B ON A.ID=B.ID) " + 
+					" WHERE TO_CHAR(REGIDATE,'MM')="+(i<10?"0"+i:i);
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while (rs.next()) {
+					hostArray[i - 1] = Integer.parseInt(rs.getString(1));
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return hostArray;
+	}
+
+	public int[] getPieChartResult_type() {
+		int []pieArray= {0,0,0};
+		//공간
+		String sql = "select COUNT(*) FROM USER_QUESTION WHERE QUESTION_TYPE='공간'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				pieArray[0]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//결제
+		sql = "select COUNT(*) FROM USER_QUESTION WHERE QUESTION_TYPE='결제'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				pieArray[1]=Integer.parseInt(rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//예약
+		sql = "select COUNT(*) FROM USER_QUESTION WHERE QUESTION_TYPE='예약'";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				pieArray[2] = Integer.parseInt(rs.getString(1));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return pieArray;
+	}
+
 	
 	
 	

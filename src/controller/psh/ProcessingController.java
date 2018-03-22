@@ -8,15 +8,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.analysis.AnalysisDAO;
+
 public class ProcessingController extends HttpServlet{
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		QuestionDAO dao = new QuestionDAO(req.getServletContext());
+		
+		int[] lineChartUser_month = dao.getlineChartUser_month();
+		int[] lineChartHost_month = dao.getlineChartHost_month();
+		int[] pieChartResult_type = dao.getPieChartResult_type();
 		
 		
-		// 뷰선택]
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/question/history/History.jsp");
-		// 포워딩]
+		req.setAttribute("lineChartUser_month", lineChartUser_month);
+		req.setAttribute("lineChartHost_month", lineChartHost_month);
+		req.setAttribute("pieChartResult_type", pieChartResult_type);
+		
+		
+		RequestDispatcher dispatcher=req.getRequestDispatcher("/question/history/History.jsp");
 		dispatcher.forward(req, resp);
 	}
 }
