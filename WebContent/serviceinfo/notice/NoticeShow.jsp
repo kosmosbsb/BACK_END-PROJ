@@ -6,6 +6,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <%
 	//현재 페이지 번호 받기 
 	// String nowPage = request.getParameter("nowPage");
@@ -16,7 +20,7 @@
 	
 %>
 
-
+ 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,9 +38,23 @@
   
     
     <title>공지사항 관리</title>
+  
+   <script>
+  $( function() {
+    $( "#accordion" ).accordion({
+      collapsible: true
+    });
+  } );
+  </script>
+  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
 
     <!-- Navbar menu -->  
+
 <body class="app sidebar-mini">
     <jsp:include page="/Top.jsp"/>
     
@@ -52,25 +70,27 @@
         </div>
       
       </div>
-      
+  	
       <div class="row">
          <div class="col-md-12" >
           <div class="tile">
             <div class="tile-body">
               <table class="table table-hover table-bordered" id="sampleTable">
+               
                 <thead>
                   <tr>
-                    <th style="width: 7%" class="text-center">번호</th>
+                    <th style="width: 10%" class="text-center">번호</th>
                     <th style="width: 10%"  class="text-center">카테고리</th>
-             		<th style="width:15%" class="text-center">타이틀</th>    
-                    <th style="width: 28%"  class="text-center">내용</th>
+             		<th  class="text-center">타이틀</th>    
                     <th style="width: 10%"  class="text-center">등록일</th>
-                     <th style="width: 10%"  class="text-center">공지대상</th>
-                   <th style="width: 10%"  class="text-center">작성자</th>
+                    <th style="width: 10%"  class="text-center">공지대상</th>
+                   	<th style="width: 10%"  class="text-center">작성자</th>
                     <th style="width: 10%" class="text-center">게시물 관리</th>
                      
                   </tr>
+                
                 </thead>
+               	
                 	<tbody>	
                 		
                 		<% if(list.isEmpty()){ %>
@@ -82,36 +102,41 @@
                         	  	int loop=0;
                           		for(DataRoomDTO record:list){
                           %>  
+                            
                              <tr>
                                <td class="text-center"><%=record.getNotice_no() %></td>
                                <td class="text-center"><%=record.getCategory() %></td>
                                <td class="text-center"> <%=record.getTitle() %></td>
-                        	   <td> <%=record.getContent() %></td>
                                <td class="text-center"><%=record.getRegidate() %></td>
                                <td class="text-center"><%=record.getNormal_or_host() %></td>
                                <td class="text-center"><%=record.getId() %></td>
-                             
+                       
+                              
                               <td>
 			                  	<a href="Edit.jsp?articleId=<%=record.getNotice_no()%>">수정</a>|<a href = "Delete.jsp?articleId=<%=record.getNotice_no()%>">삭제</a>
 			                 </td>		
 			          
-			           	</tr>    
-                                                       
+			           		</tr>    
+                                                          
                         <%		
                         		loop++;
                           		
                           		}//for
                          
                           }//else %>
+              
                 </tbody>
-                       
-                       
+                 
+                      
               </table>
+			    
 			     <a href="Write.jsp">추가</a>
+            
             </div>
           </div>
         </div>
       </div>
+
  </main>
     
     <!-- Essential javascripts for application to work-->

@@ -170,6 +170,17 @@
 	<servlet-name>ProcessingControl</servlet-name>
 	<url-pattern>/question/current/Processing.do</url-pattern>
   </servlet-mapping>
+  
+   <!-- 도움말 서블릿 등록 이문용-->
+   <servlet>
+ 	<servlet-name>HelpController</servlet-name>
+	<servlet-class>controller.lmy.HelpController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>HelpController</servlet-name>
+	<url-pattern>/serviceinfo/help/HelpView.do</url-pattern>
+  </servlet-mapping>
 
  
   
