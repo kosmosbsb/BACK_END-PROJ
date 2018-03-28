@@ -35,6 +35,8 @@ public class QuestionDTO {
 	//답변 내용
 	private String content;
 	
+	private String name; //메일 보낼 때 이름 확인용 - 180328 혁우 추가
+	
 	///////////////////////////////////////////////////////////밑으로 history.jsp 변수 선언
 	
 	
@@ -161,5 +163,13 @@ public class QuestionDTO {
 		this.id = id;
 	}
 	
+	////// 180328 혁우 추가 시작
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	//////180328 혁우 추가 끝
 	
 }

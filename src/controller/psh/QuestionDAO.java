@@ -58,6 +58,7 @@ public class QuestionDAO {
 	public List<QuestionDTO> selectList_A(){
 		List<QuestionDTO> list = new Vector<QuestionDTO>();
 		//System.out.println(list);
+		
 		String sql ="select UQ.question_type, UQ.question_title, UN.n_nickname, UQ.regidate, AA.answer_date, SA.id, UQ.state, UQ.no, UN.id " + 
 				"from " + 
 				"USER_NORMAL UN " + 
@@ -141,7 +142,8 @@ public class QuestionDAO {
 	public List<QuestionDTO> viewQinfo(String no) {
 		//System.out.println(no);
 		List<QuestionDTO> list = new Vector<QuestionDTO>();
-		String sql ="select UQ.state, UQ.question_type, UQ.Question_title, UQ.regidate, UQ.Question_content, UN.img, UN.id, UN.n_nickname, UN.grade, UN.gender, UN.age, UN.mail, UN.phone, UN.n_alarm_sms, UN.n_alarm_mail " + 
+		//sql문에 UN.name 추가 - 180328 혁우
+		String sql ="select UQ.state, UQ.question_type, UQ.Question_title, UQ.regidate, UQ.Question_content, UN.img, UN.id, UN.n_nickname, UN.grade, UN.gender, UN.age, UN.mail, UN.phone, UN.n_alarm_sms, UN.n_alarm_mail, UN.name " + 
 				"from User_Question UQ " + 
 				"inner join User_Normal UN on UQ.id=UN.id " + 
 				"where UQ.no=? ";
@@ -177,6 +179,7 @@ public class QuestionDAO {
 				dto.setPhone(String.valueOf(rs.getLong(13)));
 				dto.setN_alarm_sms(rs.getString(14));
 				dto.setN_alarm_mail(rs.getString(15));
+				dto.setName(rs.getString(16));
 				
 				list.add(dto);
 			}/////////////while
