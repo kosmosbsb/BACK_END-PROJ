@@ -102,7 +102,7 @@ public class PsyDAO {
 			//일반유저중 호스트유저 비율)//
 			
 			//일반 회원 성별 비율(
-			sql = "select count(id) from user_normal where gender='m'";
+			sql = "select count(id) from user_normal where gender='M'";
 			try {
 				psmt = conn.prepareStatement(sql);
 				rs = psmt.executeQuery();
@@ -113,7 +113,7 @@ public class PsyDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			sql = "select count(id) from user_normal where gender='f'";
+			sql = "select count(id) from user_normal where gender='F'";
 			try {
 				psmt = conn.prepareStatement(sql);
 				rs = psmt.executeQuery();
@@ -127,7 +127,7 @@ public class PsyDAO {
 			//일반 회원 성별 비율)//
 			
 			//호스트 회원 성별 비율
-			sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where gender='m'";
+			sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where gender='M'";
 			try {
 				psmt = conn.prepareStatement(sql);
 				rs = psmt.executeQuery();
@@ -138,7 +138,7 @@ public class PsyDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where gender='f'";
+			sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where gender='F'";
 			try {
 				psmt = conn.prepareStatement(sql);
 				rs = psmt.executeQuery();
@@ -156,26 +156,26 @@ public class PsyDAO {
 		//세로그래프 호스트(
 		public int[] chartDataArray2() {
 			int[] chardatar2 = {0,0,0,0,0,0,0,0,0};
-			String j=" 10 ";
-			String k=" 19 ";
+			String j="10";
+			String k="19";
 			for(int i = 0;i<=8;i++) {
-				String sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where age >="+j+" and age <="+k+" ";
+				String sql = "select count(H.id) from user_host H inner join user_normal N on H.id=N.id where age =\'"+j+"-"+k+"\' ";
 					if(i==0) {//10대 쿼리문이 적용됨 (j,k 초기화값이 적용됨)
-						j=" 20 ";k=" 29 ";}//다음 쿼리문에 쓸 j,k를 적용해줌
+						j="20";k="29";}//다음 쿼리문에 쓸 j,k를 적용해줌
 					else if(i==1) {//20대 / j20 k29가 적용됨
-						j=" 30 ";k=" 39 ";}//다음 쿼리문에 쓸 j,k를 적용해줌
+						j="30";k="39";}//다음 쿼리문에 쓸 j,k를 적용해줌
 					else if(i==2) {//30대
-						j=" 40 ";k=" 59 ";}
+						j="40";k="59";}
 					else if(i==3) {//40대
-						j=" 50 ";k=" 59 ";}
+						j="50";k="59";}
 					else if(i==4) {//50대
-						j=" 60 ";k=" 69 ";}
+						j="60";k="69";}
 					else if(i==5) {//60대
-						j=" 70 ";k=" 79 ";}
+						j="70";k="79";}
 					else if(i==6) {//70대
-						j=" 80 ";k=" 89 ";}
+						j="80";k="89";}
 					else if(i==7) {//80대
-						j=" 90 ";k=" 99 ";}
+						j="90";k="99";}
 					else if(i==8) {//90대
 						}
 					
@@ -203,26 +203,26 @@ public class PsyDAO {
 		//세로그래프 노멀(
 		public int[] chartDataArray3() {
 			int[] chardatar3 = {0,0,0,0,0,0,0,0,0};
-			String j=" 10 ";
-			String k=" 19 ";
+			String j="10";
+			String k="19";
 			for(int i = 0;i<=8;i++) {
-				String sql = "select count(id) from user_normal where age >="+j+" and age <="+k+" ";
+				String sql = "select count(id) from user_normal where age =\'"+j+"-"+k+"\' ";
 					if(i==0) {//10대
-						j=" 20 ";k=" 29 ";}
+						j="20";k="29";}
 					else if(i==1) {//20대
-						j=" 30 ";k=" 39 ";}
+						j="30";k="39";}
 					else if(i==2) {//30대
-						j=" 40 ";k=" 59 ";}
+						j="40";k="59";}
 					else if(i==3) {//40대
-						j=" 50 ";k=" 59 ";}
+						j="50";k="59";}
 					else if(i==4) {//50대
-						j=" 60 ";k=" 69 ";}
+						j="60";k="69";}
 					else if(i==5) {//60대
-						j=" 70 ";k=" 79 ";}
+						j="70";k="79";}
 					else if(i==6) {//70대
-						j=" 80 ";k=" 89 ";}
+						j="80";k="89";}
 					else if(i==7) {//80대
-						j=" 90 ";k=" 99 ";}
+						j="90";k="99";}
 					else if(i==8) {//90대
 						}
 					try {
