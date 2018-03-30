@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="/common/IsMember.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,7 +109,7 @@
                         <td>NAME</td>
                         <td>${name}</td>
                       </tr>
-                      <c:if test="${gender eq 'm'}" var="flag">
+                      <c:if test="${gender eq 'M'}" var="flag">
                       <tr>
                         	<td>성별</td>
                         	<td>남자</td>
@@ -121,8 +122,8 @@
                       	</tr>
                       </c:if>
                       <tr>
-                        <td>나이</td>
-                        <td>${age}</td>
+                        <td>나이대</td>
+                        <td>${age}대</td>
                       </tr>
                         <tr>
                         <td>등급</td>

@@ -49,6 +49,9 @@ public class ListController extends HttpServlet {
 			DataRoomDAO dao = new DataRoomDAO(req.getServletContext());
 			List<DataRoomDTO> list = dao.selectOne(id);
 			dao.close();
+			String age = list.get(0).getAge();
+			int index = age.indexOf("-");
+			age = age.substring(0,index);
 			
 			req.setAttribute("id",list.get(0).getId());
 			req.setAttribute("imgurl",list.get(0).getImg());
@@ -56,7 +59,7 @@ public class ListController extends HttpServlet {
 			req.setAttribute("name",list.get(0).getName());
 			req.setAttribute("mail",list.get(0).getMail());
 			req.setAttribute("gender",list.get(0).getGender());
-			req.setAttribute("age",list.get(0).getAge());
+			req.setAttribute("age",age);
 			req.setAttribute("phone",list.get(0).getPhone());
 			req.setAttribute("n_alarm_sms",list.get(0).getN_alarm_sms());
 			req.setAttribute("n_alarm_mail",list.get(0).getN_alarm_mail());

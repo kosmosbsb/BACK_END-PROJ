@@ -119,7 +119,7 @@ public class DataRoomDAO {
 	public int[] ageDataArray() {
 		int[] agedata = {0,0,0,0,0,0,0,0,0};
 		
-		String sql = "select count(*) from USER_NORMAL where age between 10 and 19";
+		String sql = "select count(*) from USER_NORMAL where age='10-19'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -131,7 +131,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from USER_NORMAL where age between 20 and 29";
+		sql ="select count(*) from USER_NORMAL where age='20-29'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -143,7 +143,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from USER_NORMAL where age between 30 and 39";
+		sql = "select count(*) from USER_NORMAL where age='30-39'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -155,7 +155,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from USER_NORMAL where age between 40 and 49";
+		sql = "select count(*) from USER_NORMAL where age='40-49'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -167,7 +167,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from USER_NORMAL where age between 50 and 59";
+		sql = "select count(*) from USER_NORMAL where age='50-59'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -179,7 +179,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from USER_NORMAL where age between 60 and 69";
+		sql = "select count(*) from USER_NORMAL where age='60-69'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -191,7 +191,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from USER_NORMAL where age between 70 and 79";
+		sql = "select count(*) from USER_NORMAL where age='70-79'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -203,7 +203,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from USER_NORMAL where age between 80 and 89";
+		sql = "select count(*) from USER_NORMAL where age='80-89'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -215,7 +215,7 @@ public class DataRoomDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from USER_NORMAL where age between 90 and 99";
+		sql = "select count(*) from USER_NORMAL where age='90-99'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -233,7 +233,7 @@ public class DataRoomDAO {
 	public String[] genderDataArray() {
 		String[] genderArray = {null,null};
 		
-		String sql = "select count(*) from USER_NORMAL where gender = 'm'";
+		String sql = "select count(*) from USER_NORMAL where gender = 'M'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -244,7 +244,7 @@ public class DataRoomDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		 sql = "select count(*) from USER_NORMAL where gender = 'f'";
+		 sql = "select count(*) from USER_NORMAL where gender = 'F'";
 			try {
 				psmt = conn.prepareStatement(sql);
 				rs = psmt.executeQuery();

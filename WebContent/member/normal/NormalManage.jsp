@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="/common/IsMember.jsp" %>
 
 <!DOCTYPE html>
@@ -220,7 +221,7 @@
 									<th style="width: 20%;">아이디</th>
 									<th style="width: 15%;">이름</th>
 									<th style="width: 10%;">성별</th>
-									<th style="width: 10%;">나이</th>
+									<th style="width: 10%;">나이대</th>
 									<th style="width: 18%;">등급</th>
 									<th>적립금</th>
 								</tr>
@@ -239,13 +240,13 @@
 											<td><a
 												href="<c:url value='/member/normal/NormalManage.do?id=${host.id}'/>">${host.id}</a></td>
 											<td>${host.name}</td>
-											<c:if test="${host.gender == 'm'}" var="gender">
+											<c:if test="${host.gender == 'M'}" var="gender">
 												<td>남자</td>
 											</c:if>
 											<c:if test="${not gender}">
 												<td>여자</td>
 											</c:if>
-											<td>${host.age}</td>
+											<td>${fn:substring(host.age,0,fn:indexOf(host.age,"-"))}대</td>
 											<td>${host.grade}</td>
 											<td>${host.credit}</td>
 										</tr>
