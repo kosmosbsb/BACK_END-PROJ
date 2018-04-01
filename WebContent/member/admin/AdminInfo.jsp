@@ -70,11 +70,11 @@
 	   					<td>${item.admin_name}</td>
 	   					<td>${item.regidate}</td>
 	   					<td>
-	   						<c:if test="${item.id == USER_ID}">
-	   						&nbsp;&nbsp;<button class="btn btn-primary" type="button" onclick='location.href="<c:url value='/member/admin/IncludeAdmin.jsp'/>"'><i class="fa fa-fw fa-lg fa-wrench"></i>수정&nbsp;</button>
+	   						<c:if test="${item.id == USER_ID or USER_LEVEL == 'M'}">
+	   						<button class="btn btn-primary" type="button" onclick='location.href="<c:url value='/member/admin/EditAdmin.jsp?id=${item.id}&admin_level=${item.admin_level}'/>"'><i class="fa fa-fw fa-lg fa-wrench"></i>수정&nbsp;</button>
 	   						</c:if>
 	   						<c:if test="${USER_LEVEL == 'M' and item.id != USER_ID}">
-	   						&nbsp;&nbsp;<button class="btn btn-danger" type="button" onclick="deleteOK('${item.id}')"><i class="fa fa-fw fa-lg fa-times-circle"></i>삭제&nbsp;</button>
+	   						&nbsp;<button class="btn btn-danger" type="button" onclick="deleteOK('${item.id}')"><i class="fa fa-fw fa-lg fa-times-circle"></i>삭제&nbsp;</button>
 	   						</c:if>
 	   					</td>
 	   				</tr>

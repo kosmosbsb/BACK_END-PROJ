@@ -20,6 +20,8 @@
     <title>SC 관리자 페이지</title>
   </head>
   
+  
+
   	<!-- Navbar menu -->
 	<body class="app sidebar-mini">
     <jsp:include page="/Top.jsp"/>
@@ -97,13 +99,14 @@
 
 <div class="col-md-6">
           <div class="tile">
-            <h3 class="tile-title">관리자 등록</h3>
+            <h3 class="tile-title">관리자 수정</h3>
             <div class="tile-body">
-              <form class="form-horizontal" method="post" action="IncludeAdminProcess.jsp">
+            <!-- form 전송 전, 자바스크립트 함수로 유효성체크! true-전송 false-전송 취소 -->
+              <form class="form-horizontal" method="post" name="editForm" onsubmit="return editOK();" action="<c:url value='/ADMIN/Edit.do'/>" >
               	<div class="form-group row">
                   <label class="control-label col-md-3">아이디</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="id" type="text" autofocus>
+                    <input class="form-control" name="id" type="text" value="${param.id}" disabled>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -124,36 +127,93 @@
                     <input class="form-control" name="admin_name" type="text">
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label class="control-label col-md-3">관리자 등급</label>
-                  <div class="col-md-9">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="admin_level" value="M">마스터 관리자
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="admin_level" value="S">서비스 관리자
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="admin_level" value="C">CS 관리자
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="admin_level" value="A">통계 관리자
-                      </label>
-                    </div>
-                  </div>
-                </div>
+                <c:if test="${sessionScope.USER_LEVEL!='M'}">
+                	<input type="hidden" name="admin_level" value="${param.admin_level}">
+                	<div class="form-group row">
+	                  <label class="control-label col-md-3">관리자 등급</label>
+	                  <div class="col-md-9">
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="M" <c:if test="${param.admin_level=='M'}">checked</c:if> disabled>마스터 관리자
+	                      </label>
+	                    </div>
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="S" <c:if test="${param.admin_level=='S'}">checked</c:if> disabled>서비스 관리자
+	                      </label>
+	                    </div>
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="C" <c:if test="${param.admin_level=='C'}">checked</c:if> disabled>CS 관리자
+	                      </label>
+	                    </div>
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="A" <c:if test="${param.admin_level=='A'}">checked</c:if> disabled>통계 관리자
+	                      </label>
+	                    </div>
+	                  </div>
+	                </div>
+                </c:if>
+           	 <c:if test="${sessionScope.USER_LEVEL=='M' and param.id==sessionScope.USER_ID}">
+	                <div class="form-group row">
+	                  <label class="control-label col-md-3">관리자 등급</label>
+	                  <div class="col-md-9">
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="M" <c:if test="${param.admin_level=='M'}">checked</c:if> disabled>마스터 관리자
+	                      </label>
+	                    </div>
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="S" <c:if test="${param.admin_level=='S'}">checked</c:if> disabled>서비스 관리자
+	                      </label>
+	                    </div>
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="C" <c:if test="${param.admin_level=='C'}">checked</c:if> disabled>CS 관리자
+	                      </label>
+	                    </div>
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="A" <c:if test="${param.admin_level=='A'}">checked</c:if> disabled>통계 관리자
+	                      </label>
+	                    </div>
+	                  </div>
+	                </div>
+               </c:if>
+               <c:if test="${sessionScope.USER_LEVEL=='M' and param.id!=sessionScope.USER_ID}">
+	                <div class="form-group row">
+	                  <label class="control-label col-md-3">관리자 등급</label>
+	                  <div class="col-md-9">
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="M" <c:if test="${param.admin_level=='M'}">checked</c:if> >마스터 관리자
+	                      </label>
+	                    </div>
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="S" <c:if test="${param.admin_level=='S'}">checked</c:if> >서비스 관리자
+	                      </label>
+	                    </div>
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="C" <c:if test="${param.admin_level=='C'}">checked</c:if> >CS 관리자
+	                      </label>
+	                    </div>
+	                    <div class="form-check">
+	                      <label class="form-check-label">
+	                        <input class="form-check-input" type="radio" name="admin_level" value="A" <c:if test="${param.admin_level=='A'}">checked</c:if> >통계 관리자
+	                      </label>
+	                    </div>
+	                  </div>
+	                </div>
+               </c:if>
 		            <div class="tile-footer">
 		              <div class="row">
 		                <div class="col-md-8 col-md-offset-3">
-		                  <input class="btn btn-primary" type="submit" value="등록하기"/>
-		               	  <button class="btn btn-danger" type="button" onclick='location.href="<c:url value='/ADMIN/List.do'/>"'><i class="fa fa-ban fa-lg"></i>취소</button>
+		                  <input class="btn btn-primary" type="submit" value="수정하기"/>
+		                  <button class="btn btn-danger" type="button" onclick='location.href="<c:url value='/ADMIN/List.do'/>"'><i class="fa fa-ban fa-lg"></i>취소</button>
 		                </div>
 		              </div>
 		            </div>
@@ -186,5 +246,41 @@
       	ga('send', 'pageview');
       }
     </script>
+ <script>
+ 
+	function editOK(){
+
+		if(document.forms['editForm'].elements['pwd'].value.trim() == ''){
+			alert('비밀번호를 입력해주세요.');
+			document.forms['editForm'].elements['pwd'].focus();
+			return false;
+		}
+		
+		if(document.forms['editForm'].elements['pwd2'].value.trim() =='' || 
+			document.forms['editForm'].elements['pwd'].value.trim() != document.forms['editForm'].elements['pwd2'].value.trim()){
+			document.forms['editForm'].elements['pwd2'].focus();
+			alert('비밀번호가 일치하지 않습니다.');
+			return false;
+		}
+
+		if(document.forms['editForm'].elements['admin_name'].value.trim() == ''){
+			document.forms['editForm'].elements['admin_name'].focus();
+			alert('이름을 입력해주세요.');
+			return false;
+		}
+		
+		if(confirm("정말 수정하시겠습니까?")){
+			document.forms['editForm'].elements['id'].removeAttribute('disabled');
+
+			var radioTagArr = document.getElementsByName('admin_level');
+			for(var i=0 ; i < radioTagArr.length ; i++){
+				document.getElementsByName('admin_level')[i].removeAttribute('disabled');
+			}
+			
+			return true;
+		}
+	}
+</script>
 </body>
+
 </html>

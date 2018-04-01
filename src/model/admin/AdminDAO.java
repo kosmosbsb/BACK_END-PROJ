@@ -107,6 +107,32 @@ public class AdminDAO {
 		}
 	}
 	
+	//관리자 암호화된 비번 얻기 (필요업을듯...)
+	/*
+	public String getAdminPwd(String id) {
+		
+		String sql = "SELECT PWD FROM SC_ADMIN WHERE ID=?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				String hashCode = rs.getString(1);
+				return hashCode;
+			}
+			else{ //만일 아이디가 틀리다면, 빈문자열 반환
+				return "";
+			}
+		}
+		catch(Exception e) { //문제 발생시, 빈문자열 반환
+			e.printStackTrace();
+			return "";
+		}
+	}
+	*/
+	
 	public List<AdminDTO> selectList() {
 		List list = new Vector();
 		
@@ -163,6 +189,33 @@ public class AdminDAO {
 				return 1;//1개 삭제 성공
 			else
 				return 2;//0개 또는 2개 이상 삭제됨
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return 3; //에러
+		}
+	}
+	
+	public int editAdmin(AdminDTO dto) {
+		
+		int affected=0;
+
+		String sql = "UPDATE SC_ADMIN SET PWD=?, ADMIN_NAME=?, ADMIN_LEVEL=? WHERE ID=?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getPwd());
+			psmt.setString(2, dto.getAdmin_name());
+			psmt.setString(3, dto.getAdmin_level());
+			psmt.setString(4, dto.getId());
+			
+			affected = psmt.executeUpdate();
+			
+			if(affected==1)
+				return 1;//1개 삭제 성공
+			else
+				return 2;//0개 또는 2개 이상 수정됨
 			
 		}
 		catch(Exception e) {

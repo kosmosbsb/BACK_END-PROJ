@@ -47,6 +47,17 @@
   
   <!-- 서블릿 등록 권혁우 -->
   <servlet>
+ 	<servlet-name>AdminEdit</servlet-name>
+	<servlet-class>controller.admin.EditController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 권혁우 -->
+  <servlet-mapping>
+	<servlet-name>AdminEdit</servlet-name>
+	<url-pattern>/ADMIN/Edit.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 서블릿 등록 권혁우 -->
+  <servlet>
  	<servlet-name>AnalControl</servlet-name>
 	<servlet-class>controller.analysis.AnalysisController</servlet-class>
   </servlet>
@@ -186,6 +197,6 @@
   
 
   <welcome-file-list>
-    <welcome-file>/Session06/Login.jsp</welcome-file>
+    <welcome-file>/member/admin/Login.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

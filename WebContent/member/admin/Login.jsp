@@ -20,7 +20,7 @@
     <section class="login-content">
     <img src="<c:url value='/Images/backend_logo.png'/>" style="width: 550px; height: auto; margin-top: -70px; margin-bottom: 50px;"/>
       <div class="login-box">
-        <form class="login-form" method="post" action="<c:url value='/Session06/LoginProcess.jsp'/>">
+        <form class="login-form" method="post" action="<c:url value='/member/admin/LoginProcess.jsp'/>">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
           <div class="form-group">
           	<c:if test="${ERROR=='CREATE'}"><label class="control-label" style="color: red;">아이디와 비밀번호를 확인해주세요</label></c:if>
