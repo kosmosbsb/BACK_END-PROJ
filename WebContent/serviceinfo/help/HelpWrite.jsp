@@ -1,8 +1,8 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
-<%@page import="controller.lmy.DataRoomDAO"%>
-<%@page import="controller.lmy.DataRoomDTO"%>
+<%@page import="controller.lmy.HelpDAO"%>
+<%@page import="controller.lmy.HelpDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,9 +13,9 @@
 				//String nowPage = request.getParameter("nowPage");
 				
 				//2]CRUD작업용 BbsDAO생성
-				DataRoomDAO dao = new DataRoomDAO(application);
+				HelpDAO dao = new HelpDAO(application);
 				//상세보기용 메소드 호출	
-				DataRoomDTO dto =dao.selectOne(articleId);
+				HelpDTO dto =dao.selectOne(articleId);
 				//3]자원반납
 				dao.close();
 				
@@ -60,11 +60,9 @@
          <div class="col-md-12" >
           <div class="tile">
             <div class="tile-body">
-            <form action="WriteOk.jsp" method="post">
+            <form action="HelpWriteOk.jsp" method="post">
 			   
               <table class="table table-hover table-bordered">
-			                 
-			                 
 			                 <tr>
 				                  <td class="text-center">제목</td>
 				                  <td >
@@ -77,23 +75,40 @@
 			                  		<td>
 			                  		<textarea rows="10"  style="width:98%" name="content"></textarea>
 			                  		</td>
-			                  			
 			                  </tr>
-			                  		
+			                 
 			                  <tr>
 			                  		<td  class="text-center">카테고리</td>
-			                  		<td >
-			                  		<input type="text"   name="category" style="width:98%"/>
-			                  		</td>
+			                  		<td> 
+			                  		
+			                  		<select name="category">
+										  <option value="예약공간서비스">예약공간서비스</option>
+										  <option value="결제서비스">결제서비스</option>
+										  
+									</select>
+			                 		</td>
 			                  </tr>
 			                  
 			                  		<tr>
 			                  		<td class="text-center">일반/호스트 구분(N/H)</td>
 			                  		<td >
-			                  		<input type="text"   name="normal_or_host" style="width:98%"/>
+			                  			<select name="normal_or_host">
+										  <option value="N">N</option>
+										  <option value="H">H</option>
+										  
+										</select>
 			                  		</td>
 			                  	</tr>
-			                  	
+			                  	<tr>
+				                  <td class="text-center">작성자</td>
+				                  <td >
+				               			<select name="id">
+										  <option value="master1">master1</option>
+										
+										  
+										</select>
+				                  </td>
+			                  </tr>
 			                  		
 			                  		<tr bgcolor="white" align="center">
 			                  			<td colspan="2">

@@ -1,5 +1,5 @@
-<%@page import="controller.lmy.DataRoomDTO"%>
-<%@page import="controller.lmy.DataRoomDAO"%>
+<%@page import="controller.lmy.HelpDTO"%>
+<%@page import="controller.lmy.HelpDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -9,24 +9,25 @@
 	//2]파라미터 받기
 	String title= request.getParameter("title");
 	String content= request.getParameter("content");
-	String name  = request.getParameter("name");
 	String category = request.getParameter("category");
-	String notice_no = request.getParameter("notice_no");
 	String normal_or_host = request.getParameter("normal_or_host");
+	String id = request.getParameter("id");
+	
 	//3]데이타를 전달할 DTO객체 생성및 데이타 설정
-	DataRoomDTO dto = new DataRoomDTO();
-	dto.setNotice_no(notice_no);
+	HelpDTO dto = new HelpDTO();
+	
 	dto.setTitle(title);
 	dto.setContent(content);
 	dto.setCategory(category);
-	dto.setId(name);
 	dto.setNormal_or_host(normal_or_host);
+	dto.setId(id);
+	
 	//4]CRUD작업용 DAO계열 객체 생성
-	DataRoomDAO dao = new DataRoomDAO(application);
+	HelpDAO dao = new HelpDAO(application);
 	int affected = dao.insert(dto);
 	dao.close();
 	if(affected == 1){
-		response.sendRedirect("HelpWrite.jsp");
+		response.sendRedirect("HelpView.do");
 	}
 	else{%>
 		<script>

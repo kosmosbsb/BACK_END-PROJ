@@ -6,7 +6,7 @@ public class HelpDTO {
 	private String notice_no;
 	private String title;
 	private String content;
-	private String normal_host;
+	private String normal_or_host;
 	private String category;
 	private String id;
 	
@@ -19,7 +19,7 @@ public class HelpDTO {
 		this.notice_no = notice_no;
 		this.title = title;
 		this.content = content;
-		this.normal_host = normal_host;
+		this.normal_or_host = normal_or_host;
 		this.category = category;
 		this.id = id;
 	}
@@ -55,13 +55,13 @@ public class HelpDTO {
 	}
 
 
-	public String getNormal_host() {
-		return normal_host;
+	public String getNormal_or_host() {
+		return normal_or_host;
 	}
 
 
-	public void setNormal_host(String normal_host) {
-		this.normal_host = normal_host;
+	public void setNormal_or_host(String normal_or_host) {
+		this.normal_or_host = normal_or_host;
 	}
 
 

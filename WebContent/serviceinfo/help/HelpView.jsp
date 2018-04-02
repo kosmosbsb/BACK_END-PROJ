@@ -68,7 +68,7 @@
                   <tr>
                     <th style="width: 10%" class="text-center">번호</th>
                     <th style="width: 10%"  class="text-center">카테고리</th>
-             		<th  class="text-center">타이틀</th>    
+             		<th class="text-center">타이틀</th>    
                     <th style="width: 10%"  class="text-center">등록일</th>
                     <th style="width: 10%"  class="text-center">공지대상</th>
                    	<th style="width: 10%"  class="text-center">작성자</th>
@@ -79,10 +79,11 @@
                 	<c:forEach var="item" items="${list}" varStatus="loop"> 
                 	<tr>
                 		<td>${item.notice_no}</td>
-                		<td>${item.title}</td>
-                		<td>${item.content}</td>
-                		<td>${item.normal_host}</td>
                 		<td>${item.category}</td>
+                		<td>${item.title}
+                			${item.content }
+                		</td>
+                		<td>${item.normal_or_host}</td>
                 		<td>${item.id}</td>
                 	</tr>
                 	

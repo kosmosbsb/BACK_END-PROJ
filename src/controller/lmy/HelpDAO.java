@@ -46,44 +46,40 @@ public class HelpDAO {
 	public List<HelpDTO> selectList() {
 		List <HelpDTO> list= new Vector<HelpDTO>();
 		
-		String sql="SELECT * FROM Help ";
+		String sql="SELECT * FROM help ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				HelpDTO dto = new HelpDTO();
 
-				dto.setNotice_no(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				dto.setContent(rs.getString(3));
-			
-				dto.setCategory(rs.getString(6));
-				dto.setId(rs.getString(7));
+				dto.setTitle(rs.getString(1));
+				dto.setContent(rs.getString(2));
+				dto.setCategory(rs.getString(3));
+				dto.setNormal_or_host(rs.getString(4));
+				
 				list.add(dto);				
 			}			
 		} catch (Exception e) {e.printStackTrace();}
 		return list;
 	}////////////////////////////
 
- 	public DataRoomDTO selectOne(String key) {
-		DataRoomDTO dto = null;
-		String sql="select * from NOTICE where notice_no=? ";
+ 	public HelpDTO selectOne(String key) {
+ 		HelpDTO dto = null;
+		String sql="select * from help where notice_no=? ";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
-				dto = new DataRoomDTO();
+				dto = new HelpDTO();
 			
-
-				dto.setNotice_no(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				dto.setContent(rs.getString(3));
-				dto.setRegidate(rs.getDate(4));
-				dto.setNormal_or_host(rs.getString(5));
-				dto.setCategory(rs.getString(6));
-				dto.setId(rs.getString(7));
+				dto.setTitle(rs.getString(1));
+				dto.setContent(rs.getString(2));
+				dto.setCategory(rs.getString(3));
+				dto.setNormal_or_host(rs.getString(4));
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,17 +87,17 @@ public class HelpDAO {
 		return dto;
 	}//////////////////////////////
 	//입력용
-	public int insert(DataRoomDTO dto) {
+	public int insert(HelpDTO dto) {
 		int affected=0;
-		String sql="insert into notice(NOTICE_NO,TITLE,CONTENT,NORMAL_OR_HOST,CATEGORY,ID) values(?,?,?,?,?,?)";
+		String sql="insert into help(notice_no,TITLE,CONTENT,CATEGORY,NORMAL_OR_HOST,ID) values(help_seq.nextval,?,?,?,?,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1,dto.getNotice_no());
-			psmt.setString(2, dto.getTitle());
-			psmt.setString(3, dto.getContent());
+			
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getCategory());
 			psmt.setString(4, dto.getNormal_or_host());
-			psmt.setString(5, dto.getCategory());
-			psmt.setString(6, dto.getId());
+			psmt.setString(5,dto.getId());
 			
 			affected = psmt.executeUpdate();
 			System.out.println(affected);
@@ -115,7 +111,7 @@ public class HelpDAO {
 		Map<String,HelpDTO> map = new HashMap<String,HelpDTO>();		
 		try {
 			//이전글 얻기
-			String sql="SELECT no,title FROM NOTICE WHERE no=(SELECT min(no) FROM NOTICE WHERE no > ?)";
+			String sql="SELECT no,title FROM help WHERE no=(SELECT min(no) FROM help WHERE no > ?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);
 			rs = psmt.executeQuery();			
@@ -126,7 +122,7 @@ public class HelpDAO {
 				map.put("PREV",dto);
 			}
 			//다음글 얻기
-			sql="SELECT no,title FROM NOTICE WHERE no=(SELECT max(no) FROM NOTICE WHERE no < ?)";
+			sql="SELECT no,title FROM help WHERE no=(SELECT max(no) FROM help WHERE no < ?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);
 			rs = psmt.executeQuery();			
@@ -149,7 +145,7 @@ public class HelpDAO {
  	//삭제
 	public int delete(String key) {
 		int affected =0;
-		String sql="DELETE FROM NOTICE WHERE Notice_no=?";
+		String sql="DELETE FROM help WHERE Notice_no=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);		
@@ -160,15 +156,16 @@ public class HelpDAO {
 		return affected;
 	}
 	//업데이트
-	public int update(DataRoomDTO dto) {
+	public int update(HelpDTO dto) {
 		int affected=0;
-		String sql="UPDATE NOTICE SET TITLE=?, CONTENT=?,CATEGORY =? WHERE Notice_no=?";
+		String sql="UPDATE help SET TITLE=?, CONTENT=?,Normal_host=?,CATEGORY =? WHERE Notice_no=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getCategory());
-			psmt.setString(4, dto.getNotice_no());
+			psmt.setString(4,dto.getNormal_or_host());
+			psmt.setString(5, dto.getNotice_no());
 			affected = psmt.executeUpdate();
 			
 		} 
