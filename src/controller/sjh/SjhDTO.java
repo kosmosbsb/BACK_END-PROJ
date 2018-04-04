@@ -11,11 +11,12 @@ public class SjhDTO {
 	private String title;
 	private String name;
 	private Date postdate;
+	private String id;
 	
 	public SjhDTO() {}
 
 	
-	public SjhDTO(String no, String category, String content, String title, String name, Date postdate) {
+	public SjhDTO(String no, String category, String content, String title, String name, Date postdate, String id) {
 		super();
 		this.no = no;
 		this.category = category;
@@ -23,6 +24,7 @@ public class SjhDTO {
 		this.title = title;
 		this.name = name;
 		this.postdate = postdate;
+		this.id = id;
 	}
 
 
@@ -72,6 +74,16 @@ public class SjhDTO {
 
 	public void setPostdate(Date postdate) {
 		this.postdate = postdate;
+	}
+
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

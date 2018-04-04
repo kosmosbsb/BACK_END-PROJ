@@ -52,9 +52,10 @@
 	<div class="col-md-12">
 	
           <div class="tile">
-            <h3 class="tile-title">${dto.title}</h3>
+            <h3 class="tile-title">${dto.no}</h3>
             <div class="tile-body">
               <form>
+              	<input type="hidden" name="category" value="${dto.category}"/>
                 <div class="form-group">
                   <label class="control-label">작성자</label>
                   <label class="form-control">${dto.name}</label>
@@ -76,7 +77,7 @@
             </div>
             <div class="row justify-content-center">     
             
-              <a class="btn btn-primary" href="<c:url value='/NormalInfoView/Edit.do?title=${dto.title}'/>">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">목록</a>
+              <a class="btn btn-primary" href="<c:url value='/NormalInfoView/Edit.do?no=${dto.no}&category=${dto.category}'/>">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">목록</a>
             </div>
           </div>
         </div>

@@ -17,12 +17,12 @@ public class ViewController extends HttpServlet {
 	protected void service(HttpServletRequest req, 
 			               HttpServletResponse resp) throws ServletException, IOException {
 		//3]요청분석
-		String title = req.getParameter("title");
+		String no = req.getParameter("no");
 		//4]모델 호출 및 결과값 받기
 		SjhDAO dao = new SjhDAO(req.getServletContext());
-		SjhDTO dto= dao.selectOne(title);
+		SjhDTO dto= dao.selectOne(no);
 		//내용 줄바꿈
-		dto.setContent(dto.getContent().replace("\r\n","<br/>"));
+//		dto.setContent(dto.getContent().replace("\r\n","<br/>"));
 		dao.close();
 		//5]필요한 값 리퀘스트 영역에 저장
 		req.setAttribute("dto", dto);

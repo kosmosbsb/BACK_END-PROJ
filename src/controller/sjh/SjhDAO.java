@@ -50,20 +50,18 @@ public class SjhDAO {
 	public List<SjhDTO> selectList() {
 		List <SjhDTO> list= new Vector<SjhDTO>();
 		
-		String sql="select category, title, name, postdate from SERVICEINFO_NORMALINFO ";
+		String sql="select no, category, title, name, postdate from SERVICEINFO_NORMALINFO ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				SjhDTO dto = new SjhDTO();				
-//				System.out.println(rs.getString(1));
-//				System.out.println(rs.getString(2));
-//				System.out.println(rs.getString(3));
-//				System.out.println(rs.getDate(4));
-				dto.setCategory(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				dto.setName(rs.getString(3));
-				dto.setPostdate(rs.getDate(4));						
+				SjhDTO dto = new SjhDTO();			
+				
+				dto.setNo(rs.getString(1));
+				dto.setCategory(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setName(rs.getString(4));
+				dto.setPostdate(rs.getDate(5));			
 				
 				
 				list.add(dto);				
@@ -72,19 +70,25 @@ public class SjhDAO {
 		return list;
 	}////////////////////////////
 	
-	public SjhDTO selectOne(String title) {
+	public SjhDTO selectOne(String no) {
+		System.out.println("===셀렉트원dao");
 		SjhDTO dto=null;
-		String sql="SELECT * from SERVICEINFO_NORMALINFO WHERE title =?";
-		try {
+		String sql="SELECT * from SERVICEINFO_NORMALINFO WHERE no =?";
+		try {			
+			//no,category,content,title,name,postdate,id
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, title);
+			psmt.setString(1, no);
 			rs = psmt.executeQuery();
+			
 			if(rs.next()) {
 				dto = new SjhDTO();
-				dto.setContent(rs.getString(3));									
+				dto.setNo(rs.getString(1));
+				dto.setCategory(rs.getString(2));
+				dto.setContent(rs.getString(3));								
 				dto.setTitle(rs.getString(4));
 				dto.setName(rs.getString(5));
 				dto.setPostdate(rs.getDate(6));
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,20 +97,25 @@ public class SjhDAO {
 	}//////////////////////////////
 	
 	public int update(SjhDTO dto) {//no,category,content,title,name,sysdate,id
+		
+		System.out.println("업데이트 dao 11111");
+		
 		int affected=0;
-		String sql="UPDATE SERVICEINFO_NORMALINFO SET category=?,content=?,title=?,name=? WHERE title=?";
+		String sql="UPDATE SERVICEINFO_NORMALINFO SET category=?,content=?,title=?,name=? WHERE no=?";
+		//"UPDATE SERVICEINFO_NORMALINFO SET category=?,content=?,title=?,name=? WHERE no=?"
 		try {
 			psmt = conn.prepareStatement(sql);
-			System.out.println(dto.getCategory());
-			System.out.println(dto.getContent());
-			System.out.println(dto.getTitle());
-			System.out.println(dto.getName());
 			
-			psmt.setString(1,dto.getCategory());
-			psmt.setString(2,dto.getContent());
+			System.out.println(dto.getTitle());
+			System.out.println(dto.getNo());
+			
+			psmt.setString(1, dto.getCategory());
+			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getTitle());						
 			psmt.setString(4, dto.getName());
+			psmt.setString(5, dto.getNo());
 			
+			System.out.println("업데이트 dao 2222222");
 			
 			affected = psmt.executeUpdate();
 		} 
