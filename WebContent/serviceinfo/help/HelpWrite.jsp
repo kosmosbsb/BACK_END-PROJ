@@ -6,21 +6,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-				//1]파라미터(키값) 받기
-				String articleId = request.getParameter("articleId");
-				//현재 페이지번호 받기
-				//String nowPage = request.getParameter("nowPage");
-				
-				//2]CRUD작업용 BbsDAO생성
-				HelpDAO dao = new HelpDAO(application);
-				//상세보기용 메소드 호출	
-				HelpDTO dto =dao.selectOne(articleId);
-				//3]자원반납
-				dao.close();
-				
-
-%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +22,32 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <title>수정폼 관리</title>
+ 	<style>
+		body {
+		   	min-height: 2000px;
+  			padding-top: 70px;
+		}
+		table,table th{
+			text-align:center;
+		}		
+		
+	</style>
+	<script>
+		function isValidate(form){
+			if(form.name.value==""){
+				alert("작성자를 입력하세요");
+				form.name.focus();
+				return false;
+			}
+			else if(form.title.value.length==0){
+				alert("제목을 입력하세요");
+				form.title.focus();
+				return false;
+			}
+		}
+		</script>
+ 
+ 
   </head>
   
     <!-- Navbar menu -->  
@@ -60,49 +71,53 @@
          <div class="col-md-12" >
           <div class="tile">
             <div class="tile-body">
-            <form action="HelpWriteOk.jsp" method="post">
-			   
+            <form action="<c:url value='/help/HelpWrite.do'/>" 
+				      method="post"
+				      enctype="multipart/form-data"
+				      onsubmit="return isValidate(this)"
+				>
+			  
               <table class="table table-hover table-bordered">
+			                 
 			                 <tr>
 				                  <td class="text-center">제목</td>
-				                  <td >
-				                  <input type="text"  name="title" style="width:98%"/>
-				                  </td>
+				                  	<td >
+				                  		<input type="text"  name="title" style="width:98%" value="${title}"/>
+				                  	</td>
 			                  </tr>
 			                 
 			                  <tr>
 			                  		<td align="center">내용</td>
-			                  		<td>
-			                  		<textarea rows="10"  style="width:98%" name="content"></textarea>
-			                  		</td>
+			                  			<td>
+			                  				<textarea rows="10"  style="width:98%" name="content" value="${content }"></textarea>
+			                  			</td>
 			                  </tr>
 			                 
 			                  <tr>
-			                  		<td  class="text-center">카테고리</td>
+			                  	<td  class="text-center" >카테고리</td>
 			                  		<td> 
-			                  		
-			                  		<select name="category">
+			                  			<select name="category" value="${category}">
 										  <option value="예약공간서비스">예약공간서비스</option>
 										  <option value="결제서비스">결제서비스</option>
-										  
-									</select>
-			                 		</td>
+										</select>
+			                 	</td>
 			                  </tr>
 			                  
-			                  		<tr>
-			                  		<td class="text-center">일반/호스트 구분(N/H)</td>
+			                  <tr>
+			                  		<td class="text-center" >일반/호스트 구분(N/H)</td>
 			                  		<td >
-			                  			<select name="normal_or_host">
+			                  			<select name="normal_or_host" value="${Normal_or_host}">
 										  <option value="N">N</option>
 										  <option value="H">H</option>
 										  
 										</select>
 			                  		</td>
 			                  	</tr>
-			                  	<tr>
+			                 
+			                  <tr>
 				                  <td class="text-center">작성자</td>
 				                  <td >
-				               			<select name="id">
+				               			<select name="id" value="${id}">
 										  <option value="master1">master1</option>
 										
 										  
@@ -117,15 +132,12 @@
 			                  		</tr>                  	
 			                
 			                  	</tbody>
-			                  	</table> 
-		                 
+			                  </table> 
 		                  	</form>
-          
-                    </div>
-                </div>
- </div>
-     
-</div>
+                   		 </div>
+               		 </div>
+ 				</div>
+			</div>
       
     <!-- Essential javascripts for application to work-->
     <script src="<c:url value='/js/jquery-3.2.1.min.js'/>"></script>

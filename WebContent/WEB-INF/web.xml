@@ -184,15 +184,15 @@
   
    <!-- 도움말 서블릿 등록 이문용-->
    <servlet>
- 	<servlet-name>HelpController</servlet-name>
-	<servlet-class>controller.lmy.HelpController</servlet-class>
+ 	<servlet-name>HelpViewController</servlet-name>
+	<servlet-class>controller.lmy.HelpViewController</servlet-class>
   </servlet>
   
   <servlet-mapping>
-	<servlet-name>HelpController</servlet-name>
+	<servlet-name>HelpViewController</servlet-name>
 	<url-pattern>/serviceinfo/help/HelpView.do</url-pattern>
   </servlet-mapping>
-
+  
  
   
 

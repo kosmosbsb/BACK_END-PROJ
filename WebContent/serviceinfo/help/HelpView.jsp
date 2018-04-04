@@ -10,14 +10,7 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<%
-	//현재 페이지 번호 받기 
-	// String nowPage = request.getParameter("nowPage");
-	//리스트 보여주기
-	HelpDAO dao = new HelpDAO(application);
-	List<HelpDTO> list =dao.selectList();
-	
-%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,7 +25,7 @@
     
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>공지사항 관리</title>
+    <title>HelpView.jsp</title>
  <!--   <script>
   $( function() {
     $( "#accordion" ).accordion({
@@ -64,38 +57,46 @@
           <div class="tile">
             <div class="tile-body">
               <table class="table table-hover table-bordered" id="sampleTable">
-                <thead>
+               
+               <thead>
                   <tr>
-                    <th style="width: 10%" class="text-center">번호</th>
+                  
                     <th style="width: 10%"  class="text-center">카테고리</th>
-             		<th class="text-center">타이틀</th>    
+             		<th  class="text-center">타이틀</th>    
                     <th style="width: 10%"  class="text-center">등록일</th>
-                    <th style="width: 10%"  class="text-center">공지대상</th>
                    	<th style="width: 10%"  class="text-center">작성자</th>
-                    <th style="width: 10%" class="text-center">게시물 관리</th>
+                    <th style="width: 10%" class="text-center">게시물관리</th>
+                     
                   </tr>
+                
                 </thead>
-                	<tbody class="text-center">	
-                	<c:forEach var="item" items="${list}" varStatus="loop"> 
-                	<tr>
-                		<td>${item.notice_no}</td>
-                		<td>${item.category}</td>
-                		<td>${item.title}
-                			${item.content }
-                		</td>
-                		<td>${item.normal_or_host}</td>
-                		<td>${item.id}</td>
-                	</tr>
+                
+                 <tr>
+                 	
+                     <td class="text-center">${dto.category}</td>
+                     <td class="text-center"> ${dto.title}</td>
+                     <td class="text-center">${dto.regidate}</td>
+                     <td class="text-center">${dto.normal_or_host}</td>
+                     <td class="text-center">${dto.id}</td>
+			      </tr>   
                 	
-                	</c:forEach>
-                </tbody>
               </table>
-			     <a href="HelpWrite.jsp">추가</a>
+			    <td colspan="2">
+	  				<ul style="width:50%" class="nav nav-pills center-block"  role="tablist">
+	 						<li role="presentation" ><a href="#" id="update">수정</a></li>
+	  						<li role="presentation"><a href="#" id="delete">삭제</a></li>
+	  						<li role="presentation"><a href="#">목록</a></li>
+					</ul>						
+	  			</td>
             </div>
           </div>
         </div>
       </div>
+		<!--  키값 -->
+<div>
+ <input type="hidden" name="key" value="${dto.notice_no}"/>
 
+</div>
  </main>
     
     <!-- Essential javascripts for application to work-->

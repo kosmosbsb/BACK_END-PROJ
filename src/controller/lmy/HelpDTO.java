@@ -14,7 +14,7 @@ public class HelpDTO {
 	public HelpDTO() {}
 
 
-	public HelpDTO(String notice_no, String title, String content, String normal_host, String category, String id) {
+	public HelpDTO(String notice_no, String title, String content, String normal_or_host, String category, String id) {
 		super();
 		this.notice_no = notice_no;
 		this.title = title;

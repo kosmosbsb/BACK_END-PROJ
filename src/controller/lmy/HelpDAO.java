@@ -65,7 +65,7 @@ public class HelpDAO {
 	}////////////////////////////
 
  	public HelpDTO selectOne(String key) {
- 		HelpDTO dto = null;
+ 		HelpDTO dto= null;
 		String sql="select * from help where notice_no=? ";
 		
 		try {
@@ -158,7 +158,7 @@ public class HelpDAO {
 	//업데이트
 	public int update(HelpDTO dto) {
 		int affected=0;
-		String sql="UPDATE help SET TITLE=?, CONTENT=?,Normal_host=?,CATEGORY =? WHERE Notice_no=?";
+		String sql="UPDATE help SET TITLE=?, CONTENT=?,Normal_or_host=?,CATEGORY =? WHERE Notice_no=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getTitle());
