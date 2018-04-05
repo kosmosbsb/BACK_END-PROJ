@@ -18,6 +18,7 @@ import model.PBKDF2;
 //1]HttpServlet상속-컨트롤러가 됨 즉 서블릿이 됨
 public class HelpWriteController extends HttpServlet {
 	//[입력 폼으로 이동]
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//3]요청분석- 입력폼 요청
@@ -31,6 +32,7 @@ public class HelpWriteController extends HttpServlet {
 		 *  단, server.xml에 Context태그의 path속성 값을
 		 *  지울시에는 신경 쓸 필요없다.
 		 */
+	System.out.println("111");
 		
 		//req.setAttribute("active","dataroom");
 		
@@ -55,6 +57,7 @@ public class HelpWriteController extends HttpServlet {
 		//MultipartRequest mr = FileUtils.upload(req, req.getServletContext().getRealPath("/Upload"));
 		//DB입력 성공시에는 1,실패시 0, 파일용량 초과시에는 -1 저장
 		
+			
 			id = req.getParameter("id");
 			title= req.getParameter("title");
 			/*
@@ -66,6 +69,7 @@ public class HelpWriteController extends HttpServlet {
 			category =req.getParameter("category");
 			normal_or_host =req.getParameter("normal_or_host");
 			notice_no= req.getParameter("notice_no");
+			
 			//데이타베이스 CRUD작업과 관련된 모델 호출]
 			
 			HelpDAO dao = new HelpDAO(req.getServletContext());
@@ -73,7 +77,6 @@ public class HelpWriteController extends HttpServlet {
 			
 			dto.setId(id);
 			dto.setTitle(title);
-			dto.setContent(content);
 			dto.setCategory(category);
 			dto.setNormal_or_host(normal_or_host);
 			dto.setNotice_no(notice_no);
@@ -106,7 +109,7 @@ public class HelpWriteController extends HttpServlet {
 			out.println("</script>");
 			*/
 			//이동방법2 메시지 뿌려주는 페이지로 이동후 다시 입력폼으로..
-			//req.getRequestDispatcher("/DataRoom13/Message.jsp").forward(req,resp);
+			req.getRequestDispatcher("/serviceinfo/help/HelpView.jsp").forward(req,resp);
 			//이동방법3 비밀번호도 기존값 유지하기 위한 방법- 역시 입력폼으로 이동
 			//MultipartRequset가 파라미터를 가로채니깐 
 			//포워드 하러다로 전달안됨 그래서 영역에 저장
@@ -128,7 +131,7 @@ public class HelpWriteController extends HttpServlet {
 			//req.setAttribute("pass",req.getParameter("pass"));
 			//req.setAttribute("attachedfile",mr.getOriginalFileName("attachedfile"));
 			//req.setAttribute("error",sucOrFail == 0?"Input filure":"Exceed File Size");
-			req.getRequestDispatcher("/serviceinfo/help/HelpWrite.jsp").forward(req,resp);
+			//req.getRequestDispatcher("/serviceinfo/help/HelpView.jsp").forward(req,resp);
 		
 		
 	}////////////////////////////

@@ -44,6 +44,12 @@
 				form.title.focus();
 				return false;
 			}
+			else (form.content.value.length==0){
+				alert("내용을 입력하세요");
+				form.content.focus();
+				return false;
+			}
+
 		}
 		</script>
  
@@ -71,9 +77,9 @@
          <div class="col-md-12" >
           <div class="tile">
             <div class="tile-body">
-            <form action="<c:url value='/help/HelpWrite.do'/>" 
+            <form action="<c:url value='/serviceinfo/help/HelpWrite.do'/>" 
 				      method="post"
-				      enctype="multipart/form-data"
+				     
 				      onsubmit="return isValidate(this)"
 				>
 			  
@@ -82,23 +88,26 @@
 			                 <tr>
 				                  <td class="text-center">제목</td>
 				                  	<td >
-				                  		<input type="text"  name="title" style="width:98%" value="${title}"/>
+				                  		<input type="text"  name="title" style="width:98%" value="${dto.title}"/>
 				                  	</td>
 			                  </tr>
 			                 
 			                  <tr>
 			                  		<td align="center">내용</td>
 			                  			<td>
-			                  				<textarea rows="10"  style="width:98%" name="content" value="${content }"></textarea>
+			                  				<textarea rows="10"  style="width:98%" name="content" value="${dto.content }"></textarea>
 			                  			</td>
 			                  </tr>
 			                 
 			                  <tr>
 			                  	<td  class="text-center" >카테고리</td>
 			                  		<td> 
-			                  			<select name="category" value="${category}">
+			                  			<select name="category" value="${dto.category}">
 										  <option value="예약공간서비스">예약공간서비스</option>
 										  <option value="결제서비스">결제서비스</option>
+										  <option value="Sth">Sth</option>
+										  <option value="Sth1">Sth1</option>
+											
 										</select>
 			                 	</td>
 			                  </tr>
@@ -106,7 +115,7 @@
 			                  <tr>
 			                  		<td class="text-center" >일반/호스트 구분(N/H)</td>
 			                  		<td >
-			                  			<select name="normal_or_host" value="${Normal_or_host}">
+			                  			<select name="normal_or_host" value="${dto.Normal_or_host}">
 										  <option value="N">N</option>
 										  <option value="H">H</option>
 										  
@@ -117,8 +126,12 @@
 			                  <tr>
 				                  <td class="text-center">작성자</td>
 				                  <td >
-				               			<select name="id" value="${id}">
+				               			<select name="id" value="${dto.id}">
 										  <option value="master1">master1</option>
+										  <option value="id1">id1</option>
+										  <option value="id2">id2</option>
+										  <option value="id3">id3</option>
+										     
 										
 										  
 										</select>

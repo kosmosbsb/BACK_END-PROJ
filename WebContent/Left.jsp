@@ -52,7 +52,7 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">서비스 정보 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="<c:url value='/serviceinfo/notice/NoticeShow.jsp'/>"><i class="icon fa fa-circle-o"></i>공지사항 관리</a></li>
-            <li><a class="treeview-item" href="<c:url value='/serviceinfo/help/HelpView.do'/>"><i class="icon fa fa-circle-o"></i>도움말 관리</a></li>
+            <li><a class="treeview-item" href="<c:url value='/serviceinfo/help/HelpList.do'/>"><i class="icon fa fa-circle-o"></i>도움말 관리</a></li>
             <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>FAQ 관리</a></li>
             <li><a class="treeview-item" href="<c:url value='/NormalInfo/List.do'/>"><i class="icon fa fa-circle-o"></i>일반 이용정보</a></li>
             <li><a class="treeview-item" href="hostinfo.jsp"><i class="icon fa fa-circle-o"></i>호스트 이용정보</a></li>

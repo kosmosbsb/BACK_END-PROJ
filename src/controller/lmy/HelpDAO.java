@@ -44,19 +44,22 @@ public class HelpDAO {
 
 	//list
 	public List<HelpDTO> selectList() {
-		List <HelpDTO> list= new Vector<HelpDTO>();
+		List list = new Vector();
 		
-		String sql="SELECT * FROM help ";
+		String sql="SELECT * FROM help order by notice_no desc ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				HelpDTO dto = new HelpDTO();
 
-				dto.setTitle(rs.getString(1));
-				dto.setContent(rs.getString(2));
-				dto.setCategory(rs.getString(3));
-				dto.setNormal_or_host(rs.getString(4));
+				dto.setNotice_no(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				dto.setContent(rs.getString(3));
+				dto.setRegidate(rs.getDate(4));
+				dto.setNormal_or_host(rs.getString(5));
+				dto.setCategory(rs.getString(6));
+				dto.setId(rs.getString(7));
 				
 				list.add(dto);				
 			}			
@@ -74,12 +77,13 @@ public class HelpDAO {
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				dto = new HelpDTO();
-			
+				
 				dto.setTitle(rs.getString(1));
 				dto.setContent(rs.getString(2));
-				dto.setCategory(rs.getString(3));
+				dto.setRegidate(rs.getDate(3));
 				dto.setNormal_or_host(rs.getString(4));
-				
+				dto.setCategory(rs.getString(5));
+				dto.setId(rs.getString(6));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,19 +92,20 @@ public class HelpDAO {
 	}//////////////////////////////
 	//입력용
 	public int insert(HelpDTO dto) {
+		System.out.println("insert1");
 		int affected=0;
-		String sql="insert into help(notice_no,TITLE,CONTENT,CATEGORY,NORMAL_OR_HOST,ID) values(help_seq.nextval,?,?,?,?,?)";
+		String sql="INSERT INTO HELP(NOTICE_NO,TITLE,CONTENT,REGIDATE,NORMAL_OR_HOST,CATEGORY,ID)VALUES(help_seq.nextval,'?','?','DEFAULT','?','?','?')";
 		try {
 			psmt = conn.prepareStatement(sql);
-			
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
+			
 			psmt.setString(3, dto.getCategory());
 			psmt.setString(4, dto.getNormal_or_host());
 			psmt.setString(5,dto.getId());
 			
 			affected = psmt.executeUpdate();
-			System.out.println(affected);
+			System.out.println("insert2");
 		} 
 		catch (Exception e) {	e.printStackTrace();}
 		return affected;

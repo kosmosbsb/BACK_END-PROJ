@@ -182,7 +182,7 @@
 	<url-pattern>/question/current/Processing.do</url-pattern>
   </servlet-mapping>
   
-   <!-- 도움말 서블릿 등록 이문용-->
+   <!-- 도움말 View 등록 이문용-->
    <servlet>
  	<servlet-name>HelpViewController</servlet-name>
 	<servlet-class>controller.lmy.HelpViewController</servlet-class>
@@ -193,8 +193,53 @@
 	<url-pattern>/serviceinfo/help/HelpView.do</url-pattern>
   </servlet-mapping>
   
- 
+  <!-- 도움말 write 등록 이문용-->
+  <servlet>
+ 	<servlet-name>HelpWriteController</servlet-name>
+	<servlet-class>controller.lmy.HelpWriteController</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+	<servlet-name>HelpWriteController</servlet-name>
+	<url-pattern>/serviceinfo/help/HelpWrite.do</url-pattern>
+  </servlet-mapping>
+ 
+ <!-- 도움말 List 등록 이문용 -->
+   <servlet>
+ 	<servlet-name>HelpListController</servlet-name>
+	<servlet-class>controller.lmy.HelpListController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>HelpListController</servlet-name>
+	<url-pattern>/serviceinfo/help/HelpList.do</url-pattern>
+  </servlet-mapping>
+
+<!-- 도움말 Edit 등록 이문용 -->
+   <servlet>
+ 	<servlet-name>HelpEditController</servlet-name>
+	<servlet-class>controller.lmy.HelpEditController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>HelpEditController</servlet-name>
+	<url-pattern>/serviceinfo/help/HelpEdit.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 도움말 Delete 등록 이문용 -->
+  
+   <servlet>
+ 	<servlet-name>HelpDeleteController</servlet-name>
+	<servlet-class>controller.lmy.HelpDeleteController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>HelpDeleteController</servlet-name>
+	<url-pattern>/serviceinfo/help/HelpDelete.do</url-pattern>
+  </servlet-mapping>
+  
+  
+
 
   <welcome-file-list>
     <welcome-file>/member/admin/Login.jsp</welcome-file>

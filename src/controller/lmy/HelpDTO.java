@@ -1,5 +1,7 @@
 package controller.lmy;
 
+import java.sql.Date;
+
 public class HelpDTO {
 
 	
@@ -9,12 +11,12 @@ public class HelpDTO {
 	private String normal_or_host;
 	private String category;
 	private String id;
-	
+	private Date regidate;
 
 	public HelpDTO() {}
 
 
-	public HelpDTO(String notice_no, String title, String content, String normal_or_host, String category, String id) {
+	public HelpDTO(String notice_no, String title, String content, String normal_or_host, String category, String id, Date regidate) {
 		super();
 		this.notice_no = notice_no;
 		this.title = title;
@@ -22,6 +24,22 @@ public class HelpDTO {
 		this.normal_or_host = normal_or_host;
 		this.category = category;
 		this.id = id;
+		this.regidate= regidate;
+	}
+
+
+	
+
+
+
+
+	public Date getRegidate() {
+		return regidate;
+	}
+
+
+	public void setRegidate(Date regidate) {
+		this.regidate = regidate;
 	}
 
 

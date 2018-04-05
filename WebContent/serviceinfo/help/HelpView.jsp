@@ -61,9 +61,11 @@
                <thead>
                   <tr>
                   
-                    <th style="width: 10%"  class="text-center">카테고리</th>
-             		<th  class="text-center">타이틀</th>    
+             		<th  class="text-center">타이틀</th> 
+             		<th style="width: 10%"  class="text-center">내용</th>   
                     <th style="width: 10%"  class="text-center">등록일</th>
+                    <th style="width: 10%"  class="text-center">N OR H</th>
+                    <th style="width: 10%"  class="text-center">카테고리</th>
                    	<th style="width: 10%"  class="text-center">작성자</th>
                     <th style="width: 10%" class="text-center">게시물관리</th>
                      
@@ -73,21 +75,24 @@
                 
                  <tr>
                  	
-                     <td class="text-center">${dto.category}</td>
-                     <td class="text-center"> ${dto.title}</td>
+                     <td class="text-center">${dto.title}</td>
+                     <td class="text-center">${dto.content}</td>
                      <td class="text-center">${dto.regidate}</td>
                      <td class="text-center">${dto.normal_or_host}</td>
-                     <td class="text-center">${dto.id}</td>
-			      </tr>   
+                     <td class="text-center">${dto.category}</td>
+                	 <td class="text-center">${dto.id}</td>
+                	 
+                	 <td>
+			             <a href="Edit.jsp?articleId=${dto.Notice_no}">수정</a>|<a href = "Delete.jsp?articleId=${dto.Notice_no}">삭제</a>
+			         </td>
+			    	
+			    
+			      
+			    </tr>   
                 	
+               
               </table>
-			    <td colspan="2">
-	  				<ul style="width:50%" class="nav nav-pills center-block"  role="tablist">
-	 						<li role="presentation" ><a href="#" id="update">수정</a></li>
-	  						<li role="presentation"><a href="#" id="delete">삭제</a></li>
-	  						<li role="presentation"><a href="#">목록</a></li>
-					</ul>						
-	  			</td>
+			  <a href="HelpList.jsp">확인</a>  
             </div>
           </div>
         </div>
