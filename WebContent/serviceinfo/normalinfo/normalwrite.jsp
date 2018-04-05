@@ -1,32 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ include file="/common/IsMember.jsp" %>
+
 <!DOCTYPE html>
-<html lang="ko">
+<html>
   <head>
-    <meta charset="utf-8">
+  
+	<meta charset="utf-8">
+	
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>nomalWrite.jsp</title>
-
-    <!-- Bootstrap core CSS -->    
-    <link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="<c:url value='/bootstrap/css/bootstrap-theme.min.css'/>" rel="stylesheet">
-
-    <!-- Custom styles for this template -->    
-	<style>
-		body {
-		   	min-height: 2000px;
-  			padding-top: 70px;
-		}
-		table,table th{
-			text-align:center;
-		}
-		
-	</style>
-	<script>
+   
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="<c:url value='/css/main.css'/>">
+    
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <title>일반이용정보</title>
+    
+    <script>
 		function isValidate(form){
 			if(form.name.value==""){
 				alert("작성자를 입력하세요");
@@ -38,10 +32,15 @@
 				form.title.focus();
 				return false;
 			}
-						
+			
 			if(form.content.value.length==0){
 				alert("내용을 입력하세요");
 				form.content.focus();
+				return false;
+			}
+			if(form.category.value.length==0){
+				alert("유형을 입력하세요");
+				form.category.focus();
 				return false;
 			}
 			
@@ -49,31 +48,65 @@
 	</script>
   </head>
 
-<body>
+	<!-- Navbar menu -->
+	<body class="app sidebar-mini">
     <jsp:include page="/Top.jsp"/>
-    <div class="container">
-		<div class="page-header">
-  			<h2>자료실 등록${error}</h2>
-		</div>	
-		<div class="row">
-			
-			<div class="col-md-6 col-md-offset-3">
-				<form action="<c:url value='/DATAROOM/Write.do'/>" 
+    
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    
+    <jsp:include page="/Left.jsp"/>
+    
+    
+   <main class="app-content">
+	<div class="app-title">
+		<div>
+		
+			<h1>
+				<i class="fa fa-dashboard"></i> 수정
+			</h1>
+			<p>일반 정보 수정</p>
+		</div>
+		<ul class="app-breadcrumb breadcrumb">
+			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+			<li class="breadcrumb-item"><a href="#">normalinfo edit</a></li>
+		</ul>
+	</div>
+	
+	<div class="container" style="width: 55%">		
+		<div class="row">			
+		<div class="col-md-12">
+		
+			<div class="tile">
+			<div class="tile-body">
+				<form action="<c:url value='/NormalInfoView/Edit.do'/>" 
 				      method="post"
-				      enctype="multipart/form-data"
 				      onsubmit="return isValidate(this)"
 				>
+					<!-- 키값 -->
+					<!-- <input type="hidden" name="key" value="${dto.no}"/> -->
+					<!-- <input type="hidden" name="category" value="${dto.category}"/> -->
+					
+					<!-- 수정전 파일명 -->
 					<table class="table table-bordered">
 	  					<tr>
 	  						<td>작성자</td>
 	  						<td>
-	  							<input value="${name}" name="name" type="text"  style="width:50%" class="form-control"/>
+	  							<input value="${dto.name}" name="name" type="text"  class="form-control"/>
 	  						</td>
 	  					</tr>
+	  					
+	  					<tr>
+	  						<td>유 형</td>
+	  						<td>
+	  							<input value="${dto.category}" name="name" type="text"  class="form-control"/>
+	  						</td>
+	  					</tr>	  					
+	  					
 	  					<tr>
 	  						<td>제 목</td>
 	  						<td>
-	  							<input value="${title}" name="title" type="text" class="form-control"/>
+	  							<input value="${dto.title}" name="title" type="text" class="form-control"/>
 	  						</td>
 	  					</tr>
 	  						  					
@@ -81,24 +114,39 @@
 	  						<td colspan="2">내 용</td>  						
 	  					</tr>
 	  					<tr>
-	  						<td colspan="2"><textarea name="content" class="form-control" rows="10">${content}</textarea></td>  						
+	  						<td colspan="2"><textarea name="content" class="form-control" rows="10">${dto.content}</textarea></td>  						
 	  					</tr>
-	  					<tr>
-	  						<td colspan="2"><button type="submit" class="btn btn-primary">확인</button></td>  						
-	  					</tr>
+	  					
+	  					
 					</table>
+					<div class="row justify-content-center">
+						<button type="submit" class="btn btn-primary">글등록</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">취소</a>
+					</div>
 				</form>
 			</div>	
+			</div>
+			</div>
 				
 		</div>	
 		
     </div> <!-- /container -->
+	
+	</main>
+    <!-- Essential javascripts for application to work-->
+    <script src="<c:url value='/js/jquery-3.2.1.min.js'/>"></script>
+    <script src="<c:url value='/js/popper.min.js'/>"></script>
+    <script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+    <script src="<c:url value='/js/main.js'/>"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="<c:url value='/js/plugins/pace.min.js'/>"></script>
+    <!-- Page specific javascripts-->
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="<c:url value='/js/plugins/jquery.dataTables.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/js/plugins/dataTables.bootstrap.min.js'/>"></script>
     
-   
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
-    </body>
+    <!-- Google analytics script-->
+    <script type="text/javascript">
+
+    </script>
+  </body>
 </html>

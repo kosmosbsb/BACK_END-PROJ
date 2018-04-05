@@ -22,7 +22,7 @@ public class ViewController extends HttpServlet {
 		SjhDAO dao = new SjhDAO(req.getServletContext());
 		SjhDTO dto= dao.selectOne(no);
 		//내용 줄바꿈
-//		dto.setContent(dto.getContent().replace("\r\n","<br/>"));
+		dto.setContent(dto.getContent().replace("\r\n","<br/>"));
 		dao.close();
 		//5]필요한 값 리퀘스트 영역에 저장
 		req.setAttribute("dto", dto);

@@ -19,13 +19,12 @@ public class EditController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, 
 			HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("에디트 컨트롤러");
+		
 		//요청분석]		
 		if(req.getMethod().toUpperCase().equals("GET")) {//수정폼으로 이동
 			//키값 파라미터 받기]
 			String no = req.getParameter("no");
-			
-			System.out.println("수정 눌렀을때 _에디트컨트롤러");
+						
 			//모델 호출 및 결과 값 받기]
 			SjhDAO dao = new SjhDAO(req.getServletContext());
 			SjhDTO dto = dao.selectOne(no);
@@ -36,7 +35,7 @@ public class EditController extends HttpServlet {
 			req.getRequestDispatcher("/serviceinfo/normalinfo/normaledit.jsp").forward(req, resp);
 		}
 		else {//수정처리-POST방식
-			System.out.println("수정완료 완료완료 눌렀을때 _에디트컨트롤러");
+			
 			//한글처리]
 			req.setCharacterEncoding("UTF-8");
 			//3]요청분석- 수정처리 요청
@@ -55,8 +54,7 @@ public class EditController extends HttpServlet {
 				String title=req.getParameter("title");
 				String category = req.getParameter("category");
 				String content=req.getParameter("content");
-				System.out.println(no+name+title+content+"1"+category);
-				
+								
 				//데이타베이스 CRUD작업과 관련된 모델 호출]
 				SjhDAO dao = new SjhDAO(req.getServletContext());
 				SjhDTO dto = new SjhDTO();
@@ -68,8 +66,7 @@ public class EditController extends HttpServlet {
 				dto.setCategory(category);
 				
 				sucOrFail=dao.update(dto);
-				
-				System.out.println(sucOrFail);
+								
 				dao.close();
 			
 			//5]리퀘스트 영역에 결과값 혹은 필요한 값 저장

@@ -31,7 +31,7 @@
 				alert("제목을 입력하세요");
 				form.title.focus();
 				return false;
-			}			
+			}
 			
 			if(form.content.value.length==0){
 				alert("내용을 입력하세요");
@@ -68,13 +68,12 @@
 		</ul>
 	</div>
 	
-	<div class="container">
-		<div class="page-header">
-  			<h2>일반정보 수정</h2>
-		</div>	
-		<div class="row">
-			
-			<div class="col-md-6 col-md-offset-3">
+	<div class="container" style="width: 55%">		
+		<div class="row">			
+		<div class="col-md-12">
+		
+			<div class="tile">
+			<div class="tile-body">
 				<form action="<c:url value='/NormalInfoView/Edit.do'/>" 
 				      method="post"
 				      onsubmit="return isValidate(this)"
@@ -88,7 +87,7 @@
 	  					<tr>
 	  						<td>작성자</td>
 	  						<td>
-	  							<input value="${dto.name}" name="name" type="text"  style="width:50%" class="form-control"/>
+	  							<input value="${dto.name}" name="name" type="text"  class="form-control"/>
 	  						</td>
 	  					</tr>
 	  					<tr>
@@ -104,12 +103,16 @@
 	  					<tr>
 	  						<td colspan="2"><textarea name="content" class="form-control" rows="10">${dto.content}</textarea></td>  						
 	  					</tr>
-	  					<tr>
-	  						<td colspan="2"><button type="submit" class="btn btn-primary">수정</button></td>  						
-	  					</tr>
+	  					
+	  					
 					</table>
+					<div class="row justify-content-center">
+						<button type="submit" class="btn btn-primary">수정</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">취소</a>
+					</div>
 				</form>
 			</div>	
+			</div>
+			</div>
 				
 		</div>	
 		

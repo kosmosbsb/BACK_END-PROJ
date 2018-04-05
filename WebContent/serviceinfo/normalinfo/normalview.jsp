@@ -52,7 +52,7 @@
 	<div class="col-md-12">
 	
           <div class="tile">
-            <h3 class="tile-title">${dto.no}</h3>
+            <h2 class="tile-title">글번호 NO. ${dto.no}</h2>
             <div class="tile-body">
               <form>
               	<input type="hidden" name="category" value="${dto.category}"/>
@@ -70,12 +70,12 @@
                 </div>
                 <div class="form-group">
                   <label class="control-label">내용</label>
-                  <label class="form-control">${dto.content}</label>
+                  <label class="form-control" > ${dto.content}</label>
                 </div>                                
                 
               </form>
             </div>
-            <div class="row justify-content-center">     
+            <div class="row justify-content-center">   
             
               <a class="btn btn-primary" href="<c:url value='/NormalInfoView/Edit.do?no=${dto.no}&category=${dto.category}'/>">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">목록</a>
             </div>
