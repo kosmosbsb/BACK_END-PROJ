@@ -79,7 +79,6 @@
             <div class="tile-body">
             <form action="<c:url value='/serviceinfo/help/HelpWrite.do'/>" 
 				      method="post"
-				     
 				      onsubmit="return isValidate(this)"
 				>
 			  
