@@ -3,12 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:choose>
-	<c:when test="${param.mode=='UPDATE' }">
-		<c:set var="moveUrl" value="/DATAROOM/Edit.do?key=${param.key}"/>
+	<c:when test="${param.mode=='DELETE' }">
+		<c:set var="moveUrl" value="/NormalInfoView/Delete.do?key=${param.key}"/>
+		<!-- <c:set var="moveUrl" value="/DATAROOM/Edit.do?key=${param.key}"/> -->
 	</c:when>
-	<c:otherwise>	
-		<c:set var="moveUrl" value="/DATAROOM/Delete.do?key=${param.key}"/>
-	</c:otherwise>
+	
 </c:choose>
 <script>
 	<c:choose>

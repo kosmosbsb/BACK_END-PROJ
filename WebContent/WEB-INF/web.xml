@@ -119,7 +119,7 @@
   <!--요청 URL매핑 성주현 -->
   <servlet-mapping>
 	<servlet-name>NormalInfoDelete</servlet-name>
-	<url-pattern>/NormalInfoView/Delete.do</url-pattern>
+	<url-pattern>/NormalInfoDelete/Delete.do</url-pattern>
   </servlet-mapping>
   
   

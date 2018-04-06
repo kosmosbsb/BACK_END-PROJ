@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 
 public class DeleteController extends HttpServlet {
-
+	
 	@Override
 	protected void service(HttpServletRequest req, 
 			HttpServletResponse resp) throws ServletException, IOException {
 		//키값 받기
-		String key= req.getParameter("key");
+		String key= req.getParameter("no");
+		
+		System.out.println(key);
 		//레코드 삭제 성공후 파일 삭제하자]
 		SjhDAO dao = new SjhDAO(req.getServletContext());
 		//레코드 삭제전 파일명 얻기]
@@ -27,6 +29,6 @@ public class DeleteController extends HttpServlet {
 		//리퀘스트 영역에 데이타 저장]
 		req.setAttribute("SUC_FAIL", sucOrFail);
 		//포워드]
-		req.getRequestDispatcher("/DataRoom13/Message.jsp").forward(req, resp);
+		req.getRequestDispatcher("/serviceinfo/normalinfo/Message.jsp").forward(req, resp);
 	}////////////////////////////////////////////
 }

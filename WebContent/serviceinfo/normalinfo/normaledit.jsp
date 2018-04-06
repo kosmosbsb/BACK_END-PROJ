@@ -107,7 +107,9 @@
 	  					
 					</table>
 					<div class="row justify-content-center">
-						<button type="submit" class="btn btn-primary">수정</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">취소</a>
+						<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-lg fa-wrench"></i>완료</button>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>"><i class="fa fa-fw fa-lg fa-times-circle"></i>취소</a>
 					</div>
 				</form>
 			</div>	

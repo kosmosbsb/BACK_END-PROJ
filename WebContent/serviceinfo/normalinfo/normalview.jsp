@@ -77,8 +77,9 @@
             </div>
             <div class="row justify-content-center">   
             
-              <a class="btn btn-primary" href="<c:url value='/NormalInfoView/Edit.do?no=${dto.no}&category=${dto.category}'/>">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">목록</a>
-              <li role="presentation" ><a href="#" id="delete" data-toggle="modal" data-target="#dialog">삭제</a></li>
+              <a class="btn btn-primary" href="<c:url value='/NormalInfoView/Edit.do?no=${dto.no}&category=${dto.category}'/>"><i class="fa fa-fw fa-lg fa-wrench"></i>수정</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>"><i class="fa fa-th-list"></i>목록</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="#" onclick="isDelete()"><i class="fa fa-fw fa-lg fa-times-circle"></i>삭제</a>
             </div>
           </div>
         </div>
@@ -86,6 +87,8 @@
 	</div>
 	
 	</main>
+	
+	
     <!-- Essential javascripts for application to work-->
     <script src="<c:url value='/js/jquery-3.2.1.min.js'/>"></script>
     <script src="<c:url value='/js/popper.min.js'/>"></script>
@@ -103,19 +106,14 @@
 
     </script>
     <script>
-	    $(function(){
-		    //삭제클릭]
-			$('#delete').on('click',function(){
-				if(confirm('정말로 삭제하시겠습니까?')){
-					//모드 설정
-					$("form").get(0).mode.value="DELETE";
-					//다이얼로그창 띄우기
-					$('#dialog').dialog("open");
-				}				
-			});
-						
-		});
-
-    </script>
+	var isDelete = function(){
+		if(confirm("정말로 삭제 하시겠습니까?")){			
+			//location.replace("/sdsabk/sdkjaskd/NormalInfoDelete/Delete.do?no=${dto.no}");
+			//위에는 풀경로 해줘야돼
+			location.replace("<c:url value='/NormalInfoDelete/Delete.do?no=${dto.no}'/>");
+		}
+		
+	};
+	</script>
   </body>
 </html>
