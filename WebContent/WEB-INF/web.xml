@@ -91,6 +91,17 @@
   
   <!-- 서블릿 등록 성주현 -->
   <servlet>
+ 	<servlet-name>NormalInfoWrite</servlet-name>
+	<servlet-class>controller.sjh.WriteController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 성주현 -->
+  <servlet-mapping>
+	<servlet-name>NormalInfoWrite</servlet-name>
+	<url-pattern>/NormalInfoWrite/Write.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 서블릿 등록 성주현 -->
+  <servlet>
  	<servlet-name>NormalInfoEdit</servlet-name>
 	<servlet-class>controller.sjh.EditController</servlet-class>
   </servlet>
@@ -99,6 +110,18 @@
 	<servlet-name>NormalInfoEdit</servlet-name>
 	<url-pattern>/NormalInfoView/Edit.do</url-pattern>
   </servlet-mapping>
+    
+  <!-- 서블릿 등록 성주현 -->
+  <servlet>
+ 	<servlet-name>NormalInfoDelete</servlet-name>
+	<servlet-class>controller.sjh.DeleteController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 성주현 -->
+  <servlet-mapping>
+	<servlet-name>NormalInfoDelete</servlet-name>
+	<url-pattern>/NormalInfoView/Delete.do</url-pattern>
+  </servlet-mapping>
+  
   
   <servlet>
   	<!-- 서블릿 명:임의로 지정 최지훈-->

@@ -27,6 +27,12 @@
 				form.name.focus();
 				return false;
 			}
+			if(form.category.value.length==0){
+				alert("유형을 입력하세요");
+				form.category.focus();
+				return false;
+			}
+			
 			else if(form.title.value.length==0){
 				alert("제목을 입력하세요");
 				form.title.focus();
@@ -37,12 +43,7 @@
 				alert("내용을 입력하세요");
 				form.content.focus();
 				return false;
-			}
-			if(form.category.value.length==0){
-				alert("유형을 입력하세요");
-				form.category.focus();
-				return false;
-			}
+			}			
 			
 		}////////////////////////////////////////	
 	</script>
@@ -63,13 +64,13 @@
 		<div>
 		
 			<h1>
-				<i class="fa fa-dashboard"></i> 수정
+				<i class="fa fa-dashboard"></i> 글 등록
 			</h1>
-			<p>일반 정보 수정</p>
+			<p>일반 정보 글등록</p>
 		</div>
 		<ul class="app-breadcrumb breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-			<li class="breadcrumb-item"><a href="#">normalinfo edit</a></li>
+			<li class="breadcrumb-item"><a href="#">normalinfo write</a></li>
 		</ul>
 	</div>
 	
@@ -79,7 +80,7 @@
 		
 			<div class="tile">
 			<div class="tile-body">
-				<form action="<c:url value='/NormalInfoView/Edit.do'/>" 
+				<form action="<c:url value='/NormalInfoWrite/Write.do'/>" 
 				      method="post"
 				      onsubmit="return isValidate(this)"
 				>
@@ -99,7 +100,7 @@
 	  					<tr>
 	  						<td>유 형</td>
 	  						<td>
-	  							<input value="${dto.category}" name="name" type="text"  class="form-control"/>
+	  							<input value="${dto.category}" name="category" type="text"  class="form-control"/>
 	  						</td>
 	  					</tr>	  					
 	  					
@@ -111,7 +112,7 @@
 	  					</tr>
 	  						  					
 	  					<tr>
-	  						<td colspan="2">내 용</td>  						
+	  						<td colspan="2">내 용</td>
 	  					</tr>
 	  					<tr>
 	  						<td colspan="2"><textarea name="content" class="form-control" rows="10">${dto.content}</textarea></td>  						
@@ -127,7 +128,7 @@
 			</div>
 			</div>
 				
-		</div>	
+		</div>
 		
     </div> <!-- /container -->
 	

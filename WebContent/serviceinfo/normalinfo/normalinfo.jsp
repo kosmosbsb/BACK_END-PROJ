@@ -46,7 +46,8 @@
         <div class="col-md-12">
         
           <div class="tile">
-          <button class="btn btn-primary pull-right" type="button" href="<c:url value='/nomalinfo/normalwrite.jsp'/>"><i class="fa fa-user fa-lg"></i>글 등록</button>
+          <a class="btn btn-primary pull-right" href="<c:url value='/NormalInfoWrite/Write.do'/>"><i class="fa fa-user fa-lg"></i>글 등록</a>
+          <!-- <button class="btn btn-primary pull-right" type="button" href="<c:url value='/normalwrite.jsp'/>"><i class="fa fa-user fa-lg"></i>글 등록</button> -->
             <div class="tile-body">
               <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>

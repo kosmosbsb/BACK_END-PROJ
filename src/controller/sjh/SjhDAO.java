@@ -135,6 +135,18 @@ public class SjhDAO {
 		catch (Exception e) {	e.printStackTrace();}
 		return affected;
 	}///////////////////////////////////////
+	
+	public int delete(String key) {
+		int affected=0;
+		String sql="DELETE FROM SERVICEINFO_NORMALINFO WHERE NO=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,key);			
+			affected = psmt.executeUpdate();
+		} 
+		catch (Exception e) {	e.printStackTrace();}
+		return affected;
+	}///////////////////////////////////
 
 
 }

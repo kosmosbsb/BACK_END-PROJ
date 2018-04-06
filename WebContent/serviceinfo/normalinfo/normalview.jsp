@@ -70,14 +70,15 @@
                 </div>
                 <div class="form-group">
                   <label class="control-label">내용</label>
-                  <label class="form-control" > ${dto.content}</label>
-                </div>                                
+                  <textarea name="content" class="form-control" rows="10" disabled style="background-color: white ">${dto.content}</textarea>
+                </div>
                 
               </form>
             </div>
             <div class="row justify-content-center">   
             
               <a class="btn btn-primary" href="<c:url value='/NormalInfoView/Edit.do?no=${dto.no}&category=${dto.category}'/>">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">목록</a>
+              <li role="presentation" ><a href="#" id="delete" data-toggle="modal" data-target="#dialog">삭제</a></li>
             </div>
           </div>
         </div>
@@ -99,6 +100,21 @@
     
     <!-- Google analytics script-->
     <script type="text/javascript">
+
+    </script>
+    <script>
+	    $(function(){
+		    //삭제클릭]
+			$('#delete').on('click',function(){
+				if(confirm('정말로 삭제하시겠습니까?')){
+					//모드 설정
+					$("form").get(0).mode.value="DELETE";
+					//다이얼로그창 띄우기
+					$('#dialog').dialog("open");
+				}				
+			});
+						
+		});
 
     </script>
   </body>

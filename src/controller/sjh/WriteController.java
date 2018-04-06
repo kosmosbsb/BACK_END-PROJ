@@ -18,6 +18,7 @@ public class WriteController extends HttpServlet {
 	//[입력 폼으로 이동]
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("두겟으로 들어옴");
 		//3]요청분석- 입력폼 요청
 		//4]모델호출 및 결과값 받기
 		//5]결과값이 있으면 ,리퀘스트 영역에 저장
@@ -30,9 +31,9 @@ public class WriteController extends HttpServlet {
 		 *  지울시에는 신경 쓸 필요없다.
 		 */
 		
-		req.setAttribute("active","dataroom");
+		//req.setAttribute("active","dataroom"); 메뉴활성화용이라서 필요없어
 		//포워드]		
-		req.getRequestDispatcher("/normalinfo/normalwrite.jsp").forward(req, resp);
+		req.getRequestDispatcher("/serviceinfo/normalinfo/normalwrite.jsp").forward(req, resp);
 		
 		//리다이렉트]
 		//resp.sendRedirect(req.getContextPath()+"/DataRoom13/Write.jsp");
@@ -42,6 +43,7 @@ public class WriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, 
 			HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("포스트로 들어옴");
 		//한글처리]
 		req.setCharacterEncoding("UTF-8");
 		//오류시 입력값 보존을 위한 변수 선언]
@@ -55,6 +57,7 @@ public class WriteController extends HttpServlet {
 		
 		//기타 파라미터 받아서 테이블에 입력처리]
 		name = req.getParameter("name");
+		category = req.getParameter("category");
 		title= req.getParameter("title");			
 		content = req.getParameter("content");
 		
@@ -62,9 +65,10 @@ public class WriteController extends HttpServlet {
 		SjhDAO dao = new SjhDAO(req.getServletContext());
 		SjhDTO dto = new SjhDTO();
 		
-		dto.setContent(content);
-		dto.setTitle(title);
 		dto.setName(name);
+		dto.setCategory(category);
+		dto.setTitle(title);
+		dto.setContent(content);	
 		
 		
 		sucOrFail=dao.insert(dto);
