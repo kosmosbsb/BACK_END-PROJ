@@ -52,7 +52,7 @@
 	<div class="col-md-12">
 	
           <div class="tile">
-            <h2 class="tile-title">글번호 NO. ${dto.no}</h2>
+            <h2 class="tile-title">${dto.category}</h2>
             <div class="tile-body">
               <form>
               	<input type="hidden" name="category" value="${dto.category}"/>

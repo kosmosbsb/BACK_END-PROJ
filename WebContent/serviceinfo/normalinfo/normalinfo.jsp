@@ -52,7 +52,7 @@
               <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
                   <tr>
-                  	<th style="width: 8%">번호</th>
+                  	
                     <th style="width: 12%">유형</th>
                     <th>제목</th>
                     <th style="width: 20%">작성자</th>
@@ -62,7 +62,7 @@
                 <tbody>
                 <c:forEach var="item" items="${list}" varStatus="loop">
 	   				<tr>
-	   					<td>${item.no}</td>
+	   					
 	   					<td>${item.category}</td>
 	   					<td><a href="<c:url value='/NormalInfoView/View.do?no=${item.no}'/>">${item.title}</a></td>
 	   					<td>${item.name}</td>

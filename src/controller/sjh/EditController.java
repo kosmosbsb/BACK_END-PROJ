@@ -1,6 +1,7 @@
 package controller.sjh;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +25,7 @@ public class EditController extends HttpServlet {
 		if(req.getMethod().toUpperCase().equals("GET")) {//수정폼으로 이동
 			//키값 파라미터 받기]
 			String no = req.getParameter("no");
+			String category = req.getParameter("category");
 						
 			//모델 호출 및 결과 값 받기]
 			SjhDAO dao = new SjhDAO(req.getServletContext());
@@ -50,6 +52,7 @@ public class EditController extends HttpServlet {
 			
 				////기타 파라미터 받아서 테이블에 수정처리]
 				no= req.getParameter("key");
+				
 				String name=req.getParameter("name");
 				String title=req.getParameter("title");
 				String category = req.getParameter("category");
@@ -64,6 +67,7 @@ public class EditController extends HttpServlet {
 				dto.setTitle(title);
 				dto.setContent(content);
 				dto.setCategory(category);
+				
 				
 				sucOrFail=dao.update(dto);
 								

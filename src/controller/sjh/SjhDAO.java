@@ -119,7 +119,7 @@ public class SjhDAO {
 	public int update(SjhDTO dto) {//no,category,content,title,name,sysdate,id	
 		
 		int affected=0;
-		String sql="UPDATE SERVICEINFO_NORMALINFO SET category=?,content=?,title=?,name=? WHERE no=?";
+		String sql="UPDATE SERVICEINFO_NORMALINFO SET category=?,content=?,title=?,name=?,postdate=sysdate WHERE no=?";
 		//"UPDATE SERVICEINFO_NORMALINFO SET category=?,content=?,title=?,name=? WHERE no=?"
 		try {
 			psmt = conn.prepareStatement(sql);

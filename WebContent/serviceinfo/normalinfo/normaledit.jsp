@@ -20,8 +20,15 @@
     
     <title>일반이용정보</title>
     
+        
     <script>
 		function isValidate(form){
+			if(form.category.value==0){
+				alert("유형을 선택하세요");
+				form.content.focus();
+				return false;
+			}
+			
 			if(form.name.value==""){
 				alert("작성자를 입력하세요");
 				form.name.focus();
@@ -37,10 +44,11 @@
 				alert("내용을 입력하세요");
 				form.content.focus();
 				return false;
-			}
+			}			
 			
 		}////////////////////////////////////////	
 	</script>
+	
   </head>
 
 	<!-- Navbar menu -->
@@ -80,10 +88,32 @@
 				>
 					<!-- 키값 -->
 					<input type="hidden" name="key" value="${dto.no}"/>
-					<input type="hidden" name="category" value="${dto.category}"/>
+					<!-- <input type="hidden" name="category" value="${dto.category}"/> -->
 					
 					<!-- 수정전 파일명 -->					
 					<table class="table table-bordered">
+						<tr>
+						
+		                  	<td >유형</td>
+	                  		<td> 
+	                  			<select class="form-control" name="category" value="${dto.category}">             
+	                  				<option value="">유형을 선택하세요</option>  
+	                  				<option value="개인정보처리방침">개인정보처리방침</option>                			
+									<option value="이용약관">이용약관</option>
+									<option value="운영정책">운영정책</option>										  					
+								</select>
+								
+								
+		                 	</td>
+	                  	</tr>
+						
+	  					<tr>
+	  						<td>작성일</td>
+	  						<td>
+	  							<input value="${dto.postdate}" name="postdate" type="text"  class="form-control"/>
+	  						</td>
+	  					</tr>	
+					
 	  					<tr>
 	  						<td>작성자</td>
 	  						<td>
