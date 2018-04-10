@@ -67,7 +67,7 @@
 	<url-pattern>/analysis/Reserve.do</url-pattern>
   </servlet-mapping>
   
-     <!-- 서블릿 등록 성주현 -->
+  <!-- 서블릿 등록 성주현 -->
   <servlet>
  	<servlet-name>NormalInfoList</servlet-name>
 	<servlet-class>controller.sjh.SjhController</servlet-class>
@@ -75,6 +75,62 @@
   <!--요청 URL매핑 성주현 -->
   <servlet-mapping>
 	<servlet-name>NormalInfoList</servlet-name>
+	<url-pattern>/NormalInfo/List.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 서블릿 등록 성주현 -->
+  <servlet>
+ 	<servlet-name>NormalInfoView</servlet-name>
+	<servlet-class>controller.sjh.ViewController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 성주현 -->
+  <servlet-mapping>
+	<servlet-name>NormalInfoView</servlet-name>
+	<url-pattern>/NormalInfoView/View.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 서블릿 등록 성주현 -->
+  <servlet>
+ 	<servlet-name>NormalInfoWrite</servlet-name>
+	<servlet-class>controller.sjh.WriteController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 성주현 -->
+  <servlet-mapping>
+	<servlet-name>NormalInfoWrite</servlet-name>
+	<url-pattern>/NormalInfoWrite/Write.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 서블릿 등록 성주현 -->
+  <servlet>
+ 	<servlet-name>NormalInfoEdit</servlet-name>
+	<servlet-class>controller.sjh.EditController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 성주현 -->
+  <servlet-mapping>
+	<servlet-name>NormalInfoEdit</servlet-name>
+	<url-pattern>/NormalInfoView/Edit.do</url-pattern>
+  </servlet-mapping>
+    
+  <!-- 서블릿 등록 성주현 -->
+  <servlet>
+ 	<servlet-name>NormalInfoDelete</servlet-name>
+	<servlet-class>controller.sjh.DeleteController</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 성주현 -->
+  <servlet-mapping>
+	<servlet-name>NormalInfoDelete</servlet-name>
+	<url-pattern>/NormalInfoDelete/Delete.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- host -->
+  <!-- 서블릿 등록 성주현 -->
+  <servlet>
+ 	<servlet-name>HostInfoList</servlet-name>
+	<servlet-class>controller.sjhost.SjhControllerHost</servlet-class>
+  </servlet>
+  <!--요청 URL매핑 성주현 -->
+  <servlet-mapping>
+	<servlet-name>HostInfoList</servlet-name>
 	<url-pattern>/NormalInfo/List.do</url-pattern>
   </servlet-mapping>
   

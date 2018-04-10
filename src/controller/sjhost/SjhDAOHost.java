@@ -52,7 +52,7 @@ public class SjhDAOHost {
 	public List<SjhDTOHost> selectList() {
 		List <SjhDTOHost> list= new Vector<SjhDTOHost>();
 		
-		String sql="select no, category, title, name, postdate from SERVICEINFO_NORMALINFO ";
+		String sql="select no, category, title, name, postdate from SERVICEINFO_HOSTINFO ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -75,7 +75,7 @@ public class SjhDAOHost {
 	public SjhDTOHost selectOne(String no) {
 		
 		SjhDTOHost dto=null;
-		String sql="SELECT * from SERVICEINFO_NORMALINFO WHERE no =?";
+		String sql="SELECT * from SERVICEINFO_HOSTINFO WHERE no =?";
 		try {			
 			//no,category,content,title,name,postdate,id
 			psmt = conn.prepareStatement(sql);
@@ -101,7 +101,7 @@ public class SjhDAOHost {
 	//입력용]
 	public int insert(SjhDTOHost dto) {//no,category,content,title,name,postdate,id
 		int affected=0;
-		String sql="INSERT INTO SERVICEINFO_NORMALINFO(no,category,title,name,postdate,content) VALUES(info_deptno.NEXTVAL,?,?,?,sysdate,?)";
+		String sql="INSERT INTO SERVICEINFO_HOSTINFO(no,category,title,name,postdate,content) VALUES(info_deptno.NEXTVAL,?,?,?,sysdate,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getCategory());			
@@ -119,7 +119,7 @@ public class SjhDAOHost {
 	public int update(SjhDTOHost dto) {//no,category,content,title,name,sysdate,id	
 		
 		int affected=0;
-		String sql="UPDATE SERVICEINFO_NORMALINFO SET category=?,title=?,name=?,postdate=sysdate ,content=? WHERE no=?";
+		String sql="UPDATE SERVICEINFO_HOSTINFO SET category=?,title=?,name=?,postdate=sysdate ,content=? WHERE no=?";
 		//"UPDATE SERVICEINFO_NORMALINFO SET category=?,content=?,title=?,name=? WHERE no=?"
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -138,7 +138,7 @@ public class SjhDAOHost {
 	
 	public int delete(String key) {
 		int affected=0;
-		String sql="DELETE FROM SERVICEINFO_NORMALINFO WHERE NO=?";
+		String sql="DELETE FROM SERVICEINFO_HOSTINFO WHERE NO=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1,key);			
