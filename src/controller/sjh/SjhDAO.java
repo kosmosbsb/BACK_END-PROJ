@@ -86,10 +86,10 @@ public class SjhDAO {
 				dto = new SjhDTO();
 				dto.setNo(rs.getString(1));
 				dto.setCategory(rs.getString(2));
-				dto.setContent(rs.getString(3));								
-				dto.setTitle(rs.getString(4));
-				dto.setName(rs.getString(5));
-				dto.setPostdate(rs.getDate(6));
+				dto.setTitle(rs.getString(3));
+				dto.setName(rs.getString(4));
+				dto.setPostdate(rs.getDate(5));				
+				dto.setContent(rs.getString(7));
 				
 			}
 		} catch (Exception e) {
@@ -101,13 +101,13 @@ public class SjhDAO {
 	//입력용]
 	public int insert(SjhDTO dto) {//no,category,content,title,name,postdate,id
 		int affected=0;
-		String sql="INSERT INTO SERVICEINFO_NORMALINFO(no,category,content,title,name,postdate) VALUES(info_deptno.NEXTVAL,?,?,?,?,sysdate)";
+		String sql="INSERT INTO SERVICEINFO_NORMALINFO(no,category,title,name,postdate,content) VALUES(info_deptno.NEXTVAL,?,?,?,sysdate,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1,dto.getCategory());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getTitle());
-			psmt.setString(4,dto.getName());
+			psmt.setString(1, dto.getCategory());			
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getName());
+			psmt.setString(4, dto.getContent());
 						
 			affected = psmt.executeUpdate();
 		} 
@@ -119,15 +119,15 @@ public class SjhDAO {
 	public int update(SjhDTO dto) {//no,category,content,title,name,sysdate,id	
 		
 		int affected=0;
-		String sql="UPDATE SERVICEINFO_NORMALINFO SET category=?,content=?,title=?,name=?,postdate=sysdate WHERE no=?";
+		String sql="UPDATE SERVICEINFO_NORMALINFO SET category=?,title=?,name=?,postdate=sysdate ,content=? WHERE no=?";
 		//"UPDATE SERVICEINFO_NORMALINFO SET category=?,content=?,title=?,name=? WHERE no=?"
 		try {
 			psmt = conn.prepareStatement(sql);
 					
-			psmt.setString(1, dto.getCategory());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getTitle());						
-			psmt.setString(4, dto.getName());
+			psmt.setString(1, dto.getCategory());			
+			psmt.setString(2, dto.getTitle());						
+			psmt.setString(3, dto.getName());			
+			psmt.setString(4, dto.getContent());
 			psmt.setString(5, dto.getNo());
 									
 			affected = psmt.executeUpdate();

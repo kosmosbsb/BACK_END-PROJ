@@ -28,7 +28,7 @@
 				return false;
 			}
 			if(form.category.value.length==0){
-				alert("유형을 입력하세요");
+				alert("유형을 선택하세요");
 				form.category.focus();
 				return false;
 			}
@@ -98,10 +98,16 @@
 	  					</tr>
 	  					
 	  					<tr>
-	  						<td>유 형</td>
-	  						<td>
-	  							<input value="${dto.category}" name="category" type="text"  class="form-control"/>
-	  						</td>
+	  						<td >유형</td>
+	                  		<td> 
+	                  			<select class="form-control" name="category" value="${dto.category}">             
+	                  				<option value="">유형을 선택하세요</option>	                  				                			
+									<option value="이용약관">이용약관</option>
+									<option value="개인정보처리방침">개인정보처리방침</option>
+									<option value="운영정책">운영정책</option>										  					
+								</select>								
+								
+		                 	</td>
 	  					</tr>	  					
 	  					
 	  					<tr>

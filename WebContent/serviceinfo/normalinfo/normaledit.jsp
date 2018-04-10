@@ -97,12 +97,11 @@
 		                  	<td >유형</td>
 	                  		<td> 
 	                  			<select class="form-control" name="category" value="${dto.category}">             
-	                  				<option value="">유형을 선택하세요</option>  
-	                  				<option value="개인정보처리방침">개인정보처리방침</option>                			
-									<option value="이용약관">이용약관</option>
+	                  				<option value="">유형을 선택하세요</option>
+	                  				<option value="이용약관">이용약관</option>
+									<option value="개인정보처리방침">개인정보처리방침</option>
 									<option value="운영정책">운영정책</option>										  					
-								</select>
-								
+								</select>								
 								
 		                 	</td>
 	                  	</tr>
