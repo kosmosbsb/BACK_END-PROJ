@@ -1,6 +1,6 @@
 package controller.lmy;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class HelpDTO {
 

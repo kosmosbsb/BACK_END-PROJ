@@ -44,9 +44,9 @@ public class HelpDAO {
 
 	//list
 	public List<HelpDTO> selectList() {
-		List list = new Vector();
+		List<HelpDTO> list = new Vector<HelpDTO>();
 		
-		String sql="SELECT * FROM help order by notice_no desc ";
+		String sql="select notice_no,title,content,regidate,normal_or_host,category,id from help  ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -75,75 +75,46 @@ public class HelpDAO {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);
 			rs = psmt.executeQuery();
+			
 			if(rs.next()) {
 				dto = new HelpDTO();
 				
-				dto.setTitle(rs.getString(1));
-				dto.setContent(rs.getString(2));
-				dto.setRegidate(rs.getDate(3));
-				dto.setNormal_or_host(rs.getString(4));
-				dto.setCategory(rs.getString(5));
-				dto.setId(rs.getString(6));
+				dto.setNotice_no(rs.getString(1));
+				
+				dto.setTitle(rs.getString(2));
+				dto.setContent(rs.getString(3));
+				dto.setRegidate(rs.getDate(4));
+				dto.setNormal_or_host(rs.getString(5));
+				dto.setCategory(rs.getString(6));
+				dto.setId(rs.getString(7));
+			
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}	
+		
 		return dto;
 	}//////////////////////////////
 	//입력용
 	public int insert(HelpDTO dto) {
-		System.out.println("insert1");
+		
 		int affected=0;
-		String sql="INSERT INTO HELP(NOTICE_NO,TITLE,CONTENT,REGIDATE,NORMAL_OR_HOST,CATEGORY,ID)VALUES(help_seq.nextval,'?','?','DEFAULT','?','?','?')";
+		String sql="INSERT INTO HELP(NOTICE_NO,TITLE,CONTENT,REGIDATE,NORMAL_OR_HOST,CATEGORY,ID)VALUES(help_seq.nextval,?,?,sysdate,?,?,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
-			
-			psmt.setString(3, dto.getCategory());
-			psmt.setString(4, dto.getNormal_or_host());
+			psmt.setString(3, dto.getNormal_or_host());
+			psmt.setString(4, dto.getCategory());
 			psmt.setString(5,dto.getId());
 			
 			affected = psmt.executeUpdate();
-			System.out.println("insert2");
+			
 		} 
 		catch (Exception e) {	e.printStackTrace();}
 		return affected;
 	}///////////////////////
 	
-	//이전글/다음글 얻기
-	public Map<String,HelpDTO> prevNNext(String key){
-		Map<String,HelpDTO> map = new HashMap<String,HelpDTO>();		
-		try {
-			//이전글 얻기
-			String sql="SELECT no,title FROM help WHERE no=(SELECT min(no) FROM help WHERE no > ?)";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, key);
-			rs = psmt.executeQuery();			
-			if(rs.next()) {//이전글이 있는 경우
-				HelpDTO dto= new HelpDTO();
-				dto.setNotice_no(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				map.put("PREV",dto);
-			}
-			//다음글 얻기
-			sql="SELECT no,title FROM help WHERE no=(SELECT max(no) FROM help WHERE no < ?)";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, key);
-			rs = psmt.executeQuery();			
-			if(rs.next()) {//다음글이 있는 경우
-				HelpDTO dto= new HelpDTO();
-				dto.setNotice_no(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				map.put("NEXT",dto);
-			}
-			
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}		
-		return map;
-	}/////////////////////////////
 	
 
 
@@ -163,15 +134,20 @@ public class HelpDAO {
 	//업데이트
 	public int update(HelpDTO dto) {
 		int affected=0;
-		String sql="UPDATE help SET TITLE=?, CONTENT=?,Normal_or_host=?,CATEGORY =? WHERE Notice_no=?";
+		String sql="UPDATE HELP SET TITLE=?, CONTENT=?,NORMAL_OR_HOST=?,CATEGORY =?,ID=? WHERE NOTICE_NO=?";
 		try {
 			psmt = conn.prepareStatement(sql);
+			System.out.println("받아온 글번호11: "+dto.getCategory());
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getCategory());
-			psmt.setString(4,dto.getNormal_or_host());
-			psmt.setString(5, dto.getNotice_no());
+			psmt.setString(3,dto.getNormal_or_host());
+			psmt.setString(4, dto.getCategory());
+			psmt.setString(5, dto.getId());
+			psmt.setString(6,dto.getNotice_no());
+		
+			
 			affected = psmt.executeUpdate();
+			
 			
 		} 
 		catch (Exception e) {	e.printStackTrace();}

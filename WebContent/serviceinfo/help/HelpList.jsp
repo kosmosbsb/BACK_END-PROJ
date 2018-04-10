@@ -13,7 +13,7 @@
    	<meta charset="utf-8">
 	
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
    
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="<c:url value='/css/main.css'/>">
@@ -22,10 +22,33 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <title>HelpList.jsp</title>
- 	
- 
- 
-  </head>
+ 	  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <style>
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc; 
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+ </style>
+</head>
   
     <!-- Navbar menu -->  
 <body class="app sidebar-mini">
@@ -53,12 +76,11 @@
 			       <tr >
 	   					<th style="width:10%">번호</th>
 	   					<th style="width:40%">제목</th>
-	   					<th style="width:10%">내용</th>
 	   					<th style="width:10%">등록일</th>
 	   					<th style="width:10%">N RO H</th>
 	   					<th style="width:10%">카테고리</th>
 	   					<th style="width:10%">작성자</th>
-	   					
+	   					<th style="width:10%">관리</th>
 	   				</tr>
 			      <c:if test="${empty requestScope.list }" var="flag">
 		   				<tr>
@@ -67,15 +89,19 @@
 	   			 </c:if>   
 			         
 			      <c:if test="${not flag }">
-	   					<c:forEach var="item" items="${list}">
+	   					<c:forEach var="item" items="${list}" varStatus="loop">
 			   				<tr>
-			   					<td><a href="<c:url value='/serviceinfo/HelpView.do?key=${item.notice_no}'/>">${item.notice_no}</a></td>
-			   					<td>${item.title}</td>
+			   					<td>${item.notice_no}</td>
+			   					
+			   					<td><a href="<c:url value='/serviceinfo/HelpView.do?key=${item.notice_no}'/>">${item.title}</a></td>
 			   					<td>${item.content}</td>
 			   					<td>${item.regidate}</td>
 			   					<td>${item.normal_or_host}</td>
 			   					<td>${item.category}</td>
 			   					<td>${item.id}</td>
+			   					<td><a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>"><i class="fa fa-th-list"></i>수정</a>||
+			   					<a class="btn btn-secondary" href="#"onclick=" isDelete(keyString)" ><i class="fa fa-th-list"></i>목록</a>
+			   					</td>
 			   				</tr>
 		   				</c:forEach>
 	   			  </c:if> 
@@ -100,16 +126,31 @@
     <script type="text/javascript" src="<c:url value='/js/plugins/dataTables.bootstrap.min.js'/>"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
    
-    <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1','auto');
-      	ga('send', 'pageview');
-      }
-    </script>
+    <script>
+	var isDelete = function(){
+		if(confirm("정말로 삭제 하시겠습니까?")){			
+			
+			location.replace("<c:url value='/serviceinfo/help/HelpDelete.do?notice_no="+keyString+"'/>");
+		}
+		
+	};
+
+	var acc = document.getElementsByClassName("accordion");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+	    acc[i].addEventListener("click", function() {
+	        this.classList.toggle("active");
+	        var panel = this.nextElementSibling;
+	        if (panel.style.display === "block") {
+	            panel.style.display = "none";
+	        } else {
+	            panel.style.display = "block";
+	        }
+	    });
+	}
+
+	</script>
   </body>
 </html>
     

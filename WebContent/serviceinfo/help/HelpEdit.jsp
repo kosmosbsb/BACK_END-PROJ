@@ -21,10 +21,42 @@
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <title>HelpList.jsp</title>
+    <title>HelpEdits.jsp</title>
  	
  
- 
+ <style>
+		body {
+		   	min-height: 2000px;
+  			padding-top: 70px;
+		}
+		table,table th{
+			text-align:center;
+		}		
+		
+	</style>
+	<script>
+		function isValidate(form){
+			if(form.name.value==""){
+				alert("작성자를 입력하세요");
+				form.name.focus();
+				return false;
+			}
+			else if(form.title.value.length==0){
+				alert("제목을 입력하세요");
+				form.title.focus();
+				return false;
+			}
+			
+			
+			
+			if(form.content.value.length==0){
+				alert("내용을 입력하세요");
+				form.content.focus();
+				return false;
+			}
+			
+		}////////////////////////////////////////	
+	</script>
   </head>
   
     <!-- Navbar menu -->  
@@ -38,7 +70,7 @@
      <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>자료실 목록</h1>
+          <h1><i class="fa fa-dashboard"></i>도움말 수정</h1>
       
         </div>
       
@@ -49,19 +81,62 @@
           <div class="tile">
             <div class="tile-body">
            
-              <table class="table table-hover table-bordered">
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              </table> 
-		                  	
+           <form action="<c:url value='/serviceinfo/help/HelpEdit.do'/>" 
+				      method="post"
+				      onsubmit="return isValidate(this)">
+				      <!-- 키값 -->
+				      <input type="hidden" name="key" value="${dto.notice_no}">
+				      
+              <table class="table table-bordered">
+              		   <tr>
+				                  <td class="text-center">제목</td>
+				                  	<td >
+				                  		<input value="${dto.title}" type="text"  name="title" style="width:98%" />
+				                  	
+				                  	</td>
+			                  </tr>
+			                 
+			                  <tr>
+			                  		<td class="text-center">내용</td>
+			                  			<td>
+			                  				<textarea rows="10"  style="width:98%" name="content"> ${dto.content}</textarea>
+			                  				
+			                  			</td>
+			                  </tr>
+			              	  
+			              	  <tr>
+				                  <td class="text-center">N_OR_H</td>
+				                  	<td >
+				                  		<input type="text"  name="normal_or_host" style="width:98%" value="${dto.normal_or_host}"/>
+				                  	
+				                  	</td>
+			                  </tr>
+			                
+			                  <tr>
+				                  <td class="text-center">카테고리</td>
+				                  	<td >
+				                  		<input type="text"  name="category" style="width:98%"value="${dto.category}" />
+				                  		
+				                  	</td>
+			                  </tr>
+			                   
+			                   <tr>
+				                  <td class="text-center">작성자</td>
+				                  	<td >
+				                  		<input type="text"  name="id"  value="${dto.id}"/>
+				                  			
+				                  		</td>
+			                  </tr>
+			            
+			            
+			                  		<tr bgcolor="white" align="center">
+			                  			<td colspan="2">
+			                  			<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-lg fa-wrench"></i>완료</button>
+			                  			</td>
+			                  		</tr>                  	
+			          
+              		</table> 
+		      	</form>            	
               </div>
             </div>
  		</div>
@@ -80,16 +155,7 @@
     <script type="text/javascript" src="<c:url value='/js/plugins/dataTables.bootstrap.min.js'/>"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
    
-    <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1','auto');
-      	ga('send', 'pageview');
-      }
-    </script>
+  
   </body>
 </html>
     
