@@ -122,7 +122,7 @@
 	<url-pattern>/NormalInfoDelete/Delete.do</url-pattern>
   </servlet-mapping>
   
-  <!-- host -->
+  <!-- host --><!-- host --><!-- host --><!-- host --><!-- host -->
   <!-- 서블릿 등록 성주현 -->
   <servlet>
  	<servlet-name>HostInfoList</servlet-name>
@@ -131,51 +131,51 @@
   <!--요청 URL매핑 성주현 -->
   <servlet-mapping>
 	<servlet-name>HostInfoList</servlet-name>
-	<url-pattern>/NormalInfo/List.do</url-pattern>
+	<url-pattern>/HostInfoList/Listhost.do</url-pattern>
   </servlet-mapping>
   
   <!-- 서블릿 등록 성주현 -->
   <servlet>
- 	<servlet-name>NormalInfoView</servlet-name>
-	<servlet-class>controller.sjh.ViewController</servlet-class>
+ 	<servlet-name>HostInfoView</servlet-name>
+	<servlet-class>controller.sjhost.ViewControllerHost</servlet-class>
   </servlet>
   <!--요청 URL매핑 성주현 -->
   <servlet-mapping>
-	<servlet-name>NormalInfoView</servlet-name>
-	<url-pattern>/NormalInfoView/View.do</url-pattern>
+	<servlet-name>HostInfoView</servlet-name>
+	<url-pattern>/HostInfoView/Viewhost.do</url-pattern>
   </servlet-mapping>
   
   <!-- 서블릿 등록 성주현 -->
   <servlet>
- 	<servlet-name>NormalInfoWrite</servlet-name>
-	<servlet-class>controller.sjh.WriteController</servlet-class>
+ 	<servlet-name>HostInfoWrite</servlet-name>
+	<servlet-class>controller.sjhost.WriteControllerHost</servlet-class>
   </servlet>
   <!--요청 URL매핑 성주현 -->
   <servlet-mapping>
-	<servlet-name>NormalInfoWrite</servlet-name>
-	<url-pattern>/NormalInfoWrite/Write.do</url-pattern>
+	<servlet-name>HostInfoWrite</servlet-name>
+	<url-pattern>/HostInfoWrite/Writehost.do</url-pattern>
   </servlet-mapping>
   
   <!-- 서블릿 등록 성주현 -->
   <servlet>
- 	<servlet-name>NormalInfoEdit</servlet-name>
-	<servlet-class>controller.sjh.EditController</servlet-class>
+ 	<servlet-name>HostInfoEdit</servlet-name>
+	<servlet-class>controller.sjhost.EditControllerHost</servlet-class>
   </servlet>
   <!--요청 URL매핑 성주현 -->
   <servlet-mapping>
-	<servlet-name>NormalInfoEdit</servlet-name>
-	<url-pattern>/NormalInfoView/Edit.do</url-pattern>
+	<servlet-name>HostInfoEdit</servlet-name>
+	<url-pattern>/HostInfoEdit/Edithost.do</url-pattern>
   </servlet-mapping>
     
   <!-- 서블릿 등록 성주현 -->
   <servlet>
- 	<servlet-name>NormalInfoDelete</servlet-name>
-	<servlet-class>controller.sjh.DeleteController</servlet-class>
+ 	<servlet-name>HostInfoDelete</servlet-name>
+	<servlet-class>controller.sjhost.DeleteControllerHost</servlet-class>
   </servlet>
   <!--요청 URL매핑 성주현 -->
   <servlet-mapping>
-	<servlet-name>NormalInfoDelete</servlet-name>
-	<url-pattern>/NormalInfoDelete/Delete.do</url-pattern>
+	<servlet-name>HostInfoDelete</servlet-name>
+	<url-pattern>/HostInfoDelete/Deletehost.do</url-pattern>
   </servlet-mapping>
   
   
