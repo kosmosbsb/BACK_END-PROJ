@@ -82,25 +82,31 @@
 	   					<th style="width:10%">작성자</th>
 	   					<th style="width:10%">관리</th>
 	   				</tr>
+
 			      <c:if test="${empty requestScope.list }" var="flag">
 		   				<tr>
 		   					<td colspan="7" style="text-align: center">등록된 자료가 없습니다</td>
 		   				</tr>
 	   			 </c:if>   
 			         
-			      <c:if test="${not flag }">
+			       <c:if test="${not flag }">
 	   					<c:forEach var="item" items="${list}" varStatus="loop">
 			   				<tr>
 			   					<td>${item.notice_no}</td>
 			   					
-			   					<td><a href="<c:url value='/serviceinfo/HelpView.do?key=${item.notice_no}'/>">${item.title}</a></td>
-			   					<td>${item.content}</td>
+			   					<td>
+			   					<button class=accordion>${item.title}</button>
+			   					<div class="panel">
+			   					<p>${item.content}</p>
+			   					</div>
+			   					
+			   					
 			   					<td>${item.regidate}</td>
 			   					<td>${item.normal_or_host}</td>
 			   					<td>${item.category}</td>
 			   					<td>${item.id}</td>
-			   					<td><a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>"><i class="fa fa-th-list"></i>수정</a>||
-			   					<a class="btn btn-secondary" href="#"onclick=" isDelete(keyString)" ><i class="fa fa-th-list"></i>목록</a>
+			   					<td><a href="#"  onclick="isDelete(${item.notice_no})" id="delete">삭제</a>||
+			   						<a href="HelpEdit.do?notice_no=${item.notice_no}" id="update" >수정</a>
 			   					</td>
 			   				</tr>
 		   				</c:forEach>
@@ -127,10 +133,10 @@
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
    
     <script>
-	var isDelete = function(){
+	var isDelete = function(KeyString){
 		if(confirm("정말로 삭제 하시겠습니까?")){			
-			
-			location.replace("<c:url value='/serviceinfo/help/HelpDelete.do?notice_no="+keyString+"'/>");
+			alert("sdfsf");
+			location.replace("<c:url value='/serviceinfo/help/HelpDelete.do?notice_no="+KeyString+"'/>");
 		}
 		
 	};
