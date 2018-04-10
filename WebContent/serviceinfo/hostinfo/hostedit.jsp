@@ -18,7 +18,7 @@
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <title>일반이용정보</title>
+    <title>호스트 이용정보</title>
     
         
     <script>
@@ -68,11 +68,11 @@
 			<h1>
 				<i class="fa fa-dashboard"></i> 수정
 			</h1>
-			<p>일반 정보 수정</p>
+			<p>호스트 정보 수정</p>
 		</div>
 		<ul class="app-breadcrumb breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-			<li class="breadcrumb-item"><a href="#">normalinfo edit</a></li>
+			<li class="breadcrumb-item"><a href="#">hostinfo edit</a></li>
 		</ul>
 	</div>
 	
@@ -82,7 +82,7 @@
 		
 			<div class="tile">
 			<div class="tile-body">
-				<form action="<c:url value='/NormalInfoView/Edit.do'/>" 
+				<form action="<c:url value='/HostInfoEdit/Edithost.do'/>" 
 				      method="post"
 				      onsubmit="return isValidate(this)"
 				>
@@ -100,7 +100,8 @@
 	                  				<option value="">유형을 선택하세요</option>
 	                  				<option value="이용약관">이용약관</option>
 									<option value="개인정보처리방침">개인정보처리방침</option>
-									<option value="운영정책">운영정책</option>										  					
+									<option value="정산 및 환불 정책">정산 및 환불 정책</option>
+									<option value="공간 관리 정책">공간 관리 정책</option>							  					
 								</select>								
 								
 		                 	</td>
@@ -138,7 +139,7 @@
 					<div class="row justify-content-center">
 						<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-lg fa-wrench"></i>완료</button>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>"><i class="fa fa-fw fa-lg fa-times-circle"></i>취소</a>
+						<a class="btn btn-secondary" href="<c:url value='/HostInfoList/Listhost.do'/>"><i class="fa fa-fw fa-lg fa-times-circle"></i>취소</a>
 					</div>
 				</form>
 			</div>	

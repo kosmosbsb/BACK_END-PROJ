@@ -18,7 +18,7 @@
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <title>일반이용정보</title>
+    <title>호스트 이용정보</title>
   </head>
 
 	<!-- Navbar menu -->
@@ -38,11 +38,11 @@
 			<h1>
 				<i class="fa fa-dashboard"></i> 상세보기
 			</h1>
-			<p>일반 정보 상세보기</p>
+			<p>호스트 정보 상세보기</p>
 		</div>
 		<ul class="app-breadcrumb breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-			<li class="breadcrumb-item"><a href="#">normalinfo view</a></li>
+			<li class="breadcrumb-item"><a href="#">hostinfo view</a></li>
 		</ul>
 	</div>
 	
@@ -77,8 +77,8 @@
             </div>
             <div class="row justify-content-center">   
             
-              <a class="btn btn-primary" href="<c:url value='/NormalInfoView/Edit.do?no=${dto.no}&category=${dto.category}'/>"><i class="fa fa-fw fa-lg fa-wrench"></i>수정</a>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>"><i class="fa fa-th-list"></i>목록</a>
+              <a class="btn btn-primary" href="<c:url value='/HostInfoEdit/Edithost.do?no=${dto.no}&category=${dto.category}'/>"><i class="fa fa-fw fa-lg fa-wrench"></i>수정</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/HostInfoList/Listhost.do'/>"><i class="fa fa-th-list"></i>목록</a>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="#" onclick="isDelete()"><i class="fa fa-fw fa-lg fa-times-circle"></i>삭제</a>
             </div>
           </div>
@@ -110,7 +110,7 @@
 		if(confirm("정말로 삭제 하시겠습니까?")){			
 			//location.replace("/sdsabk/sdkjaskd/NormalInfoDelete/Delete.do?no=${dto.no}");
 			//위에는 풀경로 해줘야돼
-			location.replace("<c:url value='/NormalInfoDelete/Delete.do?no=${dto.no}'/>");
+			location.replace("<c:url value='/HostInfoDelete/Deletehost.do?no=${dto.no}'/>");
 		}
 		
 	};

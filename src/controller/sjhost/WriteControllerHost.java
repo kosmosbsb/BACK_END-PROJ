@@ -33,7 +33,7 @@ public class WriteControllerHost extends HttpServlet {
 		
 		//req.setAttribute("active","dataroom"); 메뉴활성화용이라서 필요없어
 		//포워드]		
-		req.getRequestDispatcher("/serviceinfo/normalinfo/normalwrite.jsp").forward(req, resp);
+		req.getRequestDispatcher("/serviceinfo/hostinfo/hostwrite.jsp").forward(req, resp);
 		
 		//리다이렉트]
 		//resp.sendRedirect(req.getContextPath()+"/DataRoom13/Write.jsp");
@@ -83,14 +83,14 @@ public class WriteControllerHost extends HttpServlet {
 		
 		if(sucOrFail == 1) {//파일업로드 및 DB입력 성공
 			//이동방법1]-바로 목록으로 이동:반드시 List.jsp가 아닌 List.do로
-			req.getRequestDispatcher("/NormalInfo/List.do").forward(req, resp);
+			req.getRequestDispatcher("/HostInfoList/Listhost.do").forward(req, resp);
 			//이동방법2]-메시지 뿌려주는 페이지로 이동후 목록으로 이동
 			//req.getRequestDispatcher("/DataRoom13/Message.jsp").forward(req, resp);
 		}
 		else {
 			//이동방법2]메시지 뿌려주는 페이지로 이동후 다시 입력폼으로
-			req.getRequestDispatcher("/serviceinfo/normalinfo/Message.jsp").forward(req, resp);
-									
+			req.getRequestDispatcher("/serviceinfo/hostinfo/hostMessage.jsp").forward(req, resp);
+			
 		}
 		
 	}////////////////////////////

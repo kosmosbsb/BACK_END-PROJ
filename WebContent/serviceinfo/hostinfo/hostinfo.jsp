@@ -46,7 +46,7 @@
         <div class="col-md-12">
         
           <div class="tile">
-          <a class="btn btn-primary pull-right" href="<c:url value='/NormalInfoWrite/Write.do'/>"><i class="fa fa-user fa-lg"></i>글 등록</a>
+          <a class="btn btn-primary pull-right" href="<c:url value='/HostInfoWrite/Writehost.do'/>"><i class="fa fa-user fa-lg"></i>글 등록</a>
           <!-- <button class="btn btn-primary pull-right" type="button" href="<c:url value='/normalwrite.jsp'/>"><i class="fa fa-user fa-lg"></i>글 등록</button> -->
             <div class="tile-body">
               <table class="table table-hover table-bordered" id="sampleTable">
@@ -64,7 +64,7 @@
 	   				<tr>
 	   					
 	   					<td>${item.category}</td>
-	   					<td><a href="<c:url value='/NormalInfoView/View.do?no=${item.no}'/>">${item.title}</a></td>
+	   					<td><a href="<c:url value='/HostInfoView/Viewhost.do?no=${item.no}'/>">${item.title}</a></td>
 	   					<td>${item.name}</td>
 	   					<td>${item.postdate}</td>
 	   				</tr>

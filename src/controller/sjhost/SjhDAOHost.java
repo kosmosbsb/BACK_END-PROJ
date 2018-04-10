@@ -101,7 +101,7 @@ public class SjhDAOHost {
 	//입력용]
 	public int insert(SjhDTOHost dto) {//no,category,content,title,name,postdate,id
 		int affected=0;
-		String sql="INSERT INTO SERVICEINFO_HOSTINFO(no,category,title,name,postdate,content) VALUES(info_deptno.NEXTVAL,?,?,?,sysdate,?)";
+		String sql="INSERT INTO SERVICEINFO_HOSTINFO(no,category,title,name,postdate,content) VALUES(info_hostno.NEXTVAL,?,?,?,sysdate,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getCategory());			

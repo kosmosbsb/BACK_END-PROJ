@@ -33,7 +33,7 @@ public class SjhControllerHost extends HttpServlet {
 		req.setAttribute("list", list);//글목록들
 		//req.setAttribute("active","dataroom");//메뉴 활성화용
 		
-		RequestDispatcher dispatcher=req.getRequestDispatcher("/serviceinfo/normalinfo/normalinfo.jsp");
+		RequestDispatcher dispatcher=req.getRequestDispatcher("/serviceinfo/hostinfo/hostinfo.jsp");
 		//포워딩]
 		dispatcher.forward(req, resp);
 	}///////////////////

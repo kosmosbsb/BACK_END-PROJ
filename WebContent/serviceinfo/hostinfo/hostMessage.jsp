@@ -6,17 +6,17 @@
 	<c:when test="${WHERE == 'INS' }">
 		<c:set var="SUC_MSG" value="입력 성공했어요"/>
 		<c:set var="FAIL_MSG" value="입력 실패했어요"/>
-		<c:set var="SUC_URL" value="/NormalInfo/List.do"/>
+		<c:set var="SUC_URL" value="/HostInfoList/Listhost.do"/>
 	</c:when>
 	<c:when test="${WHERE == 'EDT' }">
 		<c:set var="SUC_MSG" value="수정 성공했어요"/>
 		<c:set var="FAIL_MSG" value="수정 실패했어요"/>
-		<c:set var="SUC_URL" value="/NormalInfoView/View.do?no=${key}"/>
+		<c:set var="SUC_URL" value="/HostInfoView/Viewhost.do?no=${key}"/>
 	</c:when>
 	<c:otherwise>
 		<c:set var="SUC_MSG" value="삭제 성공했어요"/>
 		<c:set var="FAIL_MSG" value="삭제 실패했어요"/>
-		<c:set var="SUC_URL" value="/NormalInfo/List.do"/>	
+		<c:set var="SUC_URL" value="/HostInfoList/Listhost.do"/>	
 	</c:otherwise>
 </c:choose>
 

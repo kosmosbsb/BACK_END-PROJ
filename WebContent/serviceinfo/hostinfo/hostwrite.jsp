@@ -18,7 +18,7 @@
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <title>일반이용정보</title>
+    <title>호스트 이용정보</title>
     
     <script>
 		function isValidate(form){
@@ -66,11 +66,11 @@
 			<h1>
 				<i class="fa fa-dashboard"></i> 글 등록
 			</h1>
-			<p>일반 정보 글등록</p>
+			<p>호스트 정보 글등록</p>
 		</div>
 		<ul class="app-breadcrumb breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-			<li class="breadcrumb-item"><a href="#">normalinfo write</a></li>
+			<li class="breadcrumb-item"><a href="#">hostinfo write</a></li>
 		</ul>
 	</div>
 	
@@ -80,7 +80,7 @@
 		
 			<div class="tile">
 			<div class="tile-body">
-				<form action="<c:url value='/NormalInfoWrite/Write.do'/>" 
+				<form action="<c:url value='/HostInfoWrite/Writehost.do'/>" 
 				      method="post"
 				      onsubmit="return isValidate(this)"
 				>
@@ -104,7 +104,8 @@
 	                  				<option value="">유형을 선택하세요</option>	                  				                			
 									<option value="이용약관">이용약관</option>
 									<option value="개인정보처리방침">개인정보처리방침</option>
-									<option value="운영정책">운영정책</option>										  					
+									<option value="정산 및 환불 정책">정산 및 환불 정책</option>
+									<option value="공간 관리 정책">공간 관리 정책</option>										  					
 								</select>								
 								
 		                 	</td>
@@ -127,7 +128,7 @@
 	  					
 					</table>
 					<div class="row justify-content-center">
-						<button type="submit" class="btn btn-primary">글등록</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/NormalInfo/List.do'/>">취소</a>
+						<button type="submit" class="btn btn-primary">글등록</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="<c:url value='/HostInfoList/Listhost.do'/>">취소</a>
 					</div>
 				</form>
 			</div>	
