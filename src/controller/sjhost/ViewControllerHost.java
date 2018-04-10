@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.sjh.SjhDAO;
-import controller.sjh.SjhDTO;
 //1]HttpServlet 상속 받는다
 public class ViewControllerHost extends HttpServlet {
 	
@@ -19,16 +17,16 @@ public class ViewControllerHost extends HttpServlet {
 		//3]요청분석
 		String no = req.getParameter("no");
 		//4]모델 호출 및 결과값 받기
-		SjhDAO dao = new SjhDAO(req.getServletContext());
-		SjhDTO dto= dao.selectOne(no);
+		SjhDAOHost dao = new SjhDAOHost(req.getServletContext());
+		SjhDTOHost dto= dao.selectOne(no);
 		//내용 줄바꿈
 		dto.setContent(dto.getContent().replace("<br/>","\r\n"));
 		dao.close();
 		//5]필요한 값 리퀘스트 영역에 저장
 		req.setAttribute("dto", dto);
 		//6]뷰 선택후 포워딩
-		req.getRequestDispatcher("/serviceinfo/normalinfo/normalview.jsp").forward(req, resp);
-	}////////////////////////
+		req.getRequestDispatcher("/serviceinfo/hostinfo/hostview.jsp").forward(req, resp);
+	}//////////////////////////serviceinfo/hostinfo/hostview.jsp
 
 
 }

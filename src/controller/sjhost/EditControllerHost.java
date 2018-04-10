@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.sjh.SjhDAO;
-import controller.sjh.SjhDTO;
 
 
 
@@ -28,13 +26,13 @@ public class EditControllerHost extends HttpServlet {
 			String category = req.getParameter("category");
 						
 			//모델 호출 및 결과 값 받기]
-			SjhDAO dao = new SjhDAO(req.getServletContext());
-			SjhDTO dto = dao.selectOne(no);
+			SjhDAOHost dao = new SjhDAOHost(req.getServletContext());
+			SjhDTOHost dto = dao.selectOne(no);
 			dao.close();
 			//리퀘스트 영역에 저장
 			req.setAttribute("dto", dto);
 			//포워드]
-			req.getRequestDispatcher("/serviceinfo/normalinfo/normaledit.jsp").forward(req, resp);
+			req.getRequestDispatcher("/serviceinfo/hostinfo/hostedit.jsp").forward(req, resp);
 		}
 		else {//수정처리-POST방식
 			
@@ -59,8 +57,8 @@ public class EditControllerHost extends HttpServlet {
 				String content=req.getParameter("content");
 								
 				//데이타베이스 CRUD작업과 관련된 모델 호출]
-				SjhDAO dao = new SjhDAO(req.getServletContext());
-				SjhDTO dto = new SjhDTO();
+				SjhDAOHost dao = new SjhDAOHost(req.getServletContext());
+				SjhDTOHost dto = new SjhDTOHost();
 				
 				dto.setNo(no);	
 				dto.setName(name);							
@@ -82,7 +80,7 @@ public class EditControllerHost extends HttpServlet {
 			//상세보기로 이동하기 위해 영역에 키값 저장]
 			req.setAttribute("key", no);
 			//6]포워드
-			req.getRequestDispatcher("/serviceinfo/normalinfo/Message.jsp").forward(req, resp);
+			req.getRequestDispatcher("/serviceinfo/hostinfo/hostMessage.jsp").forward(req, resp);
 		}
 	
 	}////////////////////////////service

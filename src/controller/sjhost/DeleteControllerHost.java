@@ -29,6 +29,6 @@ public class DeleteControllerHost extends HttpServlet {
 		//리퀘스트 영역에 데이타 저장]
 		req.setAttribute("SUC_FAIL", sucOrFail);
 		//포워드]
-		req.getRequestDispatcher("/serviceinfo/normalinfo/Message.jsp").forward(req, resp);
+		req.getRequestDispatcher("/serviceinfo/hostinfo/hostMessage.jsp").forward(req, resp);
 	}////////////////////////////////////////////
 }
