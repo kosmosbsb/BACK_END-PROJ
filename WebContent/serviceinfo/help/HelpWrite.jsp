@@ -97,21 +97,29 @@
 			              	  <tr>
 				                  <td class="text-center">N_OR_H</td>
 				                  	<td >
-				                  		<input type="text"  name="normal_or_host" style="width:98%" value="${dto.normal_or_host}"/>
+				                  		<input type="checkbox"  name="normal_or_host"  value="N">N
+				                  		<input type="checkbox"  name="normal_or_host"  value="H">H
 				                  	</td>
 			                  </tr>
 			                
 			                  <tr>
 				                  <td class="text-center">카테고리</td>
 				                  	<td >
-				                  		<input type="text"  name="category" style="width:98%" value="${dto.category}"/>
+				                  		<input type="radio"  name="category"  value="결제사항">결제사항
+				                  		<input type="radio"  name="category"  value="무뇽사항">무뇽사항
+				                  		<input type="radio"  name="category"  value="지훈사항">지훈사항
+				                  		<input type="radio"  name="category"  value="나윤사항">나윤사항
+				                  	
+				                  	
+				                  	
 				                  	</td>
 			                  </tr>
 			                   
 			                   <tr>
 				                  <td class="text-center">작성자</td>
 				                  	<td >
-				                  		<input type="text"  name="id" style="width:98%" value="${dto.id}"/>
+				                  		<input type="text"  name="id" style="width:98%" value="${sessionScope.USER_ID}" >
+				                  	
 				                  	</td>
 			                  </tr>
 			            

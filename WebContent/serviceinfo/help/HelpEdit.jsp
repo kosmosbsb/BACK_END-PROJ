@@ -103,31 +103,31 @@
 			                  				
 			                  			</td>
 			                  </tr>
-			              	  
+			              	 
 			              	  <tr>
 				                  <td class="text-center">N_OR_H</td>
 				                  	<td >
-				                  		<input type="text"  name="normal_or_host" style="width:98%" value="${dto.normal_or_host}"/>
-				                  	
+				                  		<input type="checkbox"  name="normal_or_host"  value="N"<c:if test="${dto.normal_or_host =='N' }">checked</c:if> />N
+				                  		<input type="checkbox"  name="normal_or_host"  value="H"<c:if test="${dto.normal_or_host =='H' }">checked</c:if> />H
 				                  	</td>
 			                  </tr>
-			                
-			                  <tr>
+			                		  <tr>
 				                  <td class="text-center">카테고리</td>
-				                  	<td >
-				                  		<input type="text"  name="category" style="width:98%"value="${dto.category}" />
-				                  		
+				                  	<td>
+				                  		<input type="radio"  name="category"  value="결제사항"<c:if test="${dto.category =='결제사항' }">checked</c:if> />결제사항
+				                  		<input type="radio"  name="category"  value="무뇽사항"<c:if test="${dto.category =='무뇽사항' }">checked</c:if> />무뇽사항
+				                  		<input type="radio"  name="category"  value="지훈사항"<c:if test="${dto.category =='지훈사항' }">checked</c:if> />지훈사항
+				                  		<input type="radio"  name="category"  value="나윤사항"<c:if test="${dto.category =='나윤사항' }">checked</c:if> />나윤사항
 				                  	</td>
 			                  </tr>
-			                   
+			                			                   
+			                    
 			                   <tr>
 				                  <td class="text-center">작성자</td>
 				                  	<td >
-				                  		<input type="text"  name="id"  value="${dto.id}"/>
-				                  			
-				                  		</td>
+				                  		<input type="radio"  name="id" style="width:98%" value="master1"<c:if test="${dto.id =='master1' }">checked</c:if> />master1
+				                  	</td>
 			                  </tr>
-			            
 			            
 			                  		<tr bgcolor="white" align="center">
 			                  			<td colspan="2">

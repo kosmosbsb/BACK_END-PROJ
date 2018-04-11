@@ -84,7 +84,7 @@ public class HelpWriteController extends HttpServlet {
 			sucOrFail = dao.insert(dto);
 			dao.close();
 			
-		
+			req.setAttribute("id",req.getParameter("id"));
 			
 			
 		//5]리퀘스트 영역에 결과값 혹은 필요한 값 저장

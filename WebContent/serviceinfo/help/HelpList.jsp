@@ -89,7 +89,7 @@
 		   				</tr>
 	   			 </c:if>   
 			         
-			       <c:if test="${not flag }">
+			       <c:if test="${not flag}">
 	   					<c:forEach var="item" items="${list}" varStatus="loop">
 			   				<tr>
 			   					<td>${item.notice_no}</td>
@@ -99,8 +99,7 @@
 			   					<div class="panel">
 			   					<p>${item.content}</p>
 			   					</div>
-			   					
-			   					
+			   					</td>
 			   					<td>${item.regidate}</td>
 			   					<td>${item.normal_or_host}</td>
 			   					<td>${item.category}</td>
@@ -113,7 +112,7 @@
 	   			  </c:if> 
 			                	
 			  </table> 
-		        <a href="HelpWrite.jsp">등록</a>            	
+		        <a href="/HelpWrite.jsp">등록</a>            	
                    		 </div>
                		 </div>
  				</div>
@@ -135,7 +134,7 @@
     <script>
 	var isDelete = function(KeyString){
 		if(confirm("정말로 삭제 하시겠습니까?")){			
-			alert("sdfsf");
+			
 			location.replace("<c:url value='/serviceinfo/help/HelpDelete.do?notice_no="+KeyString+"'/>");
 		}
 		
