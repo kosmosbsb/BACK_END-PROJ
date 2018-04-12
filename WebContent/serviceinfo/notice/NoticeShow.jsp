@@ -6,10 +6,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 <%
 	//현재 페이지 번호 받기 
 	// String nowPage = request.getParameter("nowPage");
@@ -38,14 +36,32 @@
   
     
     <title>공지사항 관리</title>
-  
-   <script>
-  $( function() {
-    $( "#accordion" ).accordion({
-      collapsible: true
-    });
-  } );
-  </script>
+  <style>
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc; 
+}
+
+.panel {
+    padding: 0 13px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+ </style>
+
   
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
@@ -81,7 +97,7 @@
                   <tr>
                     <th style="width: 10%" class="text-center">번호</th>
                     <th style="width: 10%"  class="text-center">카테고리</th>
-             		<th  class="text-center">타이틀</th>    
+             		<th class="text-center">타이틀</th>    
                     <th style="width: 10%"  class="text-center">등록일</th>
                     <th style="width: 10%"  class="text-center">공지대상</th>
                    	<th style="width: 10%"  class="text-center">작성자</th>
@@ -106,7 +122,14 @@
                              <tr>
                                <td class="text-center"><%=record.getNotice_no() %></td>
                                <td class="text-center"><%=record.getCategory() %></td>
-                               <td class="text-center"> <%=record.getTitle() %></td>
+                              
+                               <td >
+                               	<button class="accordion" style="witdh:98%"><%=record.getTitle() %></button>
+                                <div class="panel">
+                                	<p><%=record.getContent() %></p>
+                                </div>
+                               </td>
+                               
                                <td class="text-center"><%=record.getRegidate() %></td>
                                <td class="text-center"><%=record.getNormal_or_host() %></td>
                                <td class="text-center"><%=record.getId() %></td>
@@ -152,15 +175,25 @@
     <script type="text/javascript" src="<c:url value='/js/plugins/dataTables.bootstrap.min.js'/>"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
-    <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1', 'auto');
-      	ga('send', 'pageview');
-      }
-    </script>
+   <script>
+	var acc = document.getElementsByClassName("accordion");
+		var i;
+	
+		for (i = 0; i < acc.length; i++) {
+	    acc[i].addEventListener("click", function() {
+	        this.classList.toggle("active");
+	        var panel = this.nextElementSibling;
+	        if (panel.style.display === "block") {
+	            panel.style.display = "none";
+	        } else {
+	            panel.style.display = "block";
+	        }
+	    });
+	}
+
+
+
+  
+  	</script>
   </body>
 </html>

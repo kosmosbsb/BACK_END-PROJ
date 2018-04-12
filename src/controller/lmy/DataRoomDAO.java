@@ -100,58 +100,25 @@ public class DataRoomDAO {
 	//입력용
 	public int insert(DataRoomDTO dto) {
 		int affected=0;
-		String sql="insert into notice(NOTICE_NO,TITLE,CONTENT,NORMAL_OR_HOST,CATEGORY,ID) values(?,?,?,?,?,?)";
+		String sql="insert into notice(NOTICE_NO,TITLE,CONTENT,NORMAL_OR_HOST,CATEGORY,ID) values(notice_seq.nextval,?,?,?,?,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1,dto.getNotice_no());
-			psmt.setString(2, dto.getTitle());
-			psmt.setString(3, dto.getContent());
-			psmt.setString(4, dto.getNormal_or_host());
-			psmt.setString(5, dto.getCategory());
-			psmt.setString(6, dto.getId());
+			
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getNormal_or_host());
+			psmt.setString(4, dto.getCategory());
+			psmt.setString(5, dto.getId());
 			
 			affected = psmt.executeUpdate();
-			System.out.println(affected);
+			
 		} 
 		catch (Exception e) {	e.printStackTrace();}
 		return affected;
 	}///////////////////////
 	
 	//이전글/다음글 얻기
-	public Map<String,DataRoomDTO> prevNNext(String key){
-		Map<String,DataRoomDTO> map = new HashMap<String,DataRoomDTO>();		
-		try {
-			//이전글 얻기
-			String sql="SELECT no,title FROM NOTICE WHERE no=(SELECT min(no) FROM NOTICE WHERE no > ?)";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, key);
-			rs = psmt.executeQuery();			
-			if(rs.next()) {//이전글이 있는 경우
-				DataRoomDTO dto= new DataRoomDTO();
-				dto.setNotice_no(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				map.put("PREV",dto);
-			}
-			//다음글 얻기
-			sql="SELECT no,title FROM NOTICE WHERE no=(SELECT max(no) FROM NOTICE WHERE no < ?)";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, key);
-			rs = psmt.executeQuery();			
-			if(rs.next()) {//다음글이 있는 경우
-				DataRoomDTO dto= new DataRoomDTO();
-				dto.setNotice_no(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				map.put("NEXT",dto);
-			}
-			
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}		
-		return map;
-	}/////////////////////////////
 	
-
 
  	//삭제
 	public int delete(String key) {
@@ -169,15 +136,16 @@ public class DataRoomDAO {
 	//업데이트
 	public int update(DataRoomDTO dto) {
 		int affected=0;
-		String sql="UPDATE NOTICE SET TITLE=?, CONTENT=?,CATEGORY =? WHERE Notice_no=?";
+		String sql="UPDATE NOTICE SET CATEGORY =?,TITLE=?, CONTENT=?,NORMAL_OR_HOST=? WHERE Notice_no=?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getCategory());
-			psmt.setString(4, dto.getNotice_no());
+			psmt.setString(1, dto.getCategory());
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getContent());
+			psmt.setString(4, dto.getNormal_or_host());
+			psmt.setString(5, dto.getNotice_no());
 			affected = psmt.executeUpdate();
-			
+			System.out.println(dto.getCategory()+"dd");
 		} 
 		catch (Exception e) {	e.printStackTrace();}
 		return affected;

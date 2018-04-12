@@ -111,7 +111,8 @@
 				                  		<input type="checkbox"  name="normal_or_host"  value="H"<c:if test="${dto.normal_or_host =='H' }">checked</c:if> />H
 				                  	</td>
 			                  </tr>
-			                		  <tr>
+			                		  
+			                <tr>
 				                  <td class="text-center">카테고리</td>
 				                  	<td>
 				                  		<input type="radio"  name="category"  value="결제사항"<c:if test="${dto.category =='결제사항' }">checked</c:if> />결제사항

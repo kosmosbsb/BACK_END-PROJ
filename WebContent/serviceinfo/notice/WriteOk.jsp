@@ -9,7 +9,7 @@
 	//2]파라미터 받기
 	String title= request.getParameter("title");
 	String content= request.getParameter("content");
-	String name  = request.getParameter("name");
+	String id  = request.getParameter("id");
 	String category = request.getParameter("category");
 	String notice_no = request.getParameter("notice_no");
 	String normal_or_host = request.getParameter("normal_or_host");
@@ -19,7 +19,7 @@
 	dto.setTitle(title);
 	dto.setContent(content);
 	dto.setCategory(category);
-	dto.setId(name);
+	dto.setId(id);
 	dto.setNormal_or_host(normal_or_host);
 	//4]CRUD작업용 DAO계열 객체 생성
 	DataRoomDAO dao = new DataRoomDAO(application);

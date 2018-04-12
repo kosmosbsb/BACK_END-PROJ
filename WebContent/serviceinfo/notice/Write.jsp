@@ -1,3 +1,4 @@
+<%@page import="org.apache.catalina.ant.SessionsTask"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
@@ -11,13 +12,14 @@
 				String articleId = request.getParameter("articleId");
 				//현재 페이지번호 받기
 				//String nowPage = request.getParameter("nowPage");
-				
+				String id = request.getParameter("id");
 				//2]CRUD작업용 BbsDAO생성
 				DataRoomDAO dao = new DataRoomDAO(application);
 				//상세보기용 메소드 호출	
 				DataRoomDTO dto =dao.selectOne(articleId);
 				//3]자원반납
 				dao.close();
+				
 				
 
 %>
@@ -61,14 +63,10 @@
           <div class="tile">
             <div class="tile-body">
             <form action="WriteOk.jsp" method="post">
-			   
+			  
+           
               <table class="table table-hover table-bordered">
-			                  <tr>
-				                  <td class="text-center" style="width:25%">번호</td>
-				                  <td >
-				                  <input type="text"  name="notice_no"  style="width:98%"/>
-				                  </td>
-			                  </tr>
+			                 
 			                 
 			                 <tr>
 				                  <td class="text-center">제목</td>
@@ -84,26 +82,34 @@
 			                  		</td>
 			                  			
 			                  </tr>
-			                  		
 			                  <tr>
-			                  		<td class="text-center">카테고리</td>
-			                  		<td >
-			                  		<input type="text"   name="category" style="width:98%"/>
-			                  		</td>
+				                  <td class="text-center">일반/호스트()N OR H)</td>
+				                  	<td >
+				                  		<input type="checkbox"  name="normal_or_host"  value="N">N
+				                  		<input type="checkbox"  name="normal_or_host"  value="H">H
+				                  	</td>
 			                  </tr>
-			                  		<tr>
-			                  		<td class="text-center">작성자(관리자ID)</td>
-			                  		<td >
-			                  		<input type="text"   name="name" style="width:98%"/>
-			                  		</td>
-			                  	</tr>
 			                  	
-			                  		<tr>
-			                  		<td class="text-center">일반/호스트 구분(N/H)</td>
-			                  		<td >
-			                  		<input type="text"   name="normal_or_host" style="width:98%"/>
-			                  		</td>
-			                  	</tr>
+			                  <tr>
+				                  <td class="text-center">카테고리</td>
+				                  	<td >
+				                  		<input type="radio"  name="category"  value="결제사항">결제사항
+				                  		<input type="radio"  name="category"  value="무뇽사항">무뇽사항
+				                  		<input type="radio"  name="category"  value="지훈사항">지훈사항
+				                  		<input type="radio"  name="category"  value="나윤사항">나윤사항
+				                  	</td>
+			                  </tr>
+			                  		
+			                 
+			              
+			                  	
+			                  <tr>
+				                  <td class="text-center">작성자</td>
+				                  	<td >
+				                  		<input type="text"  name="id" value="${sessionScope.USER_ID}">
+				                  	</td>
+			                  </tr>
+			            
 			                  	
 			                  		
 			                  		<tr bgcolor="white" align="center">

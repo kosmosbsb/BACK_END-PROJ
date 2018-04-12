@@ -37,6 +37,7 @@ dao.close();
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <title>수정폼 관리</title>
+
   </head>
   
 	<!-- Navbar menu -->  
@@ -63,12 +64,16 @@ dao.close();
             <form action="EditOK.jsp" method="post">
 			                  	<input type="hidden" name="articleId" value="<%=dto.getNotice_no()%>"/>
               <table class="table table-hover table-bordered">
-			                  		<tr>
-			                  			<td class="text-center">카테고리</td>
-			                  			<td >
-			                  			<input type="text"  value="<%=dto.getCategory()%>" name="category" style="width:98%"/>
-			                  			</td>
-			                  		</tr>
+			              <tr>
+				                  <td class="text-center">카테고리</td>
+				                  	<td>
+				                  		<input type="radio"  name="category"  value="결제사항"/>결제사항
+				                  		<input type="radio"  name="category"  value="무뇽사항"/>무뇽사항
+				                  		<input type="radio"  name="category"  value="지훈사항"/>지훈사항
+				                  		<input type="radio"  name="category"  value="나윤사항"/>나윤사항
+				                  	</td>
+			                  </tr>
+			                			   
 			                  		<tr>
 			                  			<td class="text-center">제목</td>
 			                  			<td >
@@ -82,6 +87,17 @@ dao.close();
 			                  			</td>
 			                  			
 			                  		</tr>
+			                  
+			                
+			              	  <tr>
+				                  <td class="text-center">N_OR_H</td>
+				                  	<td >
+				                  		<input type="checkbox"  name="normal_or_host"  value="N"<c:if test="${dto.normal_or_host =='N' }">checked</c:if> />N
+				                  		<input type="checkbox"  name="normal_or_host"  value="H"<c:if test="${dto.normal_or_host =='H' }">checked</c:if> />H
+				                  	</td>
+			                  </tr>
+			                  		
+			                  		
 			                  		<tr bgcolor="white" align="center">
 			                  			<td colspan="2">
 			                  			<input type="submit" value="확인"/>
@@ -98,7 +114,7 @@ dao.close();
  </div>
      
 </div>
-      
+
     <!-- Essential javascripts for application to work-->
     <script src="<c:url value='/js/jquery-3.2.1.min.js'/>"></script>
     <script src="<c:url value='/js/popper.min.js'/>"></script>
@@ -122,6 +138,8 @@ dao.close();
       	ga('send', 'pageview');
       }
     </script>
+    
+    
   </body>
 </html>
     
