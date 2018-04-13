@@ -12,6 +12,7 @@
 	String articleId= request.getParameter("articleId");
 	String category= request.getParameter("category");
 	String normal_or_host = request.getParameter("normal_or_host");
+	
 
 	//3]데이타를 전달할 DTO객체 생성및 데이타 설정
 	

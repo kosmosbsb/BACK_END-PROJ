@@ -112,7 +112,7 @@
 	   			  </c:if> 
 			                	
 			  </table> 
-		        <a href="/HelpWrite.jsp">등록</a>            	
+		        <a href='<c:url value="/serviceinfo/help/HelpWrite.jsp"/>'>등록</a>            	
                    		 </div>
                		 </div>
  				</div>

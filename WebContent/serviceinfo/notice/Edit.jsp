@@ -9,6 +9,8 @@
 <%
 //1]파라미터(키값) 받기
 String articleId = request.getParameter("articleId");
+String categoryId = request.getParameter("categoryId");
+String normal_or_host = request.getParameter("normal_or_hostId");
 //현재 페이지번호 받기
 //String nowPage = request.getParameter("nowPage");
 
@@ -62,15 +64,42 @@ dao.close();
           <div class="tile">
             <div class="tile-body">
             <form action="EditOK.jsp" method="post">
-			                  	<input type="hidden" name="articleId" value="<%=dto.getNotice_no()%>"/>
+			  <input type="hidden" name="articleId" value="<%=dto.getNotice_no()%>"/>
               <table class="table table-hover table-bordered">
 			              <tr>
 				                  <td class="text-center">카테고리</td>
-				                  	<td>
-				                  		<input type="radio"  name="category"  value="결제사항"/>결제사항
-				                  		<input type="radio"  name="category"  value="무뇽사항"/>무뇽사항
-				                  		<input type="radio"  name="category"  value="지훈사항"/>지훈사항
-				                  		<input type="radio"  name="category"  value="나윤사항"/>나윤사항
+									
+				                  <td>
+				                  <c:if test="${dto.category eq '결제사항' }" var="a">
+				                  	<input type="radio"  name="category"  value="결제사항" checked/>결제사항				                  
+				                  </c:if>
+				                  <c:if test="${not a}">
+				                  	<input type="radio"  name="category"  value="결제사항"/>결제사항
+				                  </c:if>
+				                  
+				                  <c:if test="${dto.category eq '무뇽사항' }" var="b">
+				                  	<input type="radio"  name="category"  value="무뇽사항" checked/>무뇽사항				                  
+				                  </c:if>
+				                  <c:if test="${not b}">
+				                  	<input type="radio"  name="category"  value="무뇽사항"/>무뇽사항
+				                  </c:if>	
+				                  
+				                  <c:if test="${dto.category eq '지훈사항' }" var="c">
+				                  	<input type="radio"  name="category"  value="지훈사항" checked/>지훈사항				                  
+				                  </c:if>
+				                  <c:if test="${not c}">
+				                  	<input type="radio"  name="category"  value="지훈사항"/>지훈사항
+				                  </c:if>	
+				                  
+				                  <c:if test="${dto.category eq'나윤사항' }" var="d">
+				                  	<input type="radio"  name="category"  value="나윤사항" checked/>나윤사항				                  
+				                  </c:if>
+				                  <c:if test="${not d}">
+				                  	<input type="radio"  name="category"  value="나윤사항"/>나윤사항
+				                  </c:if>	
+				                  		                  
+				                  		
+				                  		
 				                  	</td>
 			                  </tr>
 			                			   
@@ -91,10 +120,21 @@ dao.close();
 			                
 			              	  <tr>
 				                  <td class="text-center">N_OR_H</td>
-				                  	<td >
-				                  		<input type="checkbox"  name="normal_or_host"  value="N"<c:if test="${dto.normal_or_host =='N' }">checked</c:if> />N
-				                  		<input type="checkbox"  name="normal_or_host"  value="H"<c:if test="${dto.normal_or_host =='H' }">checked</c:if> />H
-				                  	</td>
+				                  	 <td>
+				                  	<c:if test="${dto.normal_or_host eq 'N' }" var="g">
+				                  		<input type="checkbox"  name="normal_or_host"  value="N" checked/>N				                  
+				                 	 </c:if>
+				                  	<c:if test="${not g}">
+				                  		<input type="checkbox"  name="normal_or_host"  value="N"/>N
+				                  	</c:if>	
+				                  	
+				                  	<c:if test="${dto.normal_or_host eq 'H' }" var="j">
+				                  		<input type="checkbox"  name="normal_or_host"  value="H" checked/>H		                  
+				                 	 </c:if>
+				                  	<c:if test="${not j}">
+				                  		<input type="checkbox"  name="normal_or_host"  value="H"/>H
+				                  	</c:if>	
+				                  	</td>	                  
 			                  </tr>
 			                  		
 			                  		
