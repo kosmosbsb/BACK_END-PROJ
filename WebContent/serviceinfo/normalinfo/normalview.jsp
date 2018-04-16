@@ -63,7 +63,7 @@
                 <div class="form-group">
                   <label class="control-label">작성일</label>
                   <label class="form-control">${dto.postdate}</label>
-                </div>
+                </div> 
                 <div class="form-group">
                   <label class="control-label">제목</label>
                   <label class="form-control">${dto.title}</label>
