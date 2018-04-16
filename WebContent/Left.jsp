@@ -34,7 +34,7 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">통계 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
       	  <ul class="treeview-menu">
             <li><a class="treeview-item" href="<c:url value='/analysis/Reserve.do'/>"><i class="icon fa fa-circle-o"></i>이용 통계</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!" target="_blank"><i class="icon fa fa-circle-o"></i>공간 통계</a></li>
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i>공간 통계</a></li>
           </ul>
         </li>
         </c:if>
@@ -53,32 +53,12 @@
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="<c:url value='/serviceinfo/notice/NoticeShow.jsp'/>"><i class="icon fa fa-circle-o"></i>공지사항 관리</a></li>
             <li><a class="treeview-item" href="<c:url value='/serviceinfo/help/HelpList.do'/>"><i class="icon fa fa-circle-o"></i>도움말 관리</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>FAQ 관리</a></li>
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i>FAQ 관리</a></li>
             <li><a class="treeview-item" href="<c:url value='/NormalInfo/List.do'/>"><i class="icon fa fa-circle-o"></i>일반 이용정보</a></li>
             <li><a class="treeview-item" href="<c:url value='/HostInfoList/Listhost.do'/>"><i class="icon fa fa-circle-o"></i>호스트 이용정보</a></li>
            </ul>
         </li>
         </c:if>
-        
-        <c:if test="${sessionScope.USER_LEVEL=='M' or sessionScope.USER_LEVEL=='S'}">
-         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">이벤트 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>컨시어지 서비스</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>베스트 공간 리스트</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>기획전(공간톡톡)</a></li>
-          </ul>
-        </li>
-        </c:if>
-        
-        <c:if test="${sessionScope.USER_LEVEL=='M'}">
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">수수료 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>정산 정책 관리</a></li>
-            <li><a class="treeview-item" href="이동할 페이지!"><i class="icon fa fa-circle-o"></i>서비스 이용 현황</a></li>
-          </ul>
-        </li>
-        </c:if>
-        
-        
+ 
       </ul>
     </aside>

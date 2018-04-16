@@ -72,12 +72,12 @@ public class AnalysisDAO {
 		int[] chardatar = {0,0,0,0,0,0,0,0,0}; //10대~90대 이상
 		
 		for(int i=1 ; i <= 9 ; i++) {
-			String sql = "select count(*) from reserve R join user_normal U on R.ID=U.ID where length(U.age)=2 and substr(U.age,1,1)="+i;
+			String sql = "select count(*) from reserve R join user_normal U on R.ID=U.ID where substr(U.age,1,1)="+i;
 			try {
 				psmt = conn.prepareStatement(sql);
 				rs = psmt.executeQuery();
 				while(rs.next()) {
-					chardatar[i-1]=Integer.parseInt(rs.getString(1));
+					chardatar[i-1]=Integer.parseInt(rs.getString(1).substring(0, 1));
 				}
 				
 			} catch (SQLException e) {
@@ -90,7 +90,7 @@ public class AnalysisDAO {
 	public int[] getPieChartResult_gender() {
 		int[] chardatar = {0,0}; //남자, 여자
 		
-		String sql = "select count(*) from reserve R join user_normal U on U.id=R.id where U.gender='m'";
+		String sql = "select count(*) from reserve R join user_normal U on U.id=R.id where U.gender='M'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -102,7 +102,7 @@ public class AnalysisDAO {
 			e.printStackTrace();
 		}
 		
-		sql = "select count(*) from reserve R join user_normal U on U.id=R.id where U.gender='f'";
+		sql = "select count(*) from reserve R join user_normal U on U.id=R.id where U.gender='F'";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();

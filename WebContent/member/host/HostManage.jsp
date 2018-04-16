@@ -120,7 +120,7 @@ href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.cs
 											href="<c:url value='/MEMBER/HostMng.do?id=${host.id}'/>">${host.id}</a></td>
 										<td>${host.name}</td>
 										<td>${host.h_nickname}</td>
-										<c:if test="${host.gender == 'm'}" var="gender">
+										<c:if test="${host.gender == 'M'}" var="gender">
 											<td>남자</td>
 										</c:if>
 										<c:if test="${not gender}">
