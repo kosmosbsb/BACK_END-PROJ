@@ -22,7 +22,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelOuter {
 	
-	String filePath = "C:\\Users\\kosmo_0\\Downloads";
+	String filePath = "\\\\192.168.0.2\\공유";
 	String excelName = "통계 데이터.xlsx";
 	Map<String,String> headerList = new HashMap<String,String>();
 	Map<String,String> list = new HashMap<String,String>();
