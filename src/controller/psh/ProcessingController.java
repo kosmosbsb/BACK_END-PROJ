@@ -26,6 +26,7 @@ public class ProcessingController extends HttpServlet{
 		req.setAttribute("lineChartHost_month", lineChartHost_month);
 		req.setAttribute("pieChartResult_type", pieChartResult_type);
 		
+		dao.close();
 		
 		RequestDispatcher dispatcher=req.getRequestDispatcher("/question/history/History.jsp");
 		dispatcher.forward(req, resp);

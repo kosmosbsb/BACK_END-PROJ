@@ -163,6 +163,8 @@ public class ReplyController extends HttpServlet{
 		
 		//푸시알람 보내기 끝//////////////////////////////////////////////////////////////////
 		
+        dao.close();
+        
 		// 뷰선택]
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/question/current/CurrentView.jsp");
 		// 포워딩]

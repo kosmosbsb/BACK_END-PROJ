@@ -65,7 +65,7 @@ public class QuestionController extends HttpServlet{
 		req.setAttribute("n_alarm_sms", list.get(0).getN_alarm_sms());
 		req.setAttribute("n_alarm_mail", list.get(0).getN_alarm_mail());
 		req.setAttribute("content", dao.content(no));
-		
+		dao.close();
 		
 		//뷰선택]
 		RequestDispatcher dispatcher=req.getRequestDispatcher("/question/current/CurrentView.jsp");

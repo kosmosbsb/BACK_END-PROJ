@@ -28,7 +28,7 @@ public class AnalysisController extends HttpServlet{
 		req.setAttribute("barChartResult_month", barChartResult_month);
 		req.setAttribute("barChartResult_age", barChartResult_age);
 		req.setAttribute("pieChartResult_gender", pieChartResult_gender);
-		
+		dao.close();
 		
 		RequestDispatcher dispatcher=req.getRequestDispatcher("/analysis/reserve/ReserveAnal.jsp");
 		dispatcher.forward(req, resp);
